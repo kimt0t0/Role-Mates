@@ -11,30 +11,33 @@ const gameSchema = new Schema({
     type: String
   },
   players: {
-    type: [],
+    type: [Schema.Types.ObjectId],
     required: true
   },
   moderators: {
-    type: [],
-    required: true
+    type: [Schema.Types.ObjectId],
+    required: true,
+    default: ['global admin']
   },
   characters: {
-    type: [],
+    type: [Schema.Types.ObjectId],
     required: true
   },
   messages: {
-    type: [],
+    type: [Schema.Types.ObjectId],
     required: true
   },
   status: {
-    type: [],
-    required: true
+    type: [Schema.Types.ObjectId],
+    required: true,
+    default: ['online', 'open']
   },
   illus: {
-    type: String
+    type: String,
+    default: '../../assets/photos/game-default.webp'
   },
   creator: {
-    type: String,
+    type: Schema.Types.ObjectId,
     required: true
   }
 }, { timestamps: true })

@@ -15,11 +15,6 @@ app.use(express.urlencoded({ extended: true }))
 // Call MongoDB connection helper
 require('./data/helpers/db').connect()
 
-// Test connexion
-app.get('/', (req, res) => {
-  res.send('Hello from Express App !')
-})
-
 // Get routes
 app.use(require('./routes'))
 

@@ -15,6 +15,15 @@ const messageSchema = new Schema({
     required: true
     // ref: 'User'
   },
+  character: {
+    type: String
+    // ref: 'Character'
+  },
+  type: {
+    type: String,
+    enum: ['MJ', 'CHARPLAY', 'DISC', 'MOD'], // game master / character play / discussion / moderation
+    default: 'CHARPLAY'
+  },
   content: {
     type: String,
     required: true
@@ -25,7 +34,8 @@ const messageSchema = new Schema({
   },
   moderation: {
     type: [String],
-    required: true
+    required: true,
+    default: 'admin'
     // ref: 'User
   }
 }, { timestamps: true })

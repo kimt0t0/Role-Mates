@@ -9,7 +9,6 @@ const Game = require('../data/models/Game')
 // Controls
 
 const createMessage = async (data) => {
-  console.log('entry in controller')
   // (throw error if empty request)
   if (!data) {
     throw new Error('Data is missing')

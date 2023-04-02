@@ -20,6 +20,9 @@ app.get('/', (req, res) => {
   res.send('Hello from Express App !')
 })
 
+// Get routes
+app.use(require('./routes'))
+
 // Set app listening on port
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`)

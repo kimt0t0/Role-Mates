@@ -1,7 +1,8 @@
 // Imports
 const router = require('express').Router()
 const {
-  createUser
+  createUser,
+  getUsers
 } = require('../../controllers/userController')
 
 // ROUTE '/'
@@ -11,6 +12,15 @@ router.route('/')
       const { body } = req
       const user = await createUser(body)
       return res.send(user)
+    } catch (e) {
+      console.error(e)
+      return res.status(500).send(e.message)
+    }
+  })
+  .get(async (req, res) => {
+    try {
+      const users = await getUsers()
+      return res.send(users)
     } catch (e) {
       console.error(e)
       return res.status(500).send(e.message)

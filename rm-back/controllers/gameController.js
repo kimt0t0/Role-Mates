@@ -1,6 +1,7 @@
 // Imports
 // (models)
 const Game = require('../data/models/Game')
+const User = require('../data/models/User')
 
 // (tools)
 // const { isObjectEmpty } = require('../tools/objects')
@@ -13,6 +14,14 @@ const createGame = async (data) => {
   }
   const game = new Game(data)
   const gameSaved = await game.save()
+
+  // update user's owned games list
+  if (gameSaved.owner) {
+    await User.findByIdAndUpdate(gameSaved.owner,
+      { $push: { gamesOwned: gameSaved._id, unique: true } },
+      { new: true, useFindAndModify: false })
+  }
+
   return gameSaved
 }
 

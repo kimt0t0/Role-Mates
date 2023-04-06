@@ -23,6 +23,12 @@ const createCharacter = async (data) => {
     await User.findByIdAndUpdate(characterSaved.user,
       { $push: { characters: characterSaved._id, unique: true } },
       { new: true, useFindAndModify: false })
+    // update user's games list
+    if (characterSaved.games) {
+      await User.findByIdAndUpdate(characterSaved.user,
+        { $push: { games: { $each: characterSaved.games } } },
+        { new: true, useFindAndModify: false })
+    }
   }
 
   // (update game's characters list)

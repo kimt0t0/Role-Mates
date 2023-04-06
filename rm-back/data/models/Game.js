@@ -10,6 +10,10 @@ const gameSchema = new Schema({
   description: {
     type: String
   },
+  owner: {
+    type: [Schema.Types.ObjectId],
+    required: true
+  },
   players: {
     type: [Schema.Types.ObjectId],
     required: true
@@ -28,16 +32,19 @@ const gameSchema = new Schema({
     required: true
   },
   status: {
-    type: [Schema.Types.ObjectId],
+    type: [String],
+    enum: ['DRAFT', 'ONLINE', 'PAUSE', 'TERMINATED', 'OPEN', 'PRIVATE'],
     required: true,
-    default: ['online', 'open']
+    default: ['DRAFT', 'OPEN']
   },
   illus: {
-    type: String,
-    default: '../../assets/photos/game-default.webp'
+    type: [Schema.Types.ObjectId],
+    ref: 'Image'
+    // default: '../../assets/photos/game-default.webp'
   },
   creator: {
     type: Schema.Types.ObjectId,
+    ref: 'User',
     required: true
   }
 }, { timestamps: true })

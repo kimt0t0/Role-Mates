@@ -26,16 +26,24 @@ const userSchema = new Schema({
     max: 35
   },
   games: {
-    type: [String]
+    type: [Schema.Types.ObjectId],
+    ref: 'Game'
+  },
+  gamesOwned: {
+    type: [Schema.Types.ObjectId],
+    ref: 'Game'
   },
   messages: {
-    type: [String]
+    type: [Schema.Types.ObjectId],
+    ref: 'Message'
   },
   modMessages: { // messages user can moderate
-    type: [String]
+    type: [Schema.Types.ObjectId],
+    ref: 'Message'
   },
   characters: {
-    type: [String]
+    type: [Schema.Types.ObjectId],
+    ref: 'Character'
   },
   type: { // user roles
     type: String,

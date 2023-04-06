@@ -11,12 +11,16 @@ _* BACK *_
 1. CRUD
 
 - Read
-- Update
+- Update:
+  ¤ add user to game
+  ¤ add character to game (so add user to game)
+  ¤ add message to game (so add message to character and user)
+  ¤ add/remove moderator on game and its characters
 - Delete
-
-2. Data models
-
-- Data models for Image, character stats, character capacities
+  ¤ when character remove from user and game
+  ¤ when message remove from character, user and game
+  ¤ when game remove from user and remove corresponding messages
+  ¤ when user remove characters, messages and owned games
 
 3. Security
 

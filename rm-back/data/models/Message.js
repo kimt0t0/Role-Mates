@@ -7,7 +7,6 @@ const { Schema } = mongoose
 const messageSchema = new Schema({
   game: {
     type: Schema.Types.ObjectId,
-    required: true,
     ref: 'Game'
   },
   user: {
@@ -31,12 +30,6 @@ const messageSchema = new Schema({
   illus: {
     type: Schema.Types.ObjectId,
     ref: 'Image'
-  },
-  moderation: {
-    type: [Schema.Types.ObjectId],
-    required: true,
-    default: 'admin',
-    ref: 'User'
   }
 }, { timestamps: true })
 

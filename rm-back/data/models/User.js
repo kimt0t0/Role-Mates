@@ -7,17 +7,23 @@ const { Schema } = mongoose
 const userSchema = new Schema({
   pseudo: {
     type: String,
-    required: true
+    required: true,
+    min: 3,
+    max: 15
   },
   email: {
     type: String,
     required: true,
     unique: true,
-    match: /.+@.+\..+/
+    match: /.+@.+\..+/,
+    min: 5,
+    max: 25
   },
   password: {
     type: String,
-    required: true
+    required: true,
+    min: 6,
+    max: 35
   },
   games: {
     type: [String]
@@ -34,7 +40,12 @@ const userSchema = new Schema({
   type: { // user roles
     type: String,
     enum: ['CLASSIC', 'MOD', 'ADMIN'],
+    required: true,
     default: 'CLASSIC'
+  },
+  avatar: {
+    type: Schema.Types.ObjectId,
+    ref: 'Image'
   }
 })
 

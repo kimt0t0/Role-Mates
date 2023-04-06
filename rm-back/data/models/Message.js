@@ -6,18 +6,18 @@ const { Schema } = mongoose
 // Schema
 const messageSchema = new Schema({
   game: {
-    type: String,
-    required: true
-    // ref: 'Game'
+    type: Schema.Types.ObjectId,
+    required: true,
+    ref: 'Game'
   },
   user: {
-    type: String,
-    required: true
-    // ref: 'User'
+    type: Schema.Types.ObjectId,
+    required: true,
+    ref: 'User'
   },
   character: {
-    type: String
-    // ref: 'Character'
+    type: Schema.Types.ObjectId,
+    ref: 'Character'
   },
   type: {
     type: String,
@@ -29,14 +29,14 @@ const messageSchema = new Schema({
     required: true
   },
   illus: {
-    type: String
-    // ref: 'Image'
+    type: Schema.Types.ObjectId,
+    ref: 'Image'
   },
   moderation: {
-    type: [String],
+    type: [Schema.Types.ObjectId],
     required: true,
-    default: 'admin'
-    // ref: 'User
+    default: 'admin',
+    ref: 'User'
   }
 }, { timestamps: true })
 

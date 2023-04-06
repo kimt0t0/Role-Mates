@@ -1,12 +1,16 @@
-// Imports
+// IMPORTS
 const User = require('../data/models/User')
 const Game = require('../data/models/Game')
 // const Message = require('../data/models/Message')
+const { deleteMessage } = require('./messageController')
+const { deleteCharacter } = require('./characterController')
+const { deleteGame } = require('./gameController')
 
 // (tools)
 // const { isObjectEmpty } = require('../tools/objects')
 
-// Controls
+// CONTROLS
+// Create User
 const createUser = async (data) => {
   // (throw error if empty request)
   if (!data) {
@@ -29,16 +33,19 @@ const createUser = async (data) => {
   return userObject
 }
 
+// Get all users
 const getUsers = async () => {
   const users = await User.find().select('-password').select('-email')
   return users
 }
 
+// Get one user
 const getUserById = async (id) => {
   const user = await User.findById(id).select('-password').select('-email')
   return user
 }
 
+// Update user
 const updateUser = async (id, user) => {
   if (!id) {
     throw new Error('missing data')
@@ -55,10 +62,42 @@ const updateUser = async (id, user) => {
   return userObject
 }
 
-// Exports
+// Delete user
+const deleteUser = async (id) => {
+  if (!id) {
+    throw new Error('missing data')
+  }
+  // (Update other datas)
+  const user = await getUserById(id)
+  // ((remove messages))
+  if (user.messages.length > 0) {
+    user.messages.forEach(async m => await deleteMessage(m))
+  }
+  // ((remove owned games))
+  if (user.gamesOwned.length > 0) {
+    user.gamesOwned.forEach(async go => await deleteGame(go))
+  }
+  // ((remove characters))
+  if (user.characters.length > 0) {
+    user.characters.forEach(async c => await deleteCharacter(c))
+  }
+  // ((remove user from games))
+  if (user.games.length > 0) {
+    user.games.forEach(async g => {
+      await Game.findByIdAndUpdate(g,
+        { $pull: { players: id, unique: true } },
+        { new: true, useFindAndModify: false })
+    })
+  }
+  // (Delete user from db)
+  await User.findByIdAndDelete(id)
+}
+
+// EXPORTS
 module.exports = {
   createUser,
   getUsers,
   getUserById,
-  updateUser
+  updateUser,
+  deleteUser
 }

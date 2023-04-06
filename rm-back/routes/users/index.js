@@ -4,7 +4,8 @@ const {
   createUser,
   getUsers,
   getUserById,
-  updateUser
+  updateUser,
+  deleteUser
 } = require('../../controllers/userController')
 
 // ROUTE '/'
@@ -47,6 +48,16 @@ router.route('/:id')
       const { id } = req.params
       const user = await updateUser(id, body)
       return res.send(user)
+    } catch (e) {
+      console.error(e)
+      return res.status(500).send(e.message)
+    }
+  })
+  .delete(async (req, res) => {
+    try {
+      const { id } = req.params
+      await deleteUser(id)
+      return res.send(`L'utilisateur·ice avec l'identifiant ${id} a été supprimae`)
     } catch (e) {
       console.error(e)
       return res.status(500).send(e.message)

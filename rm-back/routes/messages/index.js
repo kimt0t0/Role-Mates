@@ -4,7 +4,8 @@ const {
   createMessage,
   getMessages,
   getMessageById,
-  updateMessage
+  updateMessage,
+  deleteMessage
 } = require('../../controllers/messageController')
 
 // ROUTE '/'
@@ -47,6 +48,16 @@ router.route('/:id')
       const { id } = req.params
       const message = await updateMessage(id, body)
       return res.send(message)
+    } catch (e) {
+      console.error(e)
+      return res.status(500).send(e.message)
+    }
+  })
+  .delete(async (req, res) => {
+    try {
+      const { id } = req.params
+      await deleteMessage(id)
+      return res.send(`Le message avec l'identifiant ${id} a été supprimae`)
     } catch (e) {
       console.error(e)
       return res.status(500).send(e.message)

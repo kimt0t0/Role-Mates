@@ -1,4 +1,4 @@
-// Imports
+// IMPORTS
 const Message = require('../data/models/Message')
 const Game = require('../data/models/Game')
 const User = require('../data/models/User')
@@ -7,8 +7,8 @@ const Character = require('../data/models/Character')
 // (tools)
 // const { isObjectEmpty } = require('../tools/objects')
 
-// Controls
-
+// CONTROLS
+// Create Message
 const createMessage = async (data) => {
   // (throw error if empty request)
   if (!data) {
@@ -38,16 +38,19 @@ const createMessage = async (data) => {
   return messageSaved
 }
 
+// Get all messages
 const getMessages = async () => {
   const messages = await Message.find()
   return messages
 }
 
+// Get one message
 const getMessageById = async (id) => {
   const message = await Message.findById(id)
   return message
 }
 
+// Update message
 const updateMessage = async (id, message) => {
   if (!id) {
     throw new Error('missing data')
@@ -63,10 +66,40 @@ const updateMessage = async (id, message) => {
   return messageObject
 }
 
-// Exports
+// Delete message
+const deleteMessage = async (id) => {
+  if (!id) {
+    throw new Error('missing data')
+  }
+  // (Update other datas)
+  const message = await getMessageById(id)
+  // Remove from game/other
+  if (message.game) {
+    await Game.findByIdAndUpdate(message.game,
+      { $pull: { messages: id, unique: true } },
+      { new: true, useFindAndModify: false })
+  }
+  // Remove from user
+  if (message.user) {
+    await User.findByIdAndUpdate(message.user,
+      { $pull: { messages: id, unique: true } },
+      { new: true, useFindAndModify: false })
+  }
+  // Remove from character
+  if (message.character) {
+    await Character.findByIdAndUpdate(message.character,
+      { $pull: { messages: id, unique: true } },
+      { new: true, useFindAndModify: false })
+  }
+  // (Delete message from db)
+  await Message.findByIdAndDelete(id)
+}
+
+// EXPORTS
 module.exports = {
   createMessage,
   getMessages,
   getMessageById,
-  updateMessage
+  updateMessage,
+  deleteMessage
 }

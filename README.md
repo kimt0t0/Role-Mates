@@ -14,13 +14,8 @@ _* BACK *_
 
 1. CRUD
 
-- Update:
-  ¤ add user to game
-  ¤ add character to game (so add user to game)
-  ¤ add message to game (so add message to character and user)
-  ¤ add/remove moderator on game and its characters
 - Delete
-  ¤ when character remove from user and game
+  ¤ when character remove from user and game, and remove messages (-> create removeMessage function in messageController)
   ¤ when message remove from character, user and game
   ¤ when game remove from user and remove corresponding messages
   ¤ when user remove characters, messages and owned games
@@ -37,5 +32,13 @@ _* FRONT *_
 
 _* BONUS IF TIME *_
 
-- Bonus: life can be edited by owner player and Game Master on characters' cards. Players can add / edit statistics and powers on their characters.
+- Bonus1: life can be edited by owner player and Game Master on characters' cards. Players can add / edit statistics and powers on their characters.
+
 - Bonus2: sort getAll results alphabetically / by date (and reversed in both cases)
+
+- Bonus3 CRUD Update:
+  ¤ add user to game
+  ¤ add character to game (so add user to game)
+  ¤ add message to game (so add message to character and user)
+  ¤ add/remove moderator on game and its characters
+  --- need to learn how to watch a collection and update it when changes implicate changes on this collection ---

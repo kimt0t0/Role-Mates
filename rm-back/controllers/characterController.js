@@ -1,15 +1,14 @@
-// Imports
+// IMPORTS
 const Character = require('../data/models/Character')
 const Game = require('../data/models/Game')
 const User = require('../data/models/User')
-// const Message = require('../data/models/Message')
-// const Game = require('../data/models/Game')
+const { deleteMessage } = require('./messageController.js')
 
 // (tools)
 // const { isObjectEmpty } = require('../tools/objects')
 
-// Controls
-
+// CONTROLS
+// Create character
 const createCharacter = async (data) => {
   // (throw error if empty request)
   if (!data) {
@@ -43,16 +42,19 @@ const createCharacter = async (data) => {
   return characterSaved
 }
 
+// Get all characters
 const getCharacters = async () => {
   const characters = await Character.find()
   return characters
 }
 
+// Get one character
 const getCharacterById = async (id) => {
   const character = await Character.findById(id)
   return character
 }
 
+// Update character
 const updateCharacter = async (id, character) => {
   if (!id) {
     throw new Error('missing data')
@@ -68,10 +70,42 @@ const updateCharacter = async (id, character) => {
   return characterObject
 }
 
-// Exports
+// Delete character
+const deleteCharacter = async (id) => {
+  if (!id) {
+    throw new Error('missing data')
+  }
+  console.log('Suppression du personnage...')
+  // (Update other datas)
+  const character = await getCharacterById(id)
+  console.log(character)
+  // (( remove from user ))
+  if (character.user) {
+    await User.findByIdAndUpdate(character.user,
+      { $pull: { characters: id, unique: true } },
+      { new: true, useFindAndModify: false })
+  }
+  // (( remove from games ))
+  if (character.games) {
+    character.games.forEach(async g => {
+      await Game.findByIdAndUpdate(g,
+        { $pull: { characters: id, unique: true } },
+        { new: true, useFindAndModify: false })
+    })
+  }
+  // (( delete messages ))
+  if (character.messages) {
+    character.messages.forEach(async m => await deleteMessage(m))
+  }
+  // (Delete character from db)
+  await Character.findByIdAndDelete(id)
+}
+
+// EXPORTS
 module.exports = {
   createCharacter,
   getCharacters,
   getCharacterById,
-  updateCharacter
+  updateCharacter,
+  deleteCharacter
 }

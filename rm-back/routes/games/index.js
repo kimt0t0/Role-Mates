@@ -4,7 +4,8 @@ const {
   createGame,
   getGames,
   getGameById,
-  updateGame
+  updateGame,
+  deleteGame
 } = require('../../controllers/gameController')
 
 // ROUTE '/'
@@ -46,6 +47,16 @@ router.route('/:id')
       const { id } = req.params
       const game = await updateGame(id, body)
       return res.send(game)
+    } catch (e) {
+      console.error(e)
+      return res.status(500).send(e.message)
+    }
+  })
+  .delete(async (req, res) => {
+    try {
+      const { id } = req.params
+      await deleteGame(id)
+      return res.send(`La partie de jeu avec l'identifiant ${id} a été supprimée`)
     } catch (e) {
       console.error(e)
       return res.status(500).send(e.message)

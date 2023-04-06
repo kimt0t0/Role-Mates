@@ -13,6 +13,7 @@ const characterSchema = new Schema({
   name: {
     type: String,
     required: true,
+    unique: true,
     min: 2,
     max: 30
   },

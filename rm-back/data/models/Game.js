@@ -15,16 +15,12 @@ const gameSchema = new Schema({
   },
   owner: {
     type: [Schema.Types.ObjectId],
+    ref: 'User',
     required: true
   },
   players: {
     type: [Schema.Types.ObjectId],
     required: true
-  },
-  moderators: {
-    type: [Schema.Types.ObjectId],
-    required: true,
-    default: ['global admin']
   },
   characters: {
     type: [Schema.Types.ObjectId],
@@ -44,11 +40,6 @@ const gameSchema = new Schema({
     type: [Schema.Types.ObjectId],
     ref: 'Image'
     // default: '../../assets/photos/game-default.webp'
-  },
-  creator: {
-    type: Schema.Types.ObjectId,
-    ref: 'User',
-    required: true
   }
 }, { timestamps: true })
 

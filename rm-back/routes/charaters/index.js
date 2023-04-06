@@ -4,7 +4,8 @@ const {
   createCharacter,
   getCharacters,
   getCharacterById,
-  updateCharacter
+  updateCharacter,
+  deleteCharacter
 } = require('../../controllers/characterController')
 
 // ROUTE '/'
@@ -47,6 +48,16 @@ router.route('/:id')
       const { id } = req.params
       const character = await updateCharacter(id, body)
       return res.send(character)
+    } catch (e) {
+      console.error(e)
+      return res.status(500).send(e.message)
+    }
+  })
+  .delete(async (req, res) => {
+    try {
+      const { id } = req.params
+      await deleteCharacter(id)
+      return res.send(`Lae personnage avec l'identifiant ${id} a été supprimae`)
     } catch (e) {
       console.error(e)
       return res.status(500).send(e.message)

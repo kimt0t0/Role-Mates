@@ -2,7 +2,8 @@
 const router = require('express').Router()
 const {
   createCharacter,
-  getCharacters
+  getCharacters,
+  getCharacterById
 } = require('../../controllers/characterController')
 
 // ROUTE '/'
@@ -27,9 +28,18 @@ router.route('/')
     }
   })
 
-// ROUTE '/:gameId
-
-// ROUTE '/:userId'
+// ROUTE '/:id'
+router.route('/:id')
+  .get(async (req, res) => {
+    try {
+      const { id } = req.params
+      const character = await getCharacterById(id)
+      return res.send(character)
+    } catch (error) {
+      console.error(error)
+      return res.status(500).send(error.message)
+    }
+  })
 
 // Exports
 module.exports = router

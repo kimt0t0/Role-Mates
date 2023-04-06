@@ -43,8 +43,14 @@ const getMessages = async () => {
   return messages
 }
 
+const getMessageById = async (id) => {
+  const message = await Message.findById(id)
+  return message
+}
+
 // Exports
 module.exports = {
   createMessage,
-  getMessages
+  getMessages,
+  getMessageById
 }

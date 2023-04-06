@@ -30,8 +30,14 @@ const getGames = async () => {
   return games
 }
 
+const getGameById = async (id) => {
+  const game = await Game.findById(id)
+  return game
+}
+
 // Exports
 module.exports = {
   createGame,
-  getGames
+  getGames,
+  getGameById
 }

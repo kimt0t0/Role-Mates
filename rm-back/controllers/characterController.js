@@ -48,8 +48,14 @@ const getCharacters = async () => {
   return characters
 }
 
+const getCharacterById = async (id) => {
+  const character = await Character.findById(id)
+  return character
+}
+
 // Exports
 module.exports = {
   createCharacter,
-  getCharacters
+  getCharacters,
+  getCharacterById
 }

@@ -15,7 +15,6 @@ _* BACK *_
 1. CRUD
 
 - Read:
-  ¤ get all
   ¤ get by id
   ¤ (get by name)
 - Update:

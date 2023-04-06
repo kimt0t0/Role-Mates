@@ -34,8 +34,14 @@ const getUsers = async () => {
   return users
 }
 
+const getUserById = async (id) => {
+  const user = await User.findById(id)
+  return user
+}
+
 // Exports
 module.exports = {
   createUser,
-  getUsers
+  getUsers,
+  getUserById
 }

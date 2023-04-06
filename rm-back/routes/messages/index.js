@@ -3,7 +3,8 @@ const router = require('express').Router()
 const {
   createMessage,
   getMessages,
-  getMessageById
+  getMessageById,
+  updateMessage
 } = require('../../controllers/messageController')
 
 // ROUTE '/'
@@ -35,9 +36,20 @@ router.route('/:id')
       const { id } = req.params
       const message = await getMessageById(id)
       return res.send(message)
-    } catch (error) {
-      console.error(error)
-      return res.status(500).send(error.message)
+    } catch (e) {
+      console.error(e)
+      return res.status(500).send(e.message)
+    }
+  })
+  .patch(async (req, res) => {
+    try {
+      const { body } = req
+      const { id } = req.params
+      const message = await updateMessage(id, body)
+      return res.send(message)
+    } catch (e) {
+      console.error(e)
+      return res.status(500).send(e.message)
     }
   })
 

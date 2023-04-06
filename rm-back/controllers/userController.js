@@ -30,18 +30,35 @@ const createUser = async (data) => {
 }
 
 const getUsers = async () => {
-  const users = await User.find()
+  const users = await User.find().select('-password').select('-email')
   return users
 }
 
 const getUserById = async (id) => {
-  const user = await User.findById(id)
+  const user = await User.findById(id).select('-password').select('-email')
   return user
+}
+
+const updateUser = async (id, user) => {
+  if (!id) {
+    throw new Error('missing data')
+  }
+  if (!user) {
+    throw new Error('missing user')
+  }
+
+  delete user.pseudo // prevents user to change username
+  const userUpdate = await User.findByIdAndUpdate(id, user, { new: true }).select('-password')
+
+  const userObject = userUpdate.toObject()
+
+  return userObject
 }
 
 // Exports
 module.exports = {
   createUser,
   getUsers,
-  getUserById
+  getUserById,
+  updateUser
 }

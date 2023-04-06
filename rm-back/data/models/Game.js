@@ -10,6 +10,9 @@ const gameSchema = new Schema({
   description: {
     type: String
   },
+  rules: {
+    type: [String]
+  },
   owner: {
     type: [Schema.Types.ObjectId],
     required: true

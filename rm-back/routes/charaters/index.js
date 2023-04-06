@@ -3,7 +3,8 @@ const router = require('express').Router()
 const {
   createCharacter,
   getCharacters,
-  getCharacterById
+  getCharacterById,
+  updateCharacter
 } = require('../../controllers/characterController')
 
 // ROUTE '/'
@@ -38,6 +39,17 @@ router.route('/:id')
     } catch (error) {
       console.error(error)
       return res.status(500).send(error.message)
+    }
+  })
+  .patch(async (req, res) => {
+    try {
+      const { body } = req
+      const { id } = req.params
+      const character = await updateCharacter(id, body)
+      return res.send(character)
+    } catch (e) {
+      console.error(e)
+      return res.status(500).send(e.message)
     }
   })
 

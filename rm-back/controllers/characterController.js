@@ -53,9 +53,25 @@ const getCharacterById = async (id) => {
   return character
 }
 
+const updateCharacter = async (id, character) => {
+  if (!id) {
+    throw new Error('missing data')
+  }
+  if (!character) {
+    throw new Error('missing character data')
+  }
+
+  const characterUpdate = await Character.findByIdAndUpdate(id, character, { new: true })
+
+  const characterObject = characterUpdate.toObject()
+
+  return characterObject
+}
+
 // Exports
 module.exports = {
   createCharacter,
   getCharacters,
-  getCharacterById
+  getCharacterById,
+  updateCharacter
 }

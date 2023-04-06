@@ -3,7 +3,8 @@ const router = require('express').Router()
 const {
   createUser,
   getUsers,
-  getUserById
+  getUserById,
+  updateUser
 } = require('../../controllers/userController')
 
 // ROUTE '/'
@@ -35,9 +36,20 @@ router.route('/:id')
       const { id } = req.params
       const user = await getUserById(id)
       return res.send(user)
-    } catch (error) {
-      console.error(error)
-      return res.status(500).send(error.message)
+    } catch (e) {
+      console.error(e)
+      return res.status(500).send(e.message)
+    }
+  })
+  .patch(async (req, res) => {
+    try {
+      const { body } = req
+      const { id } = req.params
+      const user = await updateUser(id, body)
+      return res.send(user)
+    } catch (e) {
+      console.error(e)
+      return res.status(500).send(e.message)
     }
   })
 

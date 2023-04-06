@@ -48,9 +48,25 @@ const getMessageById = async (id) => {
   return message
 }
 
+const updateMessage = async (id, message) => {
+  if (!id) {
+    throw new Error('missing data')
+  }
+  if (!message) {
+    throw new Error('message empty or missing')
+  }
+
+  const messageUpdate = await Message.findByIdAndUpdate(id, message, { new: true })
+
+  const messageObject = messageUpdate.toObject()
+
+  return messageObject
+}
+
 // Exports
 module.exports = {
   createMessage,
   getMessages,
-  getMessageById
+  getMessageById,
+  updateMessage
 }

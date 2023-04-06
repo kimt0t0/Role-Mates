@@ -14,9 +14,6 @@ _* BACK *_
 
 1. CRUD
 
-- Read:
-  ¤ get by id
-  ¤ (get by name)
 - Update:
   ¤ add user to game
   ¤ add character to game (so add user to game)
@@ -36,6 +33,7 @@ _* BACK *_
 _* FRONT *_
 
 - not started yet -
+  ¤ on sign-up form inform users they will not be able to update their pseudo
 
 _* BONUS IF TIME *_
 

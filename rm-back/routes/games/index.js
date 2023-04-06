@@ -3,7 +3,8 @@ const router = require('express').Router()
 const {
   createGame,
   getGames,
-  getGameById
+  getGameById,
+  updateGame
 } = require('../../controllers/gameController')
 
 // ROUTE '/'
@@ -34,9 +35,20 @@ router.route('/:id')
       const { id } = req.params
       const game = await getGameById(id)
       return res.send(game)
-    } catch (error) {
-      console.error(error)
-      return res.status(500).send(error.message)
+    } catch (e) {
+      console.error(e)
+      return res.status(500).send(e.message)
+    }
+  })
+  .patch(async (req, res) => {
+    try {
+      const { body } = req
+      const { id } = req.params
+      const game = await updateGame(id, body)
+      return res.send(game)
+    } catch (e) {
+      console.error(e)
+      return res.status(500).send(e.message)
     }
   })
 

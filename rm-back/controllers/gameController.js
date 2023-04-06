@@ -35,9 +35,26 @@ const getGameById = async (id) => {
   return game
 }
 
+const updateGame = async (id, game) => {
+  if (!id) {
+    throw new Error('missing data')
+  }
+  if (!game) {
+    throw new Error('missing game data')
+  }
+
+  delete game.owner // prevents user to change username
+  const gameUpdate = await Game.findByIdAndUpdate(id, game, { new: true })
+
+  const gameObject = gameUpdate.toObject()
+
+  return gameObject
+}
+
 // Exports
 module.exports = {
   createGame,
   getGames,
-  getGameById
+  getGameById,
+  updateGame
 }

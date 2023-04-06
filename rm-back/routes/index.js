@@ -1,7 +1,6 @@
 // Imports
 const router = require('express').Router()
 
-console.log('Router')
 // Get specific routes
 router.use('/games', require('./games'))
 router.use('/messages', require('./messages'))

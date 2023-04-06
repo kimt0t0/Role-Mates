@@ -38,7 +38,13 @@ const createMessage = async (data) => {
   return messageSaved
 }
 
+const getMessages = async () => {
+  const messages = await Message.find()
+  return messages
+}
+
 // Exports
 module.exports = {
-  createMessage
+  createMessage,
+  getMessages
 }

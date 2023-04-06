@@ -1,4 +1,8 @@
-**_ To launch project _**
+**_ Presentation _**
+This is a school project aiming to develop a CRUD REST API with Node.js and frontend interface with React. It may be shifted to Vue.js later.
+Feel free to help or use (non commercially) AFTER MAY 20th, 2023.
+
+**_ To launch project in developer mode _**
 
 1. Copy repository
 2. cd rm-back ---> yarn install ---> yarn run dev
@@ -10,7 +14,10 @@ _* BACK *_
 
 1. CRUD
 
-- Read
+- Read:
+  ¤ get all
+  ¤ get by id
+  ¤ (get by name)
 - Update:
   ¤ add user to game
   ¤ add character to game (so add user to game)
@@ -33,4 +40,5 @@ _* FRONT *_
 
 _* BONUS IF TIME *_
 
-- Bonus: life can be edited by owner player and Game Master on characters' cards.
+- Bonus: life can be edited by owner player and Game Master on characters' cards. Players can add / edit statistics and powers on their characters.
+- Bonus2: sort getAll results alphabetically / by date (and reversed in both cases)

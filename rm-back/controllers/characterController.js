@@ -43,7 +43,13 @@ const createCharacter = async (data) => {
   return characterSaved
 }
 
+const getCharacters = async () => {
+  const characters = await Character.find()
+  return characters
+}
+
 // Exports
 module.exports = {
-  createCharacter
+  createCharacter,
+  getCharacters
 }

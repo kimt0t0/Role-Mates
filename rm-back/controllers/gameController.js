@@ -25,7 +25,13 @@ const createGame = async (data) => {
   return gameSaved
 }
 
+const getGames = async () => {
+  const games = await Game.find()
+  return games
+}
+
 // Exports
 module.exports = {
-  createGame
+  createGame,
+  getGames
 }

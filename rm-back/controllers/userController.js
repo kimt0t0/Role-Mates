@@ -30,12 +30,7 @@ const createUser = async (data) => {
 }
 
 const getUsers = async () => {
-  console.log('User controller, fonction get')
   const users = await User.find()
-  // .populate('messages')
-  // .populate('modMessages')
-  // .populate('characters')
-  // .populate('avatar')
   return users
 }
 

@@ -29,14 +29,14 @@ yarn run dev
 popd
 ~~~
 
-Launch the front-end application
+<!-- Launch the front-end application
 
 ~~~
 pushd rm-front
 yarn install
 yarn run dev
 popd
-~~~
+~~~ -->
 
 ## Work remaining
 

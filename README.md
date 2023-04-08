@@ -7,7 +7,8 @@ Feel free to help or use (non commercially) AFTER MAY 20th, 2023.
   - [Requirements](#requirements)
   - [Getting started](#getting-started)
   - [Work remaining](#work-remaining)
-    - [Backend](#backend)
+    - [Backend (web API)](#backend-web-api)
+    - [Frontend (client application)](#frontend-client-application)
   - [References](#references)
 
 
@@ -40,7 +41,7 @@ popd
 
 ## Work remaining
 
-### Backend
+### Backend (web API)
 
 1. CRUD
 
@@ -50,29 +51,28 @@ popd
   ¤ when game remove from user and remove corresponding messages
   ¤ when user remove characters, messages and owned games
 
-3. Security
+2. Security
 
 - encrypt password and email, cors, helmet
 - protect routes
 
-_* FRONT *_
+### Frontend (client application)
 
-- not started yet -
+- **not started yet**
   ¤ on sign-up form inform users they will not be able to update their pseudo
 
-_* BONUS IF TIME *_
+_*BONUS IF TIME*_
 
-- Bonus1: life can be edited by owner player and Game Master on characters' cards. Players can add / edit statistics and powers on their characters.
+- Bonus 1: life can be edited by owner player and Game Master on characters' cards. Players can add / edit statistics and powers on their characters.
 
-- Bonus2: sort getAll results alphabetically / by date (and reversed in both cases)
+- Bonus 2: sort getAll results alphabetically / by date (and reversed in both cases)
 
-- Bonus3 CRUD Update:
+- Bonus 3 CRUD Update:
   ¤ add user to game
   ¤ add character to game (so add user to game)
   ¤ add message to game (so add message to character and user)
   ¤ add/remove moderator on game and its characters
   --- need to learn how to watch a collection and update it when changes implicate changes on this collection ---
-
 
 ## References
 

@@ -20,7 +20,7 @@ _* BACK *_
 _* FRONT *_
 
 - not started yet -
-  ¤ on sign-up form inform users they will not be able to update their pseudo
+  ¤ on sign-up form inform users they will not be able to update their username
 
 _* BONUS IF TIME *_
 

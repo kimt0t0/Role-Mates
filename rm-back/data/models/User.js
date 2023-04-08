@@ -5,7 +5,7 @@ const { Schema } = mongoose
 
 // Schema
 const userSchema = new Schema({
-  pseudo: {
+  username: {
     type: String,
     required: true,
     min: 3,

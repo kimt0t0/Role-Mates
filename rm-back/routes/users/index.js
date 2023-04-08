@@ -23,8 +23,8 @@ router.route('/')
   })
   .get(async (req, res) => {
     try {
-      if (req.query.pseudo) {
-        const searched = req.query.pseudo
+      if (req.query.username) {
+        const searched = req.query.username
         const usersSearched = getUsersByTextSearch(searched)
         return res.send(usersSearched)
       }

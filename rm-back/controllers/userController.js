@@ -67,7 +67,7 @@ const updateUser = async (id, user) => {
     throw new Error('missing user')
   }
 
-  delete user.pseudo // prevents user to change username
+  delete user.username // prevents user to change username
   const userUpdate = await User.findByIdAndUpdate(id, user, { new: true }).select('-password')
 
   const userObject = userUpdate.toObject()

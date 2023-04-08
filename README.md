@@ -1,16 +1,46 @@
-**_ Presentation _**
+# Role Mates
+
 This is a school project aiming to develop a CRUD REST API with Node.js and frontend interface with React. It may be shifted to Vue.js later.
 Feel free to help or use (non commercially) AFTER MAY 20th, 2023.
 
-**_ To launch project in developer mode _**
+- [Role Mates](#role-mates)
+  - [Requirements](#requirements)
+  - [Getting started](#getting-started)
+  - [Work remaining](#work-remaining)
+    - [Backend](#backend)
+  - [References](#references)
 
-1. Copy repository
-2. cd rm-back ---> yarn install ---> yarn run dev
-3. cd rm-front ...
 
-**_ Work remaining _**
+## Requirements
 
-_* BACK *_
+- yarn
+- node.js
+
+## Getting started
+
+Clone the [repository](https://github.com/kimt0t0/Role-Mates/)
+
+Launch the web API
+
+~~~
+pushd rm-back
+yarn install
+yarn run dev
+popd
+~~~
+
+Launch the front-end application
+
+~~~
+pushd rm-front
+yarn install
+yarn run dev
+popd
+~~~
+
+## Work remaining
+
+### Backend
 
 1. CRUD
 
@@ -42,3 +72,8 @@ _* BONUS IF TIME *_
   ¤ add message to game (so add message to character and user)
   ¤ add/remove moderator on game and its characters
   --- need to learn how to watch a collection and update it when changes implicate changes on this collection ---
+
+
+## References
+
+<!-- Une liste de liens utiles pour comprendre, utiliser, modifier le projet -->

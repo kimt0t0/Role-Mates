@@ -12,14 +12,6 @@ Feel free to help or use (non commercially) AFTER MAY 20th, 2023.
 
 _* BACK *_
 
-1. CRUD
-
-- Delete
-  ¤ when character remove from user and game, and remove messages (-> create removeMessage function in messageController)
-  ¤ when message remove from character, user and game
-  ¤ when game remove from user and remove corresponding messages
-  ¤ when user remove characters, messages and owned games
-
 3. Security
 
 - encrypt password and email, cors, helmet

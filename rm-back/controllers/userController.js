@@ -39,6 +39,19 @@ const getUsers = async () => {
   return users
 }
 
+// Get users by search
+const getUsersByTextSearch = async (search) => {
+  const users = await User.find({
+    $text:
+    {
+      $search: search,
+      $language: 'fr',
+      $caseSensitive: false
+    }
+  })
+  return users
+}
+
 // Get one user
 const getUserById = async (id) => {
   const user = await User.findById(id).select('-password').select('-email')
@@ -97,6 +110,7 @@ const deleteUser = async (id) => {
 module.exports = {
   createUser,
   getUsers,
+  getUsersByTextSearch,
   getUserById,
   updateUser,
   deleteUser

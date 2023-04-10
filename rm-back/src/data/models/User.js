@@ -1,9 +1,10 @@
-// Imports
+// IMPORTS
 const mongoose = require('mongoose')
 
 const { Schema } = mongoose
+const bcrypt = require('bcryptjs')
 
-// Schema
+// SCHEMA
 const userSchema = new Schema({
   username: {
     type: String,
@@ -46,7 +47,7 @@ const userSchema = new Schema({
     type: [Schema.Types.ObjectId],
     ref: 'Character'
   },
-  type: { // user roles
+  role: { // user roles
     type: String,
     enum: ['CLASSIC', 'MOD', 'ADMIN'],
     required: true,
@@ -56,7 +57,29 @@ const userSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'Image'
   }
+}, { timestamp: true })
+
+// ADDITIONAL LOGIC
+// Replace password by encrypted equivalent BEFORE saving into database
+userSchema.pre('save', async function (next) {
+  const user = this
+  if (user.isModified('password') || user.isNew) {
+    try {
+      const salt = await bcrypt.genSalt(12)
+      const hash = await bcrypt.hash(user.password, salt)
+      user.password = hash
+      return next()
+    } catch (e) {
+      throw new Error(e)
+    }
+  }
 })
 
-// Exports
+// Method to check if entered password is compatible with encrypted version
+userSchema.methods.comparePassword = async function (password) {
+  const isPasswordValid = await bcrypt.compare(password, this.password)
+  return isPasswordValid
+}
+
+// EXPORTS
 module.exports = mongoose.models.User || mongoose.model('User', userSchema)

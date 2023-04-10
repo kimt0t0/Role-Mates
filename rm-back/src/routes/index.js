@@ -7,6 +7,7 @@ router.use('/messages', require('./messages'))
 router.use('/users', require('./users'))
 router.use('/characters', require('./charaters'))
 router.use('/images', require('./images'))
+router.use('/auth', require('./auth'))
 
 // Export all routes
 module.exports = router

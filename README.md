@@ -11,7 +11,6 @@ Feel free to help or use (non commercially) AFTER MAY 20th, 2023.
     - [Frontend (client application)](#frontend-client-application)
   - [References](#references)
 
-
 ## Requirements
 
 - yarn
@@ -23,12 +22,12 @@ Clone the [repository](https://github.com/kimt0t0/Role-Mates/)
 
 Launch the web API
 
-~~~
+```
 pushd rm-back
 yarn install
 yarn run dev
 popd
-~~~
+```
 
 <!-- Launch the front-end application
 
@@ -43,31 +42,32 @@ popd
 
 ### Backend (web API)
 
-
 1. CRUD
 
 - Images
-    fix multer issue
-    add images to user, character, message, game
-    delete image ?
+  fix multer issue
+  add images to user, character, message, game
 
 2. Security
 
 - encrypt password and email, cors, helmet
 - protect routes
+- on signin check that credentials are strings and not other data types
 
 ### Frontend (client application)
 
-
 - **not started yet**
-  ¤ on sign-up form inform users they will not be able to update their pseudo
+
+  ¤ Add a signout function.
+
+  ¤ Add a delete image function for users and admins/mods.
 
   ¤ Life can be edited by owner player and Game Master on characters' cards. Players can add / edit statistics and powers on their characters.
 
   ¤ Sort getAll results alphabetically / by date (and reversed in both cases)
-  
+
   ¤ Users and admins/mod can delete images
-  
+
   --- need to learn how to watch a collection and update it when changes implicate changes on this collection ---
 
 ## References

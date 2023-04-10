@@ -1,21 +1,17 @@
 // Imports
 const mongoose = require('mongoose')
-
 const { Schema } = mongoose
 
 // Schema
 const imageSchema = new Schema({
   fileName: {
-    type: String,
-    required: true
+    type: String
   },
   originalName: {
     type: String
   },
   mimeType: {
-    type: String,
-    enum: ['JPG', 'WEBP', 'PNG'],
-    required: true
+    type: String
   },
   url: {
     type: String
@@ -27,6 +23,22 @@ const imageSchema = new Schema({
     type: Number,
     max: 5000 // limit size to avoid full server
   }
+  // user: {
+  //   type: Schema.Types.ObjectId,
+  //   ref: 'User'
+  // },
+  // game: {
+  //   type: Schema.Types.ObjectId,
+  //   ref: 'Game'
+  // },
+  // character: {
+  //   type: Schema.Types.ObjectId,
+  //   ref: 'Character'
+  // },
+  // message: {
+  //   type: Schema.Types.ObjectId,
+  //   ref: 'Message'
+  // }
 }, { timestamps: true })
 
 // Exports

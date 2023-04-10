@@ -22,15 +22,10 @@ _* FRONT *_
 - not started yet -
   ¤ on sign-up form inform users they will not be able to update their username
 
-_* BONUS IF TIME *_
+_* MORE IDEAS FOR LATER *_
 
-- Bonus1: life can be edited by owner player and Game Master on characters' cards. Players can add / edit statistics and powers on their characters.
+- Llife can be edited by owner player and Game Master on characters' cards. Players can add / edit statistics and powers on their characters.
 
-- Bonus2: sort getAll results alphabetically / by date (and reversed in both cases)
+- Sort search results alphabetically / by date (and reversed in both cases)
 
-- Bonus3 CRUD Update:
-  ¤ add user to game
-  ¤ add character to game (so add user to game)
-  ¤ add message to game (so add message to character and user)
-  ¤ add/remove moderator on game and its characters
-  --- need to learn how to watch a collection and update it when changes implicate changes on this collection ---
+- Players can upload music in their messages, and the displayed messages can include a music reader if necessary.

@@ -50,7 +50,7 @@ popd
 
 2. Security
 
-- encrypt password and email, cors, helmet
+- helmet
 - protect routes
 - on signin check that credentials are strings and not other data types
 

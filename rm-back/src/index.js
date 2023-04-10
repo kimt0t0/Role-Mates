@@ -1,18 +1,23 @@
 // Imports
 require('dotenv').config()
 const express = require('express')
+const helmet = require('helmet')
 const cors = require('cors')
+const morgan = require('morgan')
 
-// Start app
+// Init app
 const app = express()
-
 // Set port
 const port = process.env.port || 3000
 
+// Morgan logger middleware
+app.use(morgan('dev'))
+// Helmet adds 9 security middlewares
+  .use(helmet())
 // Cross origin
-app.use(cors())
+  .use(cors())
 // Set Express params for body and JSON
-app.use(express.urlencoded({ extended: true }))
+  .use(express.urlencoded({ extended: true }))
   .use(express.json())
 
 // Call MongoDB connection helper

@@ -42,12 +42,7 @@ const getUsers = async () => {
 // Get users by search
 const getUsersByTextSearch = async (search) => {
   const users = await User.find({
-    $text:
-    {
-      $search: search,
-      $language: 'fr',
-      $caseSensitive: false
-    }
+    username: { $regex: new RegExp(`${search}`), $options: 'i' }
   })
   return users
 }

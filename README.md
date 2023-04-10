@@ -1,31 +1,75 @@
-**_ Presentation _**
+# Role Mates
+
 This is a school project aiming to develop a CRUD REST API with Node.js and frontend interface with React. It may be shifted to Vue.js later.
 Feel free to help or use (non commercially) AFTER MAY 20th, 2023.
 
-**_ To launch project in developer mode _**
+- [Role Mates](#role-mates)
+  - [Requirements](#requirements)
+  - [Getting started](#getting-started)
+  - [Work remaining](#work-remaining)
+    - [Backend (web API)](#backend-web-api)
+    - [Frontend (client application)](#frontend-client-application)
+  - [References](#references)
 
-1. Copy repository
-2. cd rm-back ---> yarn install ---> yarn run dev
-3. cd rm-front ...
 
-**_ Work remaining _**
+## Requirements
 
-_* BACK *_
+- yarn
+- node.js
 
-3. Security
+## Getting started
+
+Clone the [repository](https://github.com/kimt0t0/Role-Mates/)
+
+Launch the web API
+
+~~~
+pushd rm-back
+yarn install
+yarn run dev
+popd
+~~~
+
+<!-- Launch the front-end application
+
+~~~
+pushd rm-front
+yarn install
+yarn run dev
+popd
+~~~ -->
+
+## Work remaining
+
+### Backend (web API)
+
+
+1. CRUD
+
+- Images
+    fix multer issue
+    add images to user, character, message, game
+    delete image ?
+
+2. Security
 
 - encrypt password and email, cors, helmet
 - protect routes
 
-_* FRONT *_
+### Frontend (client application)
 
-- not started yet -
-  ¤ on sign-up form inform users they will not be able to update their username
 
-_* MORE IDEAS FOR LATER *_
+- **not started yet**
+  ¤ on sign-up form inform users they will not be able to update their pseudo
 
-- Llife can be edited by owner player and Game Master on characters' cards. Players can add / edit statistics and powers on their characters.
+  ¤ Life can be edited by owner player and Game Master on characters' cards. Players can add / edit statistics and powers on their characters.
 
-- Sort search results alphabetically / by date (and reversed in both cases)
+  ¤ Sort getAll results alphabetically / by date (and reversed in both cases)
+  
+  ¤ Users and admins/mod can delete images
+  
+  --- need to learn how to watch a collection and update it when changes implicate changes on this collection ---
 
-- Players can upload music in their messages, and the displayed messages can include a music reader if necessary.
+## References
+
+<!-- Une liste de liens utiles pour comprendre, utiliser, modifier le projet -->

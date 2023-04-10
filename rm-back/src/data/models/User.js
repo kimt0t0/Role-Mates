@@ -1,14 +1,18 @@
 // IMPORTS
 const mongoose = require('mongoose')
-
 const { Schema } = mongoose
+
+const emailValidator = require('email-validator')
+const PasswordValidator = require('password-validator')
 const bcrypt = require('bcryptjs')
+const MaskData = require('maskdata')
 
 // SCHEMA
 const userSchema = new Schema({
   username: {
     type: String,
     required: true,
+    unique: true,
     min: 3,
     max: 15,
     text: true
@@ -60,11 +64,28 @@ const userSchema = new Schema({
 }, { timestamp: true })
 
 // ADDITIONAL LOGIC
+// Define passwod constraints to check
+const passwordSchema = new PasswordValidator()
+
+passwordSchema
+  .is().min(6) // min length
+  .is().max(35) // max length
+  .has().uppercase() // must have...
+  .has().lowercase()
+  .has().digits()
+  .has().symbols()
+  // to forbid some types use '.has().not().type()'
+
 // Replace password by encrypted equivalent BEFORE saving into database
 userSchema.pre('save', async function (next) {
   const user = this
-  if (user.isModified('password') || user.isNew) {
+  if (user.isModified('email') || user.isModified('password') || user.isNew) {
     try {
+      // if email or password are not validated by emailValidator / passwordValidator throw error
+      if (!emailValidator.validate(user.email)) throw new Error('Invalid email')
+      if (!passwordSchema.validate(user.password)) throw new Error('Invalid password')
+      const maskedMail = MaskData.maskEmail2(user.email)
+      user.email = maskedMail
       const salt = await bcrypt.genSalt(12)
       const hash = await bcrypt.hash(user.password, salt)
       user.password = hash

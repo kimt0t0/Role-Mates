@@ -5,7 +5,8 @@ const {
   getUsers,
   getUserById,
   updateUser,
-  deleteUser
+  deleteUser,
+  getUsersByTextSearch
 } = require('../../controllers/userController')
 
 // ROUTE '/'
@@ -22,6 +23,11 @@ router.route('/')
   })
   .get(async (req, res) => {
     try {
+      if (req.query.username) {
+        const searched = req.query.username
+        const usersSearched = getUsersByTextSearch(searched)
+        return res.send(usersSearched)
+      }
       const users = await getUsers()
       return res.send(users)
     } catch (e) {

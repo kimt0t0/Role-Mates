@@ -1,6 +1,7 @@
 // Imports
 require('dotenv').config()
 const express = require('express')
+const cors = require('cors')
 
 // Start app
 const app = express()
@@ -8,6 +9,8 @@ const app = express()
 // Set port
 const port = process.env.port || 3000
 
+// Cross origin
+app.use(cors())
 // Set Express params for body and JSON
 app.use(express.urlencoded({ extended: true }))
   .use(express.json())

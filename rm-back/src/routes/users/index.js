@@ -8,6 +8,7 @@ const {
   deleteUser,
   getUsersByTextSearch
 } = require('../../controllers/userController')
+const { withAuth, adminOnly } = require('../../middlewares/auth')
 
 // ROUTE '/'
 router.route('/')
@@ -21,7 +22,7 @@ router.route('/')
       return res.status(500).send(e.message)
     }
   })
-  .get(async (req, res) => {
+  .get(withAuth, async (req, res) => {
     try {
       if (req.query.username) {
         const searched = req.query.username
@@ -38,7 +39,7 @@ router.route('/')
 
 // ROUTE '/:id'
 router.route('/:id')
-  .get(async (req, res) => {
+  .get(withAuth, async (req, res) => {
     try {
       const { id } = req.params
       const user = await getUserById(id)
@@ -48,7 +49,7 @@ router.route('/:id')
       return res.status(500).send(e.message)
     }
   })
-  .patch(async (req, res) => {
+  .patch(withAuth, async (req, res) => {
     try {
       const { body } = req
       const { id } = req.params
@@ -59,7 +60,7 @@ router.route('/:id')
       return res.status(500).send(e.message)
     }
   })
-  .delete(async (req, res) => {
+  .delete(withAuth, adminOnly, async (req, res) => {
     try {
       const { id } = req.params
       await deleteUser(id)

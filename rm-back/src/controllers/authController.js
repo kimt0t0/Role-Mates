@@ -1,7 +1,7 @@
 // IMPORTS
 const User = require('../data/models/User')
 const jwt = require('jsonwebtoken')
-
+const MaskData = require('maskdata')
 // LOGIC
 const loginUser = async (credentials) => {
   // if missing params throw error
@@ -11,8 +11,9 @@ const loginUser = async (credentials) => {
   if (typeof credentials.email !== 'string' || typeof credentials.password !== 'string') {
     throw new Error('Invalid credentials format')
   }
-  //   find user in db
-  const user = await User.findOne({ email: credentials.email })
+  //   find user in db and check mail
+  const maskedMail = MaskData.maskEmail2(credentials.email)
+  const user = await User.findOne({ email: maskedMail })
   if (!user) {
     throw new Error('Invalid username')
   }

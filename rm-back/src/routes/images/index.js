@@ -5,6 +5,7 @@ const multer = require('multer')
 const { sanatizeFilename } = require('../../tools/strings')
 
 const { createImage } = require('../../controllers/imagesController')
+const { withAuth } = require('../../middlewares/auth')
 
 // LOGIC
 // Define directory name
@@ -47,7 +48,7 @@ const upload = multer({
 
 // API Route '/'
 router.route('/')
-  .post(upload.single('file'), async (req, res) => {
+  .post(withAuth, upload.single('file'), async (req, res) => {
     const file = req.body
 
     try {

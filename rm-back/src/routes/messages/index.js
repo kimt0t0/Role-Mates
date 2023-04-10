@@ -7,10 +7,11 @@ const {
   updateMessage,
   deleteMessage
 } = require('../../controllers/messageController')
+const { withAuth } = require('../../middlewares/auth')
 
 // ROUTE '/'
 router.route('/')
-  .post(async (req, res) => {
+  .post(withAuth, async (req, res) => {
     try {
       const { body } = req
       const message = await createMessage(body)
@@ -20,7 +21,7 @@ router.route('/')
       return res.status(500).send(e.message)
     }
   })
-  .get(async (req, res) => {
+  .get(withAuth, async (req, res) => {
     try {
       const users = await getMessages()
       return res.send(users)
@@ -32,7 +33,7 @@ router.route('/')
 
 // ROUTE '/:id'
 router.route('/:id')
-  .get(async (req, res) => {
+  .get(withAuth, async (req, res) => {
     try {
       const { id } = req.params
       const message = await getMessageById(id)
@@ -42,7 +43,7 @@ router.route('/:id')
       return res.status(500).send(e.message)
     }
   })
-  .patch(async (req, res) => {
+  .patch(withAuth, async (req, res) => {
     try {
       const { body } = req
       const { id } = req.params
@@ -53,7 +54,7 @@ router.route('/:id')
       return res.status(500).send(e.message)
     }
   })
-  .delete(async (req, res) => {
+  .delete(withAuth, async (req, res) => {
     try {
       const { id } = req.params
       await deleteMessage(id)

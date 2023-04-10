@@ -3,12 +3,17 @@
 This is a school project aiming to develop a CRUD REST API with Node.js and frontend interface with React. It may be shifted to Vue.js later.
 Feel free to help or use (non commercially) AFTER MAY 20th, 2023.
 
+Non authenticated users can only access index, about, rules, the games list (with games with a 'public' status only).
+Authenticated users can access index, about, rules, the games list (with games with a 'public' status only), games details, create/update/delete games, characters, messages or images for their avatar/games/characters.
+Admin accounts can read, create, update and delete everything.
+
 - [Role Mates](#role-mates)
   - [Requirements](#requirements)
   - [Getting started](#getting-started)
   - [Work remaining](#work-remaining)
     - [Backend (web API)](#backend-web-api)
     - [Frontend (client application)](#frontend-client-application)
+  - [Questions] (#questions)
   - [References](#references)
 
 ## Requirements
@@ -42,33 +47,37 @@ popd
 
 ### Backend (web API)
 
-1. CRUD
+1. Fixes
 
 - Images
   fix multer issue
   add images to user, character, message, game
 
-2. Security
+2. Improvements
 
-- helmet
-- protect routes
-- on signin check that credentials are strings and not other data types
+- allow to update / delete data only if owner (to check in route or controller if not already done)
+- allow to display games details (participants, messages) only to specified game members if the game's status is private (same for characters and messages?)
 
 ### Frontend (client application)
 
-- **not started yet**
+**not started yet**
+¤ Specify on signup form that to delete their account users must contact the site's admins to prevent mistakes. Or add additional security before account removal.
 
-  ¤ Add a signout function.
+## Pending
 
-  ¤ Add a delete image function for users and admins/mods.
+¤ Add security before removal of games and characters (ask password again or ask to type a sentence).
 
-  ¤ Life can be edited by owner player and Game Master on characters' cards. Players can add / edit statistics and powers on their characters.
+¤ Add honey pot on signup form (hidden field, if filled it's a robot so deny request to db).
 
-  ¤ Sort getAll results alphabetically / by date (and reversed in both cases)
+¤ Add a signout function.
 
-  ¤ Users and admins/mod can delete images
+¤ Add a delete image function for users and admins/mods.
 
-  --- need to learn how to watch a collection and update it when changes implicate changes on this collection ---
+¤ Life can be edited by owner player and Game Master on characters' cards. Players can add / edit statistics and powers on their characters.
+
+¤ Sort getAll results alphabetically / by date (and reversed in both cases)
+
+¤ Users and admins/mod can delete and update images and messages
 
 ## References
 

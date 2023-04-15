@@ -10,7 +10,9 @@ const createImage = async (image) => {
   console.log('image from controller: ', image)
 
   const newImage = new Image({
-    imageName: image.filename,
+    fileName: image.filename,
+    originalName: image.originalname,
+    mimeType: image.mimetype,
     path: image.path,
     size: image.size
   })

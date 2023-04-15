@@ -14,10 +14,10 @@ const appDir = dirname(require.main.filename)
 // Create storage on physical device
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, appDir + '/public/images/')
+    cb(null, appDir + '/../public/images/')
   },
   filename: (req, file, cb) => {
-    const uniquePrefix = 'rm_' + Date.now() + '_' + Math.round(Math.random() * 1E6)
+    const uniquePrefix = Date.now() + '_rm_' + Math.round(Math.random() * 1E6)
     cb(null, uniquePrefix + '_' + sanatizeFilename(file.originalname))
   }
 })
@@ -48,9 +48,9 @@ const upload = multer({
 
 // API Route '/'
 router.route('/')
-  .post(withAuth, upload.single('file'), async (req, res) => {
+  .post(upload.single('file'), async (req, res) => {
+    console.log('---------------------REQ: ', req)
     const file = req.body
-
     try {
       const savedImageObject = await createImage(file)
       return res.send(savedImageObject)

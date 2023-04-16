@@ -3,14 +3,11 @@
 .footer {
     display: flex;
     justify-content: center;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
     padding: $space-s;
     background-color: $dark;
     color: $light;
     font-size: 14px;
+    margin-top: $space-xl;
 
     a {
         color: $light;

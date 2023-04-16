@@ -13,10 +13,13 @@
     }
 }
 
-@mixin button ($color: $light, $bg: $primary, $fsize: 1rem, $pad: $space-m, $marg: 0) {
+@mixin button ($color: $light, $bg: $primary, $fsize: 1rem, $pad: $space-m, $marg: 0, $width: fit-content, $hpos: flex-start, $vpos: center) {
     box-sizing: border-box;
     max-width: 100%;
+    width: $width;
     display: flex;
+    justify-content: $hpos;
+    align-items: $vpos;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;

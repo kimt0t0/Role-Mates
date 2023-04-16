@@ -40,3 +40,20 @@ button {
   max-width: $classic-ctn;
   margin: 0 auto;
 }
+
+.article-title {
+  font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-size: $fsize-l;
+}
+
+.article-txt {
+  font-weight: 100;
+}
+
+.classic-btn-link {
+  @include button($hpos: center, $marg: $space-s 0);
+  .eva {
+    display: flex;
+    margin-right: $space-xs;
+  }
+}

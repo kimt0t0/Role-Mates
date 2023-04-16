@@ -11,7 +11,7 @@ class Footer extends React.Component {
     return (
       <footer className='footer'>
         <div className='footer-ctn'>
-          <p className='footer-txt'>Créé par <a href='https://www.linkedin.com/in/kim-robert-4291a4242/' target='_blank' title='Voir LinkedIn' rel='noreferrer'>@Kim Robert</a> dans le cadre d'un projet <a href='https://www.mydigitalschool.com/ecole-multimedia-nantes' target='_blank' title="Visiter le site de l\'école" rel='noreferrer'>@MDS Nantes</a>.</p>
+          <p className='footer-txt'>Créé par <a href='https://www.linkedin.com/in/kim-robert-4291a4242/' target='_blank' title='Voir LinkedIn' rel='noreferrer'>@Kim Robert</a> dans le cadre d'un projet scolaire avec <a href='https://www.mydigitalschool.com/ecole-multimedia-nantes' target='_blank' title="Visiter le site de l\'école" rel='noreferrer'>@MDS Nantes</a>.</p>
           <ol className='footer-list'>
             <li className='footer-txt fl-elt'>
               <a className='fle-link' href='https://github.com/kimt0t0' target='_blank' title='Voir...' rel='noreferrer'>

@@ -1,0 +1,18 @@
+@use '../../styles/App.scss' as *;
+
+.header {
+    box-sizing: border-box;
+    background-color: $primary;
+    box-shadow: 0 0 10px $primary;
+    margin-bottom: $space-xl;
+    position: sticky;
+    .header-ctn {
+        display: flex;
+        justify-content: space-between;
+        padding: $space-s;
+        .menuToggle {
+            position: relative;
+            @include button($bg: $dark);
+        }
+    }
+}

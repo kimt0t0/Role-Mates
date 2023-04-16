@@ -1,0 +1,17 @@
+@use '../../styles/App.scss' as *;
+
+.navbar {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    .navelt {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+    .navlink {
+        @include link($bg: $primary, $color: $light, $fsize: $fsize-m);
+        width: 100%;
+        height: 100%;
+    }
+}

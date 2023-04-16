@@ -1,0 +1,55 @@
+/* *** MIXINS *** */
+
+@mixin link ($bg: transparent, $color: $primary, $fsize: 1rem, $marg: 0, $pad: 1rem, $pos: center) {
+    color: $color;
+    font-size: $fsize;
+    margin: $marg;
+    padding: $pad;
+    display: flex;
+    justify-content: $pos;
+    &:hover, &:focus {
+        color: lighten($color, 8%);
+        background-color: lighten($bg, 8%);
+    }
+}
+
+@mixin button ($color: $light, $bg: $primary, $fsize: 1rem, $pad: $space-m, $marg: 0) {
+    box-sizing: border-box;
+    max-width: 100%;
+    display: flex;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    border: 1px solid transparent;
+    border-radius: $radius-s;
+    cursor: pointer;
+    color: $color;
+    background-color: $bg;
+    font-size: $fsize;
+    padding: $space-s $pad;
+    margin: $marg;
+    transition: all 300ms ease-in;
+    &:hover, &:focus {
+        background-color: lighten($bg, 8%);
+        color: lighten($color, 8%);
+    }
+}
+
+@mixin card($w: 100%, $h: 250px, $color: $dark, $bg: lighten($primary, 20%), $hpos: center, $vpos: space-between, $margin: $space-m) {
+    box-sizing: border-box;
+    max-width: 100%;
+    width: $w;
+    height: $h;
+    color: $color;
+    background-color: $bg;
+    display: flex;
+    flex-direction: column;
+    justify-content: $vpos;
+    align-items: $hpos;
+    flex-wrap: wrap;
+    white-space: pre-line;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    border-radius: radius-m;
+    box-shadow: 0 0 5px $color;
+}

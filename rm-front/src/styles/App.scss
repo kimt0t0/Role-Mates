@@ -1,0 +1,42 @@
+// IMPORTS
+@import './global/variables';
+@import './global/mixins';
+
+// GLOBAL STYLES
+body {
+  margin: 0;
+  padding: 0;
+  background-color: $light;
+  font-size: 16px;
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  color: $dark;
+}
+
+ul, ol {
+  margin: 0;
+  padding: 0;
+}
+
+
+li {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+button {
+  @include button;
+}
+
+.card {
+  @include card;
+}
+
+.classic-ctn {
+  max-width: $classic-ctn;
+  margin: 0 auto;
+}

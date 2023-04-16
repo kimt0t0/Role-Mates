@@ -1,6 +1,6 @@
 # Role Mates
 
-This is a school project aiming to develop a CRUD REST API with Node.js and frontend interface with React. It may be shifted to Vue.js later.
+This is a school project aiming to develop a CRUD REST API with Node.js and mobile-first frontend interface with React. It may be shifted to Vue.js later.
 Feel free to help or use (non commercially) AFTER MAY 20th, 2023.
 
 Non authenticated users can only access index, about, rules, the games list (with games with a 'public' status only).
@@ -25,7 +25,7 @@ Admin accounts can read, create, update and delete everything.
 
 Clone the [repository](https://github.com/kimt0t0/Role-Mates/)
 
-Launch the web API
+1. Launch the web API
 
 ```
 pushd rm-back
@@ -34,14 +34,14 @@ yarn run dev
 popd
 ```
 
-<!-- Launch the front-end application
+2. Launch frontend application
 
-~~~
+```
 pushd rm-front
 yarn install
-yarn run dev
+yarn run start
 popd
-~~~ -->
+```
 
 ## Work remaining
 
@@ -49,21 +49,46 @@ popd
 
 **temporarily deactivated auth middleware in all routes to make frontend work easier**
 
-1. Fixes
+1. Fix
 
 - Images
   fix multer issue
   add images to user, character, message, game
 
-2. Improvements
+- Test auth and adminOnly middlewares
+
+2. Improve
 
 - allow to update / delete data only if owner (to check in route or controller if not already done)
 - allow to display games details (participants, messages) only to specified game members if the game's status is private (same for characters and messages?)
+- add a logout functionality
 
 ### Frontend (client application)
 
-**not started yet**
-¤ Specify on signup form that to delete their account users must contact the site's admins to prevent mistakes. Or add additional security before account removal.
+1. [OK] Install project and add dependencies (including scss)
+
+2. [OK] Header + navbar + navtoggle + footer + pages content template + reusable components (links, buttons, cards...).
+
+3. Create logo, hero title and landing page.
+
+4. Signup and login forms (with toggle button)
+   _specify on signup form that to delete their account users must contact the site's admins to prevent mistakes. Or add additional security before account removal_
+
+5. Create game / character / message pages
+
+6. Get all users / games
+
+7. Get one user / game
+
+8. Get user's games / characters / messages
+
+9. Get game's messages / users / characters
+
+10. Update (all)
+
+11. Delete
+
+12. Improve style and fix responsive
 
 ## Pending
 
@@ -83,4 +108,5 @@ popd
 
 ## References
 
-<!-- Une liste de liens utiles pour comprendre, utiliser, modifier le projet -->
+¤ About icons install and syntax: https://www.npmjs.com/package/react-eva-icons
+¤ Icons library: https://akveo.github.io/eva-icons/#/

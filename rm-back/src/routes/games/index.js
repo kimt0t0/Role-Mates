@@ -7,11 +7,11 @@ const {
   updateGame,
   deleteGame
 } = require('../../controllers/gameController')
-const { withAuth } = require('../../middlewares/auth')
+// const { withAuth } = require('../../middlewares/auth')
 
 // ROUTE '/'
 router.route('/')
-  .post(withAuth, async (req, res) => {
+  .post(async (req, res) => {
     try {
       const { body } = req
       const game = await createGame(body)
@@ -32,7 +32,7 @@ router.route('/')
 
 // ROUTE '/:id'
 router.route('/:id')
-  .get(withAuth, async (req, res) => {
+  .get(async (req, res) => {
     try {
       const { id } = req.params
       const game = await getGameById(id)
@@ -42,7 +42,7 @@ router.route('/:id')
       return res.status(500).send(e.message)
     }
   })
-  .patch(withAuth, async (req, res) => {
+  .patch(async (req, res) => {
     try {
       const { body } = req
       const { id } = req.params
@@ -53,7 +53,7 @@ router.route('/:id')
       return res.status(500).send(e.message)
     }
   })
-  .delete(withAuth, async (req, res) => {
+  .delete(async (req, res) => {
     try {
       const { id } = req.params
       await deleteGame(id)

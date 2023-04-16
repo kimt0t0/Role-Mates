@@ -47,6 +47,8 @@ popd
 
 ### Backend (web API)
 
+**temporarily deactivated auth middleware in all routes to make frontend work easier**
+
 1. Fixes
 
 - Images

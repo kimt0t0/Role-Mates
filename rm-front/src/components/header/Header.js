@@ -17,7 +17,8 @@ function Header () {
   return (
     <header className='header'>
       <div class='header-ctn'>
-        <img src='' className='hlc-logo' />
+        <img src='%PUBLIC_URL%/logo/logo.webp' className='hlc-logo' alt='logo' />
+        <h1 className='main-title'>Role Mates</h1>
         <button className='menuToggle' onClick={toggleMenu}>
           <Icon
             name='menu-outline'

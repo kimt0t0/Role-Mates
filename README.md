@@ -69,7 +69,8 @@ popd
 
 2. [OK] Header + navbar + navtoggle + footer + pages content template + reusable components (links, buttons, cards...).
 
-3. Create logo, hero title and landing page.
+3. [wip] Create logo, hero title and landing page.
+   _fix logo_
 
 4. Signup and login forms (with toggle button)
    _specify on signup form that to delete their account users must contact the site's admins to prevent mistakes. Or add additional security before account removal_

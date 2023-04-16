@@ -3,15 +3,22 @@
 .header {
     box-sizing: border-box;
     background-color: $primary;
-    box-shadow: 0 0 10px $primary;
+    box-shadow: 0 0px 5px $primary;
     margin-bottom: $space-xl;
     position: sticky;
     .header-ctn {
+        padding: $space-m $space-s;
         display: flex;
         justify-content: space-between;
-        padding: $space-s;
+        align-items: center;
+        border-bottom: double 6px $dark;
+        .main-title {
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+            font-size: $fsize-xl;
+        }
         .menuToggle {
             position: relative;
+            height: fit-content;
             @include button($bg: $dark);
         }
     }

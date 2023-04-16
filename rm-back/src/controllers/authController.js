@@ -26,7 +26,9 @@ const loginUser = async (credentials) => {
     }
     const token = await jwt.sign(payload, process.env.TOKEN_SECRET, { expiresIn: '30d' })
     const _user = user.toObject()
+    // (delete user credentials from returned data for security)
     delete _user.password
+    delete _user.email
     return {
       user: _user,
       token

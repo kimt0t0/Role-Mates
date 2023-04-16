@@ -4,7 +4,6 @@ const jwt = require('jsonwebtoken')
 // LOGIC
 // check user access to protected routes
 const withAuth = async (req, res, next) => {
-  console.log('Header authorization: ', req.headers)
   if (req.headers.authorization) {
     try {
       const decoded = await jwt.verify(req.headers.authorization.split(' ')[1], process.env.TOKEN_SECRET)

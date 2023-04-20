@@ -12,6 +12,10 @@ body {
   color: $dark;
 }
 
+h1, h2, h3, h4, h5, h6 {
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
 ul, ol {
   margin: 0;
   padding: 0;
@@ -39,6 +43,7 @@ button {
 .classic-ctn {
   max-width: $classic-ctn;
   margin: 0 auto;
+  padding: $space-m $space-s;
 }
 
 .article-title {

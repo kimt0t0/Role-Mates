@@ -3,6 +3,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import Icon from 'react-eva-icons'
+// Components
+import Hero from '../../components/hero-title/Hero'
 // Styles
 import './Home.scss'
 
@@ -38,13 +40,16 @@ function Home () {
         icon: 'people'
       }
     }
-
   ]
   // Rendering
   return (
     <section class='section __home'>
-      <h2 className='hero-title'>Accueil</h2>
-      <p className='hero-subtitle'>Bienvenu·e à toi explorateurice de la toile ! Tu n'es peut-être pas une araignée mais si tu veux tisser des liens avec d'autres joueureuses et explorer des rôles dans des univers de jeu textuel variés, tu es tombae au bon endroit !</p>
+      <Hero
+        title='Accueil'
+        subtitle="Bienvenu·e à toi explorateurice de la toile ! Tu n'es peut-être pas une araignée mais si tu veux tisser des liens avec d'autres joueureuses et explorer des rôles dans des univers de jeu textuel variés, tu es tombae au bon endroit !"
+        color='warning'
+      />
+      <img className='home-illus' src='images/rpg_illus_1.webp' alt='' />
       {articles.map(article => (
         <article key={article.title} class='home-article'>
           <h3 className='article-title'>{article.title}</h3>

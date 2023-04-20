@@ -1,6 +1,7 @@
 // IMPORTS
 // Modules
 import React from 'react'
+import { Link } from 'react-router-dom'
 import Icon from 'react-eva-icons'
 // Components
 import Navbar from '../navbar/Navbar'
@@ -16,15 +17,25 @@ function Header () {
   }
   return (
     <header className='header'>
-      <div class='header-ctn'>
-        <img src='%PUBLIC_URL%/logo/logo.webp' className='hlc-logo' alt='logo' />
-        <h1 className='main-title'>Role Mates</h1>
-        <button className='menuToggle' onClick={toggleMenu}>
-          <Icon
-            name='menu-outline'
-            size='large'
-          />
-        </button>
+      <div className='header-ctn'>
+        <div className='hc-content'>
+          <img src='logo/logo.webp' className='hc-logo' alt='logo' />
+          <h1 className='main-title'>Role Mates</h1>
+          <div className='hcc-actions'>
+            <button className='menuToggle __classic' onClick={toggleMenu}>
+              <Icon
+                name='menu-outline'
+                size='large'
+              />
+            </button>
+            <Link to='/user' className='menuToggle __warning' title='Page de connexion'>
+              <Icon
+                name='person'
+                size='large'
+              />
+            </Link>
+          </div>
+        </div>
       </div>
       {showMenu && <Navbar />}
     </header>

@@ -8,8 +8,10 @@ import {
 // Components
 import Header from './components/header/Header'
 import Footer from './components/footer/Footer'
+// Pages
 import Home from './pages/home/Home'
 import About from './pages/about/About'
+import User from './pages/user/User'
 // Styles
 import './styles/App.scss'
 
@@ -22,6 +24,7 @@ function App () {
           <Routes>
             <Route path='/' element={<Home />} />
             <Route path='/a-propos' element={<About />} />
+            <Route path='/joueureuse' element={<User />} />
           </Routes>
         </div>
         <Footer />

@@ -4,22 +4,35 @@
     box-sizing: border-box;
     background-color: $primary;
     box-shadow: 0 0px 5px $primary;
-    margin-bottom: $space-xl;
     position: sticky;
     .header-ctn {
-        padding: $space-m $space-s;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        border-bottom: double 6px $dark;
-        .main-title {
-            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-            font-size: $fsize-xl;
+        .hc-logo {
+            width: 70px;
+            height:100px;
         }
-        .menuToggle {
-            position: relative;
-            height: fit-content;
-            @include button($bg: $dark);
+        .hc-content {
+            padding: $space-m $space-s $space-m $space-xs;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: double 6px $dark;
+            .main-title {
+                font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+                font-size: $fsize-xl;
+            }
+            .hcc-actions {
+                display: flex;
+                .menuToggle {
+                    position: relative;
+                    height: fit-content;
+                    &.__classic {
+                        @include button($bg: $dark, $marg: 0 $space-s);
+                    }
+                    &.__warning {
+                        @include button($bg: $warning, $marg: 0 $space-s);
+                    }
+                }
+            }
         }
     }
 }

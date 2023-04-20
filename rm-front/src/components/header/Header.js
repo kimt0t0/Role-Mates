@@ -28,7 +28,7 @@ function Header () {
                 size='large'
               />
             </button>
-            <Link to='/user' className='menuToggle __warning' title='Page de connexion'>
+            <Link to='/joueureuse' className='menuToggle __warning' title='Page de connexion'>
               <Icon
                 name='person'
                 size='large'

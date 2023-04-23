@@ -43,7 +43,7 @@ function Home () {
   ]
   // Rendering
   return (
-    <section class='section __home'>
+    <section className='section __home'>
       <Hero
         title='Accueil'
         subtitle="Bienvenu·e à toi explorateurice de la toile ! Tu n'es peut-être pas une araignée mais si tu veux tisser des liens avec d'autres joueureuses et explorer des rôles dans des univers de jeu textuel variés, tu es tombae au bon endroit !"
@@ -51,10 +51,10 @@ function Home () {
       />
       <img className='home-illus' src='images/rpg_illus_1.webp' alt='' />
       {articles.map(article => (
-        <article key={article.title} class='home-article'>
+        <article key={article.title} className='home-article'>
           <h3 className='article-title'>{article.title}</h3>
           <p className='article-txt'>{article.paragraph}</p>
-          <div class='article-btn-ctn'>
+          <div className='article-btn-ctn'>
             <Link className='classic-btn-link' to={article.link.path}>
               <Icon name={article.link.icon} size='medium' />{article.link.text}
             </Link>

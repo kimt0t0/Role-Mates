@@ -31,6 +31,9 @@
                     &.__warning {
                         @include button($bg: $warning, $marg: 0 $space-s);
                     }
+                    &.__secondary {
+                        @include button($bg: $secondary, $marg: 0 $space-s);
+                    }
                 }
             }
         }

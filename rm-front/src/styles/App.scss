@@ -32,8 +32,16 @@ a {
   text-decoration: none;
 }
 
-button {
+.classic-btn {
   @include button;
+}
+
+.secondary-btn {
+  @include button($bg: $secondary);
+}
+
+.warning-btn {
+  @include button($bg: $warning);
 }
 
 .card {

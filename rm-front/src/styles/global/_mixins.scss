@@ -38,13 +38,14 @@
     }
 }
 
-@mixin card($w: 100%, $h: 250px, $color: $dark, $bg: lighten($primary, 20%), $hpos: center, $vpos: space-between, $margin: $space-m) {
+@mixin card($w: 100%, $h: 250px, $color: $dark, $bg: lighten($primary, 20%), $hpos: center, $vpos: space-between, $margin: $space-m, $padding: $space-s) {
     box-sizing: border-box;
     max-width: 100%;
     width: $w;
     height: $h;
     color: $color;
     background-color: $bg;
+    padding: $padding;
     display: flex;
     flex-direction: column;
     justify-content: $vpos;

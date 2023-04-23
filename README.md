@@ -67,12 +67,6 @@ popd
 
 _change all components into functions_
 
-1. [OK] Install project and add dependencies (including scss)
-
-2. [OK] Header + navbar + navtoggle + footer + pages content template + reusable components (links, buttons, cards...).
-
-3. [OK] Create logo, hero title and landing page.
-
 4. Signup and login forms (with toggle button)
    _specify on signup form that to delete their account users must contact the site's admins to prevent mistakes. Or add additional security before account removal_
 
@@ -107,6 +101,10 @@ _change all components into functions_
 ¤ Sort getAll results alphabetically / by date (and reversed in both cases)
 
 ¤ Users and admins/mod can delete and update images and messages
+
+¤ Minor things to fix:
+desktop responsive
+user forms: eye button should change to crossed eye button on click
 
 ## References
 

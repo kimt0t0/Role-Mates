@@ -20,7 +20,7 @@ function App () {
     <div className='App'>
       <Router>
         <Header />
-        <div class='classic-ctn'>
+        <div className='classic-ctn'>
           <Routes>
             <Route path='/' element={<Home />} />
             <Route path='/a-propos' element={<About />} />

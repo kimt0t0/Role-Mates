@@ -1,6 +1,6 @@
 @use '../../styles/App.scss' as *;
 
-.login-form {
+.register-form {
     @include card($h: fit-content, $margin: 0 auto, $padding: $space-m $space-l);
         display: flex;
         flex-direction: column;

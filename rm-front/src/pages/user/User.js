@@ -1,43 +1,26 @@
 // IMPORTS
-// Modules
-import { useEffect, useState } from 'react'
 // Components
-import LoginForm from '../../components/login-form/LoginForm'
-import RegisterForm from '../../components/register-form/RegisterForm'
+import Hero from '../../components/hero-title/Hero'
+// Services
+import { getProfile } from '../../services/api'
 // Styles
 import './User.scss'
 
-function User () {
-  const [isRegistered, setIsRegistered] = useState(true)
-  // const [profile, setProfile] = useState(null)
-
-  // toggle form
-  const toggleForm = () => {
-    return setIsRegistered(!isRegistered)
-  }
-  // check if user is logged in and return user data
-  // const [isLoggedIn, setIsLoggedIn] = useState(false)
-  // const { dispatch, state: { error, user, loading } } = useAuth()
-  // useEffect(() => {
-  //   if (user) {
-  //     setIsLoggedIn(true)
-  //   } else {
-  //     setIsLoggedIn(false)
-  //   }
-  // }, [user])
+// LOGIC
+function User (id) {
+  // let userDatas = getProfile(id)
+  const userDatas = getProfile('6445404a58b962b4a5593173')
   // Rendering
   return (
     <section className='section __user'>
-      {isRegistered
-        ? <LoginForm />
-        : <RegisterForm />}
-      <div className='link-ctn'>
-        <a href='#' className='formToggle' onClick={toggleForm}>
-          {isRegistered ? "Je n'ai pas de compte" : "J'ai déjà un compte"}
-        </a>
-      </div>
+      <Hero
+        title={'Bienvenu·e ' + userDatas.username + ' !'}
+        subtitle="Ici, c'est ton antre. Tu peux mettre à jour tes informations et administrer tes personnages, parties de jeux et messages."
+        color='warning'
+      />
     </section>
   )
 }
 
+// EXPORTS
 export default User

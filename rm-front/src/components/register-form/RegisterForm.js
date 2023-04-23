@@ -2,13 +2,15 @@
 // Modules
 import { useState } from 'react'
 import Icon from 'react-eva-icons'
+// Services
+import { register } from '../../services/api'
 // Components
 import Hero from '../hero-title/Hero'
 // Styles
 import './RegisterForm.scss'
 
 // LOGIC
-function RegisterForm (submit, error) {
+function RegisterForm () {
   // Toggle password visibility
   const [showPassword, setShowPassword] = useState(true)
 
@@ -33,9 +35,14 @@ function RegisterForm (submit, error) {
   }
 
   // Function to submit form
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    submit(formData)
+    try {
+      console.log(`from form component, registering ${formData}`)
+      await register(formData)
+    } catch (e) {
+      console.error(e)
+    }
   }
   return (
     <>
@@ -104,7 +111,7 @@ function RegisterForm (submit, error) {
           </div>
         </div>
         <div className='btn-ctn'>
-          <button type='submit' className='secondary-btn'>Connexion</button>
+          <button type='submit' className='secondary-btn'>Je m'inscris !</button>
         </div>
       </form>
     </>

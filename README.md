@@ -67,24 +67,26 @@ popd
 
 _change all components into functions_
 
-4. Signup and login forms (with toggle button)
+4. [WIP] Signup and login forms (with toggle button)
    _specify on signup form that to delete their account users must contact the site's admins to prevent mistakes. Or add additional security before account removal_
 
 5. Create game / character / message pages
 
-6. Get all users / games
+6. Add conditional buttons to sign out and get to user profile page
 
-7. Get one user / game
+7. Get all users / games
 
-8. Get user's games / characters / messages
+8. Get one user / game
 
-9. Get game's messages / users / characters
+9. Get user's games / characters / messages
 
-10. Update (all)
+10. Get game's messages / users / characters
 
-11. Delete
+11. Update (all)
 
-12. Improve style and fix responsive
+12. Delete
+
+13. Improve style and fix responsive
 
 ## Pending
 
@@ -102,9 +104,9 @@ _change all components into functions_
 
 ¤ Users and admins/mod can delete and update images and messages
 
-¤ Minor things to fix:
-desktop responsive
-user forms: eye button should change to crossed eye button on click
+¤ fix desktop responsive
+
+¤ add search bar (users, games, themes)
 
 ## References
 

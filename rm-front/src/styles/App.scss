@@ -13,7 +13,14 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
+  margin: 0;
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+.title-ter {
+  font-size: $fsize-m;
+  font-weight: 700;
+  line-height: 2;
 }
 
 ul, ol {
@@ -44,6 +51,10 @@ a {
   @include button($bg: $warning);
 }
 
+.neutral-btn {
+  @include button($bg: darken($neutral, 15%), $color: lighten($neutral, 10%));
+}
+
 .card {
   @include card;
 }
@@ -65,6 +76,14 @@ a {
 
 .classic-btn-link {
   @include button($hpos: center, $marg: $space-s 0);
+  .eva {
+    display: flex;
+    margin-right: $space-xs;
+  }
+}
+
+.secondary-btn-link {
+  @include button($bg: $secondary, $hpos: center, $marg: $space-s 0);
   .eva {
     display: flex;
     margin-right: $space-xs;

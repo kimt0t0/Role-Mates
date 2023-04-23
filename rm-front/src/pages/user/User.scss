@@ -1,0 +1,98 @@
+@use '../../styles/App.scss' as *;
+
+.up-row {
+    @include card($h: fit-content, $bg: lighten($tertiary, 40%), $hpos: flex-start, $padding: $space-s $space-l);
+    flex-wrap: wrap;
+    margin: $space-l 0;
+    .upr-group {
+        margin: $space-s 0;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        &.__avatar {
+            flex-direction: column;
+            align-items: flex-end;
+            input, button {
+                margin: $space-s 0;
+            }
+        }
+        .input-group {
+            display: flex;
+            button {
+                margin-left: $space-s;
+            }
+        }
+    }
+    &.__collection {
+        .upr-group {
+            flex-direction: column;
+        }
+    }
+}
+
+.avatar-frame {
+    box-sizing: border-box;
+    width: 200px;
+    height: 200px;
+    border-radius: $radius-circle;
+    background-color: lighten($tertiary, 20%);
+    border: 10px solid $tertiary;
+    display: flex;
+    position: relative;
+    .avatar {
+        width: 100%;
+        height: auto;
+    }
+    .__avatar-btn {
+        position: absolute;
+        bottom: -1rem;
+        right: -0.5rem;
+    }
+}
+
+.user-card {
+    @include card($bg: lighten($tertiary, 50%), $h: fit-content, $padding: $space-s $space-l);
+    margin: $space-m 0;
+    position: relative;
+    @media (min-width: 740px) {
+        padding-bottom: $space-l;
+    }
+    .ucc-illus-ctn {
+        width: 100%;
+        display: flex;
+        .ucc-illus {
+            width: 120px;
+            height: auto;
+        }
+    }
+    .uccc-text {
+        box-sizing: border-box;
+        display: flex;
+        max-height: 110px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    .uccn-btn-ctn {
+        position: absolute;
+        padding: $space-s $space-l;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 100%;
+        display: flex;
+        background-color: $dark;
+        transition: all 300ms ease-in;
+        @media (min-width: 740px) {
+            bottom: -2.8rem;
+            opacity: 0.5;
+            cursor: pointer;
+            &:hover, &:focus {
+                bottom: 0;
+                opacity: 1;
+            }
+        }
+        .uccn-link {
+            margin-right: $space-m;
+        }
+    }
+}

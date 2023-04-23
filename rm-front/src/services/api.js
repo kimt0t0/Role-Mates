@@ -62,10 +62,16 @@ const getProfile = async (id) => {
   // }
 }
 
+// Update user
+const updateUser = async (data) => {
+  console.log(`Updating user... ${JSON.stringify(data)}`)
+}
+
 // EXPORTS
 
 export {
   register,
   login,
-  getProfile
+  getProfile,
+  updateUser
 }

@@ -12,10 +12,10 @@ const port = process.env.port || 3000
 
 // Morgan logger middleware
 app.use(morgan('dev'))
-// Helmet adds 9 security middlewares
-  .use(helmet())
 // Cross origin
   .use(cors())
+// Helmet adds 9 security middlewares
+  .use(helmet())
 // Set Express params for body and JSON
   .use(express.urlencoded({ extended: true }))
   .use(express.json())

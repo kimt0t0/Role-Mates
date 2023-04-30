@@ -22,7 +22,7 @@ Admin accounts can read, create, update and delete everything.
 - node.js
 - mongoDB
 
-## Getting started
+## Getting Started
 
 - Clone the [repository](https://github.com/kimt0t0/Role-Mates/).
 - Create your own MongoDB database.
@@ -46,6 +46,18 @@ yarn install
 yarn run start
 popd
 ```
+
+## If you are willing to fork or contribute to this project
+
+1. Follow the [Getting started](#getting-started) steps.
+2. Create your own branch.
+3. You are not allowed to merge directly your code onto the master of frontdev branches. If you want to help please make a merge request and feel free to contact me.
+4. Must know:
+
+- You can find the necessary .env structures in /rm-back/.env.structure and /rm-front/.env.structure and add your own settings to them.
+- Frontend:
+  - Each component / page and their specific styles are stored in their own file. You can also add the site's global styling by using @use '<path_to_global_style>' as \*; at the start of your style sheet.
+  - If you want to use new eva-icons, you must use the specific syntax of react eva icons and not the usual icon tag.
 
 ## Work remaining
 
@@ -94,6 +106,8 @@ _change all components into functions_
 
 ## Pending
 
+¤ On Characters page add a button "see my characters" (will hide others' characters) / in general setting hide non-public characters / add sorting tools (date / reverse date / alphabet / reverse alphabet)
+
 ¤ Add security before removal of games and characters (ask password again or ask to type a sentence).
 
 ¤ Add honey pot on signup form (hidden field, if filled it's a robot so deny request to db).
@@ -112,9 +126,20 @@ _change all components into functions_
 
 ¤ add search bar (users, games, themes)
 
+¤ add a voting system on characters / games (stars or thumb) - and add sorting them by grades / reversed grades
+
 ## References
 
 ¤ About icons install and syntax: https://www.npmjs.com/package/react-eva-icons
 ¤ Icons library: https://akveo.github.io/eva-icons/#/
 ¤ Optimizing images tools for web projects: https://squoosh.app/
 ¤ About CORS parameters: https://expressjs.com/en/resources/middleware/cors.html (in /rm-back/index.js)
+
+## License
+
+RoleMates is under the [GNU GPL 3 License](https://choosealicense.com/licenses/agpl-3.0/).
+
+Main informations about this licence are:
+¤ Permissions: Commercial use, distribution, modification, patent use, private use.
+¤ Conditions to use: Disclose source, License and copyright notice, Network use is distribution, Same license, State changes.
+¤ Limitations: Liability, Warranty.

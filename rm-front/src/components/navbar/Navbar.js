@@ -16,6 +16,9 @@ function Navbar () {
         <li className='navelt'>
           <Link className='navlink' to='/a-propos'>A propos</Link>
         </li>
+        <li className='navelt'>
+          <Link className='navlink' to='/personnages'>Personnages</Link>
+        </li>
       </ol>
     </nav>
   )

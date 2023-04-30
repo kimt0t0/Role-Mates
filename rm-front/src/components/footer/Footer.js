@@ -23,6 +23,12 @@ function Footer () {
               <Icon name='edit-outline' size='small' />CodePen
             </a>
           </li>
+          |
+          <li className='footer-txt fl-elt'>
+            <a className='fle-link' href='https://choosealicense.com/licenses/agpl-3.0/' target='_blank' title='Voir...' rel='noreferrer'>
+              <Icon name='file-outline' size='small' />GNU GPL 3
+            </a>
+          </li>
         </ol>
       </div>
     </footer>

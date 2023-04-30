@@ -38,7 +38,7 @@
     }
 }
 
-@mixin card($w: 100%, $h: 250px, $color: $dark, $bg: lighten($primary, 20%), $hpos: center, $vpos: space-between, $margin: $space-m, $padding: $space-s, $radius: $radius-xxs) {
+@mixin card($w: 100%, $h: 250px, $color: $dark, $bg: lighten($secondary, 40%), $hpos: flex-start, $vpos: space-between, $margin: $space-m, $padding: $space-s, $radius: $radius-xxs) {
     box-sizing: border-box;
     max-width: 100%;
     width: $w;
@@ -46,14 +46,15 @@
     color: $color;
     background-color: $bg;
     padding: $padding;
+    margin: $margin 0;
     display: flex;
     flex-direction: column;
     justify-content: $vpos;
     align-items: $hpos;
-    flex-wrap: wrap;
-    white-space: pre-line;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    // flex-wrap: wrap;
+    // white-space: pre-line;
+    // overflow: hidden;
+    // text-overflow: ellipsis;
     border-radius: $radius;
-    box-shadow: 0 0 5px darken($bg, 30%);
+    box-shadow: 0 0 5px darken($bg, 15%);
 }

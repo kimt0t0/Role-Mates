@@ -6,11 +6,13 @@ import {
   Routes
 } from 'react-router-dom'
 // Components
-import Header from './components/header/Header'
 import Footer from './components/footer/Footer'
+import Header from './components/header/Header'
 // Pages
 import About from './pages/about/About'
 import Auth from './pages/auth/Auth'
+import Character from './pages/character/Character'
+import Characters from './pages/characters/Characters'
 import Home from './pages/home/Home'
 import User from './pages/user/User'
 // Styles
@@ -24,9 +26,11 @@ function App () {
         <div className='classic-ctn'>
           <Routes>
             <Route path='/' element={<Home />} />
-            <Route path='/a-propos' element={<About />} />
             <Route path='/auth' element={<Auth />} />
             <Route path='/joueureuse' element={<User />} />
+            <Route path='/personnages' element={<Characters />} />
+            <Route path='/personnages/:id' element={<Character />} />
+            <Route path='/a-propos' element={<About />} />
           </Routes>
         </div>
         <Footer />

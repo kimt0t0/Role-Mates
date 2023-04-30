@@ -1,0 +1,42 @@
+@use '../../styles/App.scss' as *;
+
+.char-illus-ctn {
+    box-sizing: border-box;
+    padding: $space-m 0 $space-l;
+    display: flex;
+    justify-content: center;
+    .char-illus {
+        width: 180px;
+        height: 180px;
+        object-fit: contain;
+        background-color: darken($dark, 20%);
+        border: 15px solid $tertiary;
+        border-radius: $radius-circle;
+    }
+}
+
+.btn-ctn {
+    display: flex;
+    justify-content: center;
+    padding: $space-xl 0 $space-m;
+}
+
+.cdg-title {
+    line-height: 2;
+}
+
+.cd-group {
+    padding: $space-l 0;
+    &.__more-details {
+        border-top: 4px dotted $tertiary;
+    }
+    .cdg-contents {
+        border-radius: $radius-xs;
+        padding: $space-s $space-xs;
+        background-color: lighten($dark, 70%);
+    }
+}
+
+.cdgc-group {
+    padding: $space-m 0;
+}

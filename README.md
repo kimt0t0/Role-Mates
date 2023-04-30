@@ -86,7 +86,8 @@ _change all components into functions_
 4. [WIP] Signup and login forms (with toggle button)
    _specify on signup form that to delete their account users must contact the site's admins to prevent mistakes. Or add additional security before account removal_
 
-5. Create game / character / message pages
+5. [WIP]Create game / character / message pages
+   _started characters list and detailed character page, need to add services in API and add update/remove functionalities_
 
 6. Add conditional buttons to sign out and get to user profile page
 

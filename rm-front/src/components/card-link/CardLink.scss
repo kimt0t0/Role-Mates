@@ -9,8 +9,8 @@
 .card {
     transition: all 300ms ease-in;
     &:hover, &:focus {
-        background-color: lighten($primary, 30%);
-        box-shadow: 0 0 5px lighten($primary, 20%);
+        background-color: lighten($tertiary, 30%);
+        box-shadow: 0 0 5px lighten($tertiary, 20%);
     }
     .card-illus-ctn {
         width: 100%;

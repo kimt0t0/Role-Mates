@@ -47,6 +47,10 @@ a {
   @include button($bg: $secondary);
 }
 
+.tertiary-btn {
+  @include button($bg: $tertiary);
+}
+
 .warning-btn {
   @include button($bg: $warning);
 }

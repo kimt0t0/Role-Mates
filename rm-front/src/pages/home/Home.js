@@ -47,7 +47,7 @@ function Home () {
       <Hero
         title='Accueil'
         subtitle="Bienvenu·e à toi explorateurice de la toile ! Tu n'es peut-être pas une araignée mais si tu veux tisser des liens avec d'autres joueureuses et explorer des rôles dans des univers de jeu textuel variés, tu es tombae au bon endroit !"
-        color='warning'
+        color='secondary'
       />
       <img className='home-illus' src='images/rpg_illus_1.webp' alt='' />
       {articles.map(article => (

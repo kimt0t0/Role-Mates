@@ -1,7 +1,7 @@
 @use '../../styles/App.scss' as *;
 
 .login-form {
-    @include card($h: fit-content, $margin: 0 auto, $padding: $space-m $space-l);
+    @include card($h: fit-content, $margin: 0 auto, $padding: $space-m $space-l, $bg: lighten($primary, 30%));
         display: flex;
         flex-direction: column;
         align-items: flex-start;

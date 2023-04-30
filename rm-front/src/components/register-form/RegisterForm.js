@@ -79,9 +79,9 @@ function RegisterForm () {
         {/* (Password) */}
         <div className='form-group'>
           <label className='form-label'>Mot de passe</label>
-          <div className='form-input-group'>
+          <div className='form-input-group __password'>
             <input
-              className='form-input'
+              className='form-input __password'
               type={showPassword ? 'password' : 'text'}
               name='password'
               value={FormData.password}
@@ -99,7 +99,7 @@ function RegisterForm () {
         {/* Avatar */}
         <div className='form-group'>
           <label className='form-label'>Avatar <i>(facultatif)</i></label>
-          <div className='form-input-group'>
+          <div className='form-input-group __file'>
             <input
               className='form-input __file'
               type='file'

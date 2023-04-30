@@ -22,9 +22,22 @@
             border-radius: $radius-xs;
             padding: $space-xs;
             height: fit-content;
+            &.__password {
+                max-width: 55%;
+            }
+            &.__file {
+                background-color: transparent;
+                border: transparent;
+                cursor: pointer;
+            }
         }
         .form-input-group {
+            max-width: 100%;
             display: flex;
+            flex-wrap: wrap;
+            &.__password {
+                max-width: 100%;
+            }
             button {
                 margin-left: $space-s;
                 padding: 0 $space-s;

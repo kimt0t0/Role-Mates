@@ -32,9 +32,9 @@ function Auth () {
         ? <LoginForm />
         : <RegisterForm />}
       <div className='link-ctn'>
-        <a href='#' className='formToggle' onClick={toggleForm}>
+        <button type='button' className='formToggle' onClick={toggleForm}>
           {isRegistered ? "Je n'ai pas de compte" : "J'ai déjà un compte"}
-        </a>
+        </button>
       </div>
     </section>
   )

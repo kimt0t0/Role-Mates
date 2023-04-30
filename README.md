@@ -1,9 +1,9 @@
 # Role Mates
 
-This is a school project aiming to develop a CRUD REST API with Node.js and mobile-first frontend interface with React. It may be shifted to Vue.js later.
+This is a school project aiming to develop a CRUD REST API and mobile-first frontend interface with Node.js, Express and React.
 Feel free to help or use (non commercially) AFTER MAY 20th, 2023.
 
-Non authenticated users can only access index, about, rules, the games list (with games with a 'public' status only).
+Non authenticated users can only access index, about, rules, the games list.
 Authenticated users can access index, about, rules, the games list (with games with a 'public' status only), games details, create/update/delete games, characters, messages or images for their avatar/games/characters.
 Admin accounts can read, create, update and delete everything.
 
@@ -20,10 +20,14 @@ Admin accounts can read, create, update and delete everything.
 
 - yarn
 - node.js
+- mongoDB
 
 ## Getting started
 
-Clone the [repository](https://github.com/kimt0t0/Role-Mates/)
+- Clone the [repository](https://github.com/kimt0t0/Role-Mates/).
+- Create your own MongoDB database.
+- Fill-in your own .env file in /rm-back - follow the instructions in the comments.
+- Fill-in your own .env file in /rm-front - each variable must start with REACT*APP* or won't be recognized by the app.
 
 1. Launch the web API
 

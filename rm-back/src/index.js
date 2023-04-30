@@ -9,11 +9,13 @@ const morgan = require('morgan')
 const app = express()
 // Set port
 const port = process.env.port || 3000
+const apiPort = process.env.FRONT_PORT || 3001
 
+// Cross origin
+app.use(cors('Access-Control-Allow-Origin', `http://localhost:${apiPort}`))
+app.options('*', cors())
 // Morgan logger middleware
 app.use(morgan('dev'))
-// Cross origin
-  .use(cors())
 // Helmet adds 9 security middlewares
   .use(helmet())
 // Set Express params for body and JSON

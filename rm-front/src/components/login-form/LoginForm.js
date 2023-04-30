@@ -55,9 +55,9 @@ function LoginForm ({ submit, error }) {
         {/* (Password) */}
         <div className='form-group'>
           <label className='form-label'>Mot de passe</label>
-          <div className='form-input-group'>
+          <div className='form-input-group __password'>
             <input
-              className='form-input'
+              className='form-input __password'
               type={showPassword ? 'password' : 'text'}
               name='password'
               value={FormData.password}

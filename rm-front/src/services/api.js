@@ -3,13 +3,16 @@
 import axios from 'axios'
 
 // LOGIC
+// Get backend app port
+const backPort = process.env.REACT_APP_BACK_PORT
+console.log('Port back: ', backPort)
 // Create axios api
 const api = axios.create({
-  baseURL: 'http://locahost:3000/',
-  headers: {
-    'Access-Control-Allow-Origin': '*',
-    'Content-Type': 'application/json'
-  },
+  baseURL: `http://locahost:${backPort}/`,
+  // headers: {
+  //   'Access-Control-Allow-Origin': '*',
+  //   'Content-Type': 'application/json'
+  // },
   timeout: 10000
 })
 

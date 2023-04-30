@@ -5,14 +5,15 @@ import axios from 'axios'
 // LOGIC
 // Get backend app port
 const backPort = process.env.REACT_APP_BACK_PORT
-console.log('Port back: ', backPort)
 // Create axios api
 const api = axios.create({
   baseURL: `http://locahost:${backPort}/`,
-  // headers: {
-  //   'Access-Control-Allow-Origin': '*',
-  //   'Content-Type': 'application/json'
-  // },
+  headers: {
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content, Accept, Content-Type, Authorization',
+    'Content-Type': 'application/json',
+    'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, PATCH, OPTIONS'
+  },
   timeout: 10000
 })
 
@@ -20,7 +21,7 @@ const api = axios.create({
 const register = async (registerDatas) => {
   try {
     console.log(`from service, registering ${registerDatas}`)
-    const response = await api.post('/users', registerDatas)
+    const response = await api.post('/users', JSON.parse(registerDatas))
     if (response.data && response.data.token) {
       window.localStorage.setItem('token', response.data.token)
     }

@@ -117,3 +117,4 @@ _change all components into functions_
 ¤ About icons install and syntax: https://www.npmjs.com/package/react-eva-icons
 ¤ Icons library: https://akveo.github.io/eva-icons/#/
 ¤ Optimizing images tools for web projects: https://squoosh.app/
+¤ About CORS parameters: https://expressjs.com/en/resources/middleware/cors.html (in /rm-back/index.js)

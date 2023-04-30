@@ -6,6 +6,7 @@ import Hero from '../hero-title/Hero'
 import Icon from 'react-eva-icons'
 // Styles
 import './LoginForm.scss'
+import { login } from '../../services/api'
 
 // LOGIC
 function LoginForm ({ submit, error }) {
@@ -30,9 +31,9 @@ function LoginForm ({ submit, error }) {
   }
 
   // Function to submit form
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    submit(formData)
+    await login(formData)
   }
   return (
     <>

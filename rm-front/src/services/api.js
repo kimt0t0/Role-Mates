@@ -7,7 +7,7 @@ import axios from 'axios'
 const backPort = process.env.REACT_APP_BACK_PORT
 // Create axios api
 const api = axios.create({
-  baseURL: `http://locahost:${backPort}/`,
+  baseURL: `http://localhost:${backPort}/`,
   headers: {
     'Access-Control-Allow-Origin': '*',
     'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content, Accept, Content-Type, Authorization',
@@ -21,7 +21,7 @@ const api = axios.create({
 const register = async (registerDatas) => {
   try {
     console.log(`from service, registering ${registerDatas}`)
-    const response = await api.post('/users', JSON.parse(registerDatas))
+    const response = await api.post('/users', registerDatas)
     if (response.data && response.data.token) {
       window.localStorage.setItem('token', response.data.token)
     }
@@ -40,7 +40,7 @@ const register = async (registerDatas) => {
 // Login service
 const login = async (credentials) => {
   try {
-    const response = await api.post('/auth/login')
+    const response = await api.post('/auth/login', credentials)
     return response.data
   } catch (e) {
     throw new Error(e.message)

@@ -7,6 +7,7 @@ import { useAuth } from '../../contexts/AuthContext'
 import { getProfile } from '../../services/api'
 // Components
 import Hero from '../../components/hero-title/Hero'
+import CobayeWip from '../../components/cobaye-wip/CobayeWip'
 // Styles
 import './Me.scss'
 
@@ -41,6 +42,7 @@ function Me () {
       <Hero title='Page profil' color='secondary' />
       {profile || 'oups'}
       {JSON.stringify(loadProfile)}
+      <CobayeWip />
     </section>
   )
 }

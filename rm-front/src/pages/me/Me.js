@@ -6,12 +6,12 @@ import Icon from 'react-eva-icons'
 import { useState } from 'react'
 import Hero from '../../components/hero-title/Hero'
 // Services
-import { getProfile, updateUser } from '../../services/api'
+import { getProfile, updateProfile } from '../../services/api'
 // Styles
-import './User.scss'
+import './Me.scss'
 
 // LOGIC
-function User (id) {
+function Me (id) {
   // const testUserDatas = getProfile(id)
   // const userTestDatas = await getProfile('6445404a58b962b4a5593173')
   const userDatas = {
@@ -73,7 +73,7 @@ function User (id) {
   // handle form submit
   const handleSubmit = (e) => {
     e.preventDefault()
-    updateUser(formData)
+    updateProfile(formData)
   }
   // Rendering
   return (
@@ -225,4 +225,4 @@ function User (id) {
 }
 
 // EXPORTS
-export default User
+export default Me

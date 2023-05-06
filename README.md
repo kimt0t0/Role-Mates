@@ -65,16 +65,18 @@ popd
 
 **temporarily deactivated auth middleware in all routes to make frontend work easier**
 
-1. Fix
+1. Do
 
-- Images
-  fix multer issue
-  add images to user, character, message, game
+- create /me route
+
+2. Fix
 
 - Test auth and adminOnly middlewares
 
-2. Improve
+3. Improve
 
+- handle sessions
+- handle jwt token renewal
 - allow to update / delete data only if owner (to check in route or controller if not already done)
 - allow to display games details (participants, messages) only to specified game members if the game's status is private (same for characters and messages?)
 - add a logout functionality
@@ -83,27 +85,34 @@ popd
 
 _change all components into functions_
 
-4. [WIP] Signup and login forms (with toggle button)
-   _specify on signup form that to delete their account users must contact the site's admins to prevent mistakes. Or add additional security before account removal_
+3. /Me
 
-5. [WIP]Create game / character / message pages
-   _started characters list and detailed character page, need to add services in API and add update/remove functionalities_
+   > See account public and private info
+   > Update / Delete account
+   > Update / Delete Games / Messages / Characters
 
-6. Add conditional buttons to sign out and get to user profile page
+4. Characters
+   > fetch API to Read /Create / Update / Delete
 
-7. Get all users / games
+**add authContext**
 
-8. Get one user / game
+5. Games
 
-9. Get user's games / characters / messages
+   > Game details: Owner, Characters
+   > Messages
 
-10. Get game's messages / users / characters
+6. Messages
 
-11. Update (all)
+7. Users
 
-12. Delete
+   > users list
+   > see one user (and links to user profile from character / message / game)
 
-13. Improve style and fix responsive
+8. Social Login
+
+9. Contact form
+
+10. Improve style and add desktop version
 
 ## Pending
 

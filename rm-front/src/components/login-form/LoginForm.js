@@ -1,15 +1,29 @@
 // IMPORTS
 // Modules
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { redirect } from 'react-router-dom'
+// Auth contexts
+import { actionTypes, loginUser, useAuth } from '../../contexts/AuthContext'
 // Components
 import Hero from '../hero-title/Hero'
 import Icon from 'react-eva-icons'
 // Styles
 import './LoginForm.scss'
-import { login } from '../../services/api'
 
 // LOGIC
 function LoginForm ({ submit, error }) {
+  // Initialize user profile and state's local state
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
+
+  const { dispatch, state: { e, user, loading } } = useAuth()
+  useEffect(() => {
+    if (user) {
+      setIsLoggedIn(true)
+    } else {
+      setIsLoggedIn(false)
+    }
+  }, [user])
+
   // Toggle password visibility
   const [showPassword, setShowPassword] = useState(true)
 
@@ -22,7 +36,7 @@ function LoginForm ({ submit, error }) {
     password: ''
   })
 
-  // Function to take into account input fields changes
+  // Take into account input fields changes
   const handleChange = (e) => {
     setFormData({
       ...formData,
@@ -30,10 +44,25 @@ function LoginForm ({ submit, error }) {
     })
   }
 
-  // Function to submit form
+  // Submit form using api service
   const handleSubmit = async (e) => {
     e.preventDefault()
-    await login(formData)
+    await loginUser(formData, dispatch)
+  }
+
+  // Disconnect user
+  const logout = () => {
+    dispatch({
+      type: actionTypes.LOGOUT
+    })
+    redirect('/auth')
+  }
+  if (isLoggedIn) {
+    return (
+      <button type='button' className='warning-btn' onClick={logout}>
+        Me déconnecter
+      </button>
+    )
   }
   return (
     <>

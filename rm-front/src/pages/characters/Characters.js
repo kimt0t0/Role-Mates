@@ -1,15 +1,16 @@
 // IMPORTS
-// Modules
-// import { Link } from 'recat-router-dom'
-// import Icon from 'react-eva-icons'
+// Context data
+import { useAuth } from '../../contexts/AuthContext'
 // Components
 import CardLink from '../../components/card-link/CardLink'
 import Hero from '../../components/hero-title/Hero'
 // Styles
 import './Characters.scss'
+import { redirect } from 'react-router-dom'
 
 // LOGIC
 function Characters () {
+  const { state: { user } } = useAuth()
   // Fake testing data
   const characters = [
     {
@@ -79,24 +80,28 @@ function Characters () {
     }
   ]
   // Rendering
-  return (
-    <section className='section __cards-list __characters'>
-      <Hero
-        title='Personnages de jeu'
-        subtitle="Bienvenu·e sur la liste des personnages du site. N'hésite pas à t'en inspirer !"
-        color='secondary'
-      />
-      <ul className='cards-list __characters'>
-        <li className='cl-item __ characters'>
-          {
-            characters.map((character, index) => {
-              return (<CardLink item={character} key={index} />)
-            })
-          }
-        </li>
-      </ul>
-    </section>
-  )
+  if (user) {
+    return (
+      <section className='section __cards-list __characters'>
+        <Hero
+          title='Personnages de jeu'
+          subtitle="Bienvenu·e sur la liste des personnages du site. N'hésite pas à t'en inspirer !"
+          color='secondary'
+        />
+        <ul className='cards-list __characters'>
+          <li className='cl-item __ characters'>
+            {
+              characters.map((character, index) => {
+                return (<CardLink item={character} key={index} />)
+              })
+            }
+          </li>
+        </ul>
+      </section>
+    )
+  }
+
+  redirect('/')
 }
 
 // EXPORTS

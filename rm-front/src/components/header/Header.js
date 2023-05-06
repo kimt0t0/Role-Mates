@@ -7,6 +7,7 @@ import Icon from 'react-eva-icons'
 import { useAuth, actionTypes } from '../../contexts/AuthContext'
 // Components
 import Navbar from '../navbar/Navbar'
+import UserNav from '../user-nav/UserNav'
 // Styles
 import './Header.scss'
 
@@ -17,7 +18,15 @@ function Header () {
   const [showMenu, setShowMenu] = useState(false)
   // (state handling function triggered on button click)
   const toggleMenu = () => {
+    if (showUserMenu) setShowUserMenu(false)
     setShowMenu(!showMenu)
+  }
+
+  // Toggle user menu
+  const [showUserMenu, setShowUserMenu] = useState(false)
+  const toggleUserMenu = () => {
+    if (showMenu) setShowMenu(false)
+    setShowUserMenu(!showUserMenu)
   }
 
   // Toggle user menu button (link to auth page / disconnect button)
@@ -55,23 +64,28 @@ function Header () {
                 size='large'
               />
             </button>
-            {isLoggedIn
-              ? <button type='button' className='menuToggle __secondary' onClick={logout}>
+            {
+            isLoggedIn
+            // if user is logged in display usernav
+              ? <button type='button' className='menuToggle __tertiary' onClick={toggleUserMenu}>
                 <Icon
-                  name='person-delete'
+                  name='person'
                   size='large'
                 />
                 </button>
+            // else show button-link to auth page
               : <Link to='/auth' className='menuToggle __secondary' title='Page de connexion'>
                 <Icon
                   name='person'
                   size='large'
                 />
-              </Link>}
+                </Link>
+              }
           </div>
         </div>
       </div>
       {showMenu && <Navbar />}
+      {showUserMenu && <UserNav />}
     </header>
   )
 }

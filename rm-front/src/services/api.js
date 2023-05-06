@@ -54,15 +54,15 @@ const login = async (credentials) => {
 
 // Get user profile service
 const getProfile = async () => {
-  console.log('entrée dans la fonction du service')
   try {
     // (check if a token is stored in localStorage)
-    const token = window.localStorage.getItem('token')
+    const auth = window.localStorage.AUTH
+    console.log('token from api: ', auth)
     // (if so, fetch api to get user profile, using token as authorization data to get the corresponding data)
-    if (token) {
-      const response = await api.get('/users', {
+    if (auth) {
+      const response = await api.get('/me', {
         headers: {
-          Authorization: `Bearer ${token}`
+          Authorization: `Bearer ${auth}`
         }
       })
       console.log('user data from service: ', response.data)

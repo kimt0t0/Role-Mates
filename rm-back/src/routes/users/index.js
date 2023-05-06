@@ -1,4 +1,4 @@
-// Imports
+// IMPORTS
 const router = require('express').Router()
 const {
   createUser,

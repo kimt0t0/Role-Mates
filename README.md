@@ -85,34 +85,40 @@ popd
 
 _change all components into functions_
 
-3. /Me
+3. Auth
 
-   > See account public and private info
+   > Welcome user screen
+   > User nav (and test protected routes)
+
+4. /Me
+
+   > See profile
    > Update / Delete account
    > Update / Delete Games / Messages / Characters
 
-4. Characters
+5. Characters
+
    > fetch API to Read /Create / Update / Delete
 
 **add authContext**
 
-5. Games
+6. Games
 
    > Game details: Owner, Characters
    > Messages
 
-6. Messages
+7. Messages
 
-7. Users
+8. Users
 
    > users list
    > see one user (and links to user profile from character / message / game)
 
-8. Social Login
+9. Social Login
 
-9. Contact form
+10. Contact form
 
-10. Improve style and add desktop version
+11. Improve style and add desktop version
 
 ## Pending
 

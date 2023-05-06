@@ -64,6 +64,7 @@ const getProfile = async () => {
           Authorization: `Bearer ${token}`
         }
       })
+      console.log('from service: ', response.data)
       return response.data
     }
     // (show error in console if there is a problem, for instance invalid token)
@@ -72,7 +73,7 @@ const getProfile = async () => {
   }
 }
 
-const updateProfile = async() => {
+const updateProfile = async () => {
   console.log('update user')
 }
 

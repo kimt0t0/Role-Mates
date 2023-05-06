@@ -1,18 +1,17 @@
 // IMPORTS
 // Modules
 import { useState, useEffect } from 'react'
-import { redirect } from 'react-router-dom'
-// Auth contexts
+import Icon from 'react-eva-icons'
+// Auth context
 import { actionTypes, loginUser, useAuth } from '../../contexts/AuthContext'
 // Components
 import Hero from '../hero-title/Hero'
-import Icon from 'react-eva-icons'
+import WelcomeUser from '../welcome-user/WelcomeUser'
 // Styles
 import './LoginForm.scss'
 
 // LOGIC
 function LoginForm ({ submit, error }) {
-  // Initialize user profile and state's local state
   const [isLoggedIn, setIsLoggedIn] = useState(false)
 
   const { dispatch, state: { e, user, loading } } = useAuth()
@@ -55,15 +54,13 @@ function LoginForm ({ submit, error }) {
     dispatch({
       type: actionTypes.LOGOUT
     })
-    redirect('/auth')
   }
+  // Rendering is conditioned to user being logged-in or not
+  // (if logged in, success alert and redirect to homepage)
   if (isLoggedIn) {
-    return (
-      <button type='button' className='warning-btn' onClick={logout}>
-        Me déconnecter
-      </button>
-    )
+    return <WelcomeUser />
   }
+  // (else stay on auth page)
   return (
     <>
       <Hero title='Connexion' subtitle='Entre tes identifiants pour jouer :-)' color='secondary' />

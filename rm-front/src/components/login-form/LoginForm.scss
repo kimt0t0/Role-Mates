@@ -47,34 +47,3 @@
         justify-content: center;
     }
 }
-
-.welcome-screen {
-    box-sizing: border-box;
-    padding: $space-l 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    .ws-illus {
-        box-sizing: border-box;
-        width: 90%;
-        height: auto;
-        object-fit: contain;
-        height: auto;
-        border-radius: $radius-circle;
-        margin: $space-m auto;
-        border: 10px dotted $primary;
-    }
-    .homelink {
-        margin: $space-xxl 0;
-        display: flex;
-        justify-content: center;
-        text-align: center;
-        color: $primary;
-        font-size: 1.2rem;
-        font-weight: 600;
-        text-decoration: underline;
-        &:hover, &:focus {
-            text-decoration: none;
-        }
-    }
-}

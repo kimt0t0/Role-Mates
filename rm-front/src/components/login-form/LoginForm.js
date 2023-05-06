@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react'
 import Icon from 'react-eva-icons'
 // Auth context
-import { actionTypes, loginUser, useAuth } from '../../contexts/AuthContext'
+import { loginUser, useAuth } from '../../contexts/AuthContext'
 // Components
 import Hero from '../hero-title/Hero'
 import WelcomeUser from '../welcome-user/WelcomeUser'
@@ -49,18 +49,12 @@ function LoginForm ({ submit, error }) {
     await loginUser(formData, dispatch)
   }
 
-  // Disconnect user
-  const logout = () => {
-    dispatch({
-      type: actionTypes.LOGOUT
-    })
-  }
   // Rendering is conditioned to user being logged-in or not
-  // (if logged in, success alert and redirect to homepage)
+  // (if logged in, show welcome component)
   if (isLoggedIn) {
     return <WelcomeUser />
   }
-  // (else stay on auth page)
+  // (else keep form)
   return (
     <>
       <Hero title='Connexion' subtitle='Entre tes identifiants pour jouer :-)' color='secondary' />

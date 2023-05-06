@@ -61,13 +61,13 @@ function Header () {
                   name='person-delete'
                   size='large'
                 />
-              </button>
+                </button>
               : <Link to='/auth' className='menuToggle __secondary' title='Page de connexion'>
                 <Icon
                   name='person'
                   size='large'
                 />
-                </Link>}
+              </Link>}
           </div>
         </div>
       </div>

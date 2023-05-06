@@ -1,10 +1,8 @@
 // IMPORTS
 // Modules
-import { useState, useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-// Auth context
-import { useAuth } from '../../contexts/AuthContext'
-// API services
+// Services
 import { getProfile } from '../../services/api'
 // Components
 import Hero from '../hero-title/Hero'
@@ -13,46 +11,39 @@ import './WelcomeUser.scss'
 
 // LOGIC
 function WelcomeUser () {
-  const [loader, setLoader] = useState(true)
-  const [profile, setProfile] = useState(null)
-
-  const loadProfile = async () => {
+  const [userName, setUserName] = useState(null)
+  const getUserName = async () => {
+    // (must be outside of useEffect as useEffect doesn't support async)
     const user = await getProfile()
-    return setProfile(user)
-  }
-  const startLoader = () => {
-    setLoader(true)
+    setUserName(user)
+    console.log(userName)
   }
 
-  const stopLoader = () => {
-    setLoader(false)
-  }
-
-  const { dispatch, state: { e, user, loading } } = useAuth()
+  // Enables to load data when component is mounted
   useEffect(() => {
-    if (user) {
-      stopLoader()
-      loadProfile()
-    } else {
-      startLoader()
-    }
-  }, [user])
+    getUserName()
+    console.log(userName)
+  }, [])
 
-  if (profile) {
-    return (
-      <div className='welcome-screen'>
-        <Hero title='Bienvenu·e ' subtitle='Ton compte est bien connecté :-)' color='primary' />
-        <img src='images/tunic_fox.webp' className='ws-illus' alt='adventurer fox illustration' />
-        <Link className='homelink' to='/'>Aller vers l'accueil</Link>
-      </div>
-    )
-  } else {
-    return (
-      <div className='welcome-screen'>
-        LOADING...
-      </div>
-    )
-  }
+  return (
+    <div className='welcome-screen'>
+      <Hero title='Bienvenu·e ' subtitle='Ton compte est bien connecté :-)' color='primary' />
+      <img src='images/tunic_fox.webp' className='ws-illus' alt='adventurer fox illustration' />
+      <ul className='ctas'>
+        <li className='ctas-item'>
+          <Link className='homelink' to='/'>Aller vers l'accueil</Link>
+        </li>
+        <li className='ctas-item'>
+          <button
+            className='homelink __btn'
+            type='button'
+          >
+            Me déconnecter
+          </button>
+        </li>
+      </ul>
+    </div>
+  )
 }
 
 export default WelcomeUser

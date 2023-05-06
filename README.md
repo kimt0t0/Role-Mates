@@ -89,6 +89,7 @@ _change all components into functions_
 
    > Welcome user screen
    > User nav (and test protected routes)
+   > Add warning alert when user credentials are wrong
 
 4. /Me
 

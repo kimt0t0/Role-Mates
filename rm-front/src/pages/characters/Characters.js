@@ -6,7 +6,7 @@ import CardLink from '../../components/card-link/CardLink'
 import Hero from '../../components/hero-title/Hero'
 // Styles
 import './Characters.scss'
-import { redirect } from 'react-router-dom'
+import { Link, redirect } from 'react-router-dom'
 
 // LOGIC
 function Characters () {
@@ -88,6 +88,7 @@ function Characters () {
           subtitle="Bienvenu·e sur la liste des personnages du site. N'hésite pas à t'en inspirer !"
           color='secondary'
         />
+        <Link className='btn-link' to='/creation-utilisateurice/personnage'>Ajouter un personnage</Link>
         <ul className='cards-list __characters'>
           <li className='cl-item __ characters'>
             {

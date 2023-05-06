@@ -17,6 +17,7 @@ import Character from './pages/character/Character'
 import Characters from './pages/characters/Characters'
 import Home from './pages/home/Home'
 import Me from './pages/me/Me'
+import UserCreateContent from './pages/usercreate/UserCreateContent'
 // Styles
 import './styles/App.scss'
 
@@ -34,6 +35,7 @@ function App () {
               <Route path='/personnages' element={<Characters />} />
               <Route path='/personnages/:id' element={<Character />} />
               <Route path='/a-propos' element={<About />} />
+              <Route path='creation-utilisateurice/:type' element={<UserCreateContent />} />
             </Routes>
           </div>
           <Footer />

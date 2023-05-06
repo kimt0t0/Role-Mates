@@ -42,14 +42,6 @@ function Header () {
     }
   }, [user])
 
-  // Logout function
-  const logout = () => {
-    dispatch({
-      type: actionTypes.LOGOUT
-    })
-    redirect('/auth')
-  }
-
   // Rendering
   return (
     <header className='header'>
@@ -72,14 +64,14 @@ function Header () {
                   name='person'
                   size='large'
                 />
-                </button>
+              </button>
             // else show button-link to auth page
               : <Link to='/auth' className='menuToggle __secondary' title='Page de connexion'>
                 <Icon
                   name='person'
                   size='large'
                 />
-                </Link>
+              </Link>
               }
           </div>
         </div>

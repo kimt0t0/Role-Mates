@@ -47,6 +47,8 @@ yarn run start
 popd
 ```
 
+_you may need to refresh page so user disconnection is taken into account in the front app otherwise page display doesn't always update correctly_
+
 ## If you are willing to fork or contribute to this project
 
 1. Follow the [Getting started](#getting-started) steps.
@@ -83,18 +85,14 @@ popd
 
 ### Frontend (client application)
 
-_change all components into functions_
-
 3. Auth
 
-   > Welcome user screen
-   > User nav (and test protected routes)
-   > Add warning alert when user credentials are wrong
+   > Add handmade warning alert when user credentials are wrong
 
 4. /Me
 
    > See profile
-   > Update / Delete account
+   > Update / Delete account (& add image to user profile !)
    > Update / Delete Games / Messages / Characters
 
 5. Characters

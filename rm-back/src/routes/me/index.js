@@ -8,6 +8,7 @@ const {
 
 // LOGIC
 router.route('/')
+  // get user profile
   .get(async (req, res) => {
     if (req.headers.authorization) {
       try {
@@ -35,6 +36,10 @@ router.route('/')
     } else {
       return res.status(401).send()
     }
+  })
+  // update user profile
+  .patch(async (req, res) => {
+    console.log('update user...')
   })
 
 module.exports = router

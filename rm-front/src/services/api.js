@@ -74,7 +74,23 @@ const getProfile = async () => {
 }
 
 const updateProfile = async () => {
-  console.log('update user')
+  try {
+    // (check if a token is stored in localStorage)
+    const auth = window.localStorage.AUTH
+    // (if so, fetch api to get user profile, using token as authorization data to get the corresponding data)
+    if (auth) {
+      const response = await api.patch('/me', {
+        headers: {
+          Authorization: `Bearer ${auth}`
+        }
+      })
+      console.log(`service data: ${JSON.stringify(response.data)}`)
+      return response.data
+    }
+    // (show error in console if there is a problem, for instance invalid token)
+  } catch (e) {
+    console.error(e)
+  }
 }
 
 // EXPORTS

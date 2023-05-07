@@ -69,7 +69,7 @@ _you may need to refresh page so user disconnection is taken into account in the
 
 1. Do
 
-- create /me route
+- Add remaining logic of me route (need to fetch the corresponding data from userprofile component form through api service to backend /me route)
 
 2. Fix
 
@@ -91,7 +91,6 @@ _you may need to refresh page so user disconnection is taken into account in the
 
 4. /Me
 
-   > See profile
    > Update / Delete account (& add image to user profile !)
    > Update / Delete Games / Messages / Characters
 

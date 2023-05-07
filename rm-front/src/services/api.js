@@ -17,11 +17,11 @@ const api = axios.create({
   timeout: 10000
 })
 
-// Register service
-const register = async (registerDatas) => {
+// Register/signup service
+const register = async (registeredDatas) => {
   try {
     // (fetch api post route)
-    const response = await api.post('/users', registerDatas)
+    const response = await api.post('/users', registeredDatas)
     // (if api returns user data and token, set token item in local storage)
     if (response.data && response.data.token) {
       window.localStorage.setItem('token', response.data.token)

@@ -69,7 +69,6 @@ const getProfile = async () => {
           Authorization: `Bearer ${auth}`
         }
       })
-      console.log(`service data: ${JSON.stringify(response.data)}`)
       return response.data
     }
     // (show error in console if there is a problem, for instance invalid token)

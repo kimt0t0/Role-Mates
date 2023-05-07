@@ -5,7 +5,23 @@ import { useState } from 'react'
 import './createCharacter.scss'
 
 // LOGIC
-function CreateCharacter ({ userId }) {
+function CreateCharacter () {
+  // Alerts
+  // (form warning alerts: name, types, life)
+  const [nameAlert, setNameAlert] = useState(false)
+  const [typesAlert, setTypesAlert] = useState(false)
+  const [lifeAlert, setLifeAlert] = useState(false)
+
+  const updateNameAlert = (value) => {
+    setNameAlert(value)
+  }
+  const updateTypesAlert = (value) => {
+    setTypesAlert(value)
+  }
+  const updateLifeAlert = (value) => {
+    setLifeAlert(value)
+  }
+
   // state machine to follow character's types checkboxes
   const [chartypes, setChartypes] = useState({
     voleureuse: false,
@@ -15,16 +31,16 @@ function CreateCharacter ({ userId }) {
     tank·e: false,
     musicien·ne: false
   })
+
   const onChartypesChange = (e, type) => {
-    if (type === 'autre') {
-      chartypes[e.target.value] = true
-    }
     chartypes[type] = e.target.checked
   }
   const getChartypes = () => {
     const fchartypes = []
     for (const c in chartypes) {
-      if (chartypes[c] === true) fchartypes.push(c)
+      if (chartypes[c] === true) {
+        fchartypes.push(c)
+      }
     }
     return fchartypes
   }
@@ -43,46 +59,76 @@ function CreateCharacter ({ userId }) {
   const getStatuses = () => {
     return [globalStatus, gameStatus]
   }
+
+  // state machine to be able to update life number with custom buttons
+  // (it was not possible to do it with input binded to FormData directly)
+  const [lifeNum, setLifeNum] = useState(0)
+  const decrementLife = () => {
+    if (lifeNum >= 1) {
+      setLifeNum(lifeNum - 1)
+      handleHandChange('life', lifeNum)
+    } else updateLifeAlert(true)
+  }
+  const incrementLife = () => {
+    if (lifeNum >= -1) {
+      setLifeNum(lifeNum + 1)
+      handleHandChange('life', lifeNum)
+    } else updateLifeAlert(true)
+  }
+
   // follow entire form data changes
   const [formData, setFormData] = useState({
-    user: userId,
-    name: '',
+    charname: '',
     description: '',
     types: getChartypes(),
-    life: 0,
+    life: lifeNum,
     status: getStatuses(),
     file: null
   })
 
   const handleChange = (e) => {
-    if (e.target.name !== 'user') {
-      setFormData({
-        ...formData,
-        [e.target.name]: e.target.value
-      })
-    }
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    })
+  }
+
+  const handleHandChange = (dataName, val) => {
+    setFormData({
+      ...formData,
+      [dataName]: val
+    })
+    console.log(formData)
   }
 
   // submit form
   const handleSubmit = async (e) => {
     e.preventDefault()
     try {
-      console.log(`Envoi des données: ${JSON.stringify(formData)}`)
-      // await createCharacter(formData)
+      if (formData.name === '') {
+        updateNameAlert(true)
+      }
+      if (formData.types.length <= 0) {
+        updateTypesAlert(true)
+      }
+      if (formData.life <= 0) {
+        updateLifeAlert(true)
+      }
     } catch (e) {
       console.error(e)
     }
   }
 
   return (
-    <form className='create-character-form' onSubmit={handleSubmit}>
+    <form className='create-character-form classic-ctn' onSubmit={handleSubmit}>
       {/* name */}
       <div className='ccf-bloc'>
         <h3 className='ccf-subtitle'>Nom du personnage</h3>
         <input
           type='text'
-          name='name'
-          className='ccfb-input'
+          name='charname'
+          className={nameAlert ? 'ccfb-input __alert' : 'ccfb-input'}
+          value={FormData.charname}
           onChange={handleChange}
           placeholder='Anowon le Voleur des Ruines'
         />
@@ -164,31 +210,23 @@ function CreateCharacter ({ userId }) {
             />
             <label className='ccfb-label' htmlFor='types'>Musicien·ne</label>
           </li>
-          {/* autre */}
-          <li className='bl-item'>
-            <input
-              type='text'
-              name='types'
-              className='ccfb-input'
-              onSubmit={e => onChartypesChange(e, 'autre')}
-            />
-            <label className='ccfb-label' htmlFor='types'>Autre</label>
-          </li>
         </ul>
+        {typesAlert && <p className='alert'>Attention, tu dois indiquer au moins un type pour ton personnage !</p>}
       </div>
       {/* life */}
       <div className='ccf-bloc'>
         <h3 className='ccf-subtitle'>Points de vie</h3>
-        <button className='number-input-btn __left'>-</button>
-        <input
-          type='number'
-          name='name'
-          className='ccfb-input'
-          value={FormData.life}
-          placeholder='0'
-          onChange={handleChange}
-        />
-        <button className='number-input-btn __left'>+</button>
+        <div className='ccfb-input-line'>
+          <button className='classic-btn number-input-btn __left' type='button' onClick={decrementLife}>-</button>
+          <input
+            type='number'
+            name='name'
+            className={lifeAlert ? 'ccfb-input __number  __alert' : 'ccfb-input __number'}
+            value={lifeNum}
+            onChange={handleChange}
+          />
+          <button className='classic-btn number-input-btn __left' type='button' onClick={incrementLife}>+</button>
+        </div>
       </div>
       {/* status */}
       <div className='ccf-bloc'>
@@ -196,7 +234,7 @@ function CreateCharacter ({ userId }) {
         {/* (global status) */}
         <label>
           <select
-            className='stats-select-menu'
+            className='stats-select-menu classic-btn'
             name='globalStatus'
             onChange={e => onGlobalStatusChange(e)}
           >
@@ -208,7 +246,7 @@ function CreateCharacter ({ userId }) {
         {/* (game status) */}
         <label>
           <select
-            className='stats-select-menu'
+            className='stats-select-menu classic-btn'
             name='globalStatus'
             onChange={e => onGameStatusChange(e)}
           >
@@ -219,10 +257,10 @@ function CreateCharacter ({ userId }) {
       </div>
       {/* avatar */}
       <div className='ccf-bloc'>
-        <label className='ccfb-label' htmlFor='file'>Illustration</label>
+        <h3 className='ccf-subtitle'>Illustration</h3>
         <input type='file' name='file' className='ccfb-input' />
       </div>
-      <div className='ccf-submit-bloc'>
+      <div className='cta-container'>
         <button type='submit' className='secondary-btn'>AJOUTER LE PERSONNAGE</button>
       </div>
     </form>

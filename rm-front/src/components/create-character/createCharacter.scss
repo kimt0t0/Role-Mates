@@ -1,1 +1,52 @@
 @use '../../styles/App.scss' as *;
+
+
+.create-character-form {
+    box-sizing: border-box;
+    width: 100%;
+    padding: $space-m $space-s;
+    background-color: lighten($tertiary, 30%);
+    border-radius: $radius-xs;
+    .ccf-bloc {
+        padding: $space-m 0;
+        border-bottom: 4px dotted $dark;
+    }
+}
+
+.ccfb-label {
+    margin-right: $space-s;
+}
+
+.ccfb-input-line {
+    display: flex;
+    flex-direction: row;
+    height: fit-content;
+    margin: $space-s 0;
+}
+
+.ccfb-input {
+    font-size: 1.2rem;
+    background-color: lighten($tertiary, 50%);
+    color: darken($tertiary, 30%);
+    border: 1px solid darken($tertiary, 30%);
+    border-radius: $radius-xs;
+    margin: $space-s $space-s $space-s 0;
+    &.__number {
+        -webkit-appearance: textfield;
+        -moz-appearance: textfield;
+        appearance: textfield;
+        width: 80px;
+        margin: 0;
+    }
+    &.__alert {
+        background-color: lighten($warning, 30%);
+        color: darken($warning, 20%);
+    }
+}
+
+.alert {
+    color: $warning;
+    font-size: 1.2rem;
+    line-height: 1;
+    margin: $space-s auto;
+}

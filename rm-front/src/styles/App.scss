@@ -69,6 +69,12 @@ a {
   padding: $space-m $space-s;
 }
 
+.cta-container {
+  display: flex;
+  justify-content: center;
+  margin: $space-l auto;
+}
+
 .article-title {
   font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   font-size: $fsize-l;

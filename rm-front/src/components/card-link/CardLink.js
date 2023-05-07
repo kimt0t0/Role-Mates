@@ -7,7 +7,6 @@ import './CardLink.scss'
 
 // LOGIC
 function CardLink ({ item }) {
-  console.log(item)
   return (
     <Link className='card-link' to={'/personnages/' + item.id}>
       <div className='card __characters'>

@@ -88,7 +88,9 @@ function Characters () {
           subtitle="Bienvenu·e sur la liste des personnages du site. N'hésite pas à t'en inspirer !"
           color='secondary'
         />
-        <Link className='btn-link' to='/creation-utilisateurice/personnage'>Ajouter un personnage</Link>
+        <div className='cta-container'>
+          <Link className='tertiary-btn' to='/creation-utilisateurice/personnage' title='Ajouter un personnage'>+1</Link>
+        </div>
         <ul className='cards-list __characters'>
           <li className='cl-item __ characters'>
             {

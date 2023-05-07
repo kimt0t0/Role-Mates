@@ -2,7 +2,6 @@
 // Modules
 import { useState, useEffect } from 'react'
 import { useParams, Link } from 'react-router-dom'
-
 // API service
 import { getProfile } from '../../services/api'
 // Components

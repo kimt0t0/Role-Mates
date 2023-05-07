@@ -11,23 +11,21 @@ import './WelcomeUser.scss'
 
 // LOGIC
 function WelcomeUser () {
-  const [userName, setUserName] = useState(null)
-  const getUserName = async () => {
+  const [username, setUsername] = useState(null)
+  const getUsername = async () => {
     // (must be outside of useEffect as useEffect doesn't support async)
     const user = await getProfile()
-    setUserName(user)
-    console.log(userName)
+    setUsername(user.username)
   }
 
   // Enables to load data when component is mounted
   useEffect(() => {
-    getUserName()
-    console.log(userName)
+    getUsername()
   }, [])
 
   return (
     <div className='welcome-screen'>
-      <Hero title='Bienvenu·e ' subtitle='Ton compte est bien connecté :-)' color='primary' />
+      <Hero title={'Bienvenu·e ' + username} subtitle='Ton compte est bien connecté :-)' color='primary' />
       <img src='images/tunic_fox.webp' className='ws-illus' alt='adventurer fox illustration' />
       <ul className='ctas'>
         <li className='ctas-item'>

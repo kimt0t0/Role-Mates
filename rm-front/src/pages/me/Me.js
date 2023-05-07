@@ -1,13 +1,10 @@
 // IMPORTS
 import { useState, useEffect } from 'react'
-// import Icon from 'react-eva-icons'
-// Auth context
-import { useAuth } from '../../contexts/AuthContext'
 // API service
 import { getProfile } from '../../services/api'
 // Components
 import Hero from '../../components/hero-title/Hero'
-import CobayeWip from '../../components/cobaye-wip/CobayeWip'
+import UserProfile from '../../components/user-profile/UserProfile'
 // Styles
 import './Me.scss'
 
@@ -16,33 +13,36 @@ function Me () {
   const [profile, setProfile] = useState(null)
   const [showLoader, setShowLoader] = useState(true)
 
-  const loadProfile = async () => await getProfile()
+  const loadProfile = async () => {
+    const loadedProfile = await getProfile()
+    setProfile(loadedProfile)
+  }
 
-  const { dispatch, state: { e, user, loading } } = useAuth()
   useEffect(() => {
-    if (user && loadProfile) {
+    loadProfile()
+    if (profile) {
       setShowLoader(false)
-      loadProfile()
-      setProfile('Coucou')
     } else {
       setShowLoader(true)
     }
-  }, [user])
+  }, [])
 
   if (showLoader) {
     return (
       <section className='section __me __loader'>
-        LOADING...
+        <p>LOADING...</p>
       </section>
     )
   }
 
   return (
     <section className='section __me'>
-      <Hero title='Page profil' color='secondary' />
-      {profile || 'oups'}
-      {JSON.stringify(loadProfile)}
-      <CobayeWip />
+      <Hero
+        title={'Page profil de ' + profile.username}
+        subtitle='Bienvenu·e aventurier·e ! Ici tu peux consulter et mettre à jour tes informations.'
+        color='secondary'
+      />
+      <UserProfile profile={profile} />
     </section>
   )
 }

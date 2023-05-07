@@ -57,7 +57,6 @@ const getProfile = async () => {
   try {
     // (check if a token is stored in localStorage)
     const auth = window.localStorage.AUTH
-    console.log('token from api: ', auth)
     // (if so, fetch api to get user profile, using token as authorization data to get the corresponding data)
     if (auth) {
       const response = await api.get('/me', {
@@ -65,7 +64,7 @@ const getProfile = async () => {
           Authorization: `Bearer ${auth}`
         }
       })
-      console.log('user data from service: ', response.data)
+      console.log(`service data: ${JSON.stringify(response.data)}`)
       return response.data
     }
     // (show error in console if there is a problem, for instance invalid token)

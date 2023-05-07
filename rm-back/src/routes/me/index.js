@@ -10,17 +10,19 @@ const {
 router.route('/')
   .get(async (req, res) => {
     if (req.headers.authorization) {
-    //   console.log(req.headers.authorization)
       try {
         const authHeader = req.headers.authorization
         if (authHeader.startsWith('Bearer')) {
-          const token = authHeader // .split(' ')[1].split(',')[0].split(':')[1]
-          console.log(token)
-          const decoded = await jwt.verify(token, process.env.TOKEN_SECRET)
-          console.log(decoded)
+          const token = authHeader.split(' ')[1]
+          const decoded = await jwt.verify(JSON.parse(token).token, process.env.TOKEN_SECRET)
           if (decoded && decoded.id) {
-            const userId = decoded.id
-            getUserById(userId)
+            try {
+              const userId = decoded.id
+              const user = await getUserById(userId)
+              return res.send(user)
+            } catch (e) {
+              return res.status(500).send(e.message)
+            }
           } else {
             return res.status(401).send()
           }

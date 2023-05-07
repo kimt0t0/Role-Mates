@@ -15,7 +15,7 @@ function RegisterForm () {
   const [showPassword, setShowPassword] = useState(true)
 
   const onToggleShowPassword = () => {
-    return setShowPassword(!showPassword)
+    setShowPassword(!showPassword)
   }
   // Store and update form data
   const [formData, setFormData] = useState({
@@ -38,7 +38,6 @@ function RegisterForm () {
   const handleSubmit = async (e) => {
     e.preventDefault()
     try {
-      console.log(`from form component, registering ${formData}`)
       await register(formData)
     } catch (e) {
       console.error(e)

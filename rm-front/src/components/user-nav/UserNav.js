@@ -22,6 +22,9 @@ function UserNav () {
     <nav className='navbar'>
       <ol className='navlist'>
         <li className='navelt'>
+          <Link className='navlink' to='/me'>Mes informations</Link>
+        </li>
+        <li className='navelt'>
           <Link className='navlink' to='/me/characters'>Mes personnages</Link>
         </li>
         <li className='navelt'>

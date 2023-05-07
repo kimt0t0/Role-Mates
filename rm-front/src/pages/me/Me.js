@@ -1,6 +1,6 @@
 // IMPORTS
 import { useState, useEffect } from 'react'
-import Icon from 'react-eva-icons'
+// import Icon from 'react-eva-icons'
 // Auth context
 import { useAuth } from '../../contexts/AuthContext'
 // API service

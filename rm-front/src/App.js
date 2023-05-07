@@ -31,7 +31,7 @@ function App () {
             <Routes>
               <Route path='/' element={<Home />} />
               <Route path='/auth' element={<Auth />} />
-              <Route path='/profil' element={<Me />} />
+              <Route path='/me' element={<Me />} />
               <Route path='/personnages' element={<Characters />} />
               <Route path='/personnages/:id' element={<Character />} />
               <Route path='/a-propos' element={<About />} />

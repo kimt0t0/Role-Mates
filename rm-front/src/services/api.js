@@ -21,6 +21,11 @@ const api = axios.create({
 const register = async (registeredDatas) => {
   try {
     // (fetch api post route)
+    if (registeredDatas.file) {
+      // const file = { file: registeredDatas.avatar }
+      const savedImage = await api.post('/images', { file: registeredDatas.file })
+      registeredDatas.avatar = savedImage.data._id
+    }
     const response = await api.post('/users', registeredDatas)
     // (if api returns user data and token, set token item in local storage)
     if (response.data && response.data.token) {

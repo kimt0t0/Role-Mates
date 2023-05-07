@@ -23,15 +23,17 @@ function RegisterForm () {
     email: '',
     password: '',
     role: 'CLASSIC',
-    avatar: null
+    file: null
   })
 
   // Function to take into account input fields changes
   const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    })
+    if (e.target.name !== 'role') { // may prevent hackers to set their role to admin :-)
+      setFormData({
+        ...formData,
+        [e.target.name]: e.target.value
+      })
+    }
   }
 
   // Function to submit form
@@ -102,8 +104,8 @@ function RegisterForm () {
             <input
               className='form-input __file'
               type='file'
-              name='avatar'
-              value={FormData.avatar}
+              name='file'
+              value={FormData.file}
               onChange={handleChange}
               placeholder='kwain@lapinsorcier.mtg'
             />

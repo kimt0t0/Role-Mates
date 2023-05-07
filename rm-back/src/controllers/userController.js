@@ -21,7 +21,7 @@ const createUser = async (data) => {
   const userObject = await userSaved.toObject()
   delete userObject.password
 
-  // (update games' players list if user adds games when signing up)
+  // (update games' players list if user adds games when signing up - this option is not yet available)
   if (userSaved.games) {
     userSaved.games.forEach(async g => {
       await Game.findByIdAndUpdate(g,
@@ -63,7 +63,8 @@ const updateUser = async (id, user) => {
   }
 
   delete user.username // prevents user to change username
-  const userUpdate = await User.findByIdAndUpdate(id, user, { new: true }).select('-password')
+  const userUpdate = await User.findByIdAndUpdate(id, user, { new: true })
+  // did not add the .select('-password') as my users are allowed to update their password
 
   const userObject = userUpdate.toObject()
 

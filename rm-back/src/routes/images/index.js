@@ -49,7 +49,7 @@ const upload = multer({
 // API Route '/'
 router.route('/')
   .post(upload.single('file'), async (req, res) => {
-    const { file } = req
+    const file = req.body
     try {
       const savedImageObject = await createImage(file)
       return res.send(savedImageObject)

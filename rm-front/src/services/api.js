@@ -78,6 +78,19 @@ const getProfile = async () => {
   }
 }
 
+// Get user by id
+const getUser = async (userId) => {
+  try {
+    const auth = window.localStorage.AUTH
+    if (auth) {
+      const response = await api.get(`/users/${userId}`)
+      return response.data
+    }
+  } catch (e) {
+    console.error(e)
+  }
+}
+
 const updateProfile = async () => {
   try {
     // (check if a token is stored in localStorage)
@@ -101,15 +114,18 @@ const updateProfile = async () => {
 // ----- Character ------
 const createCharacter = async (formData) => {
   try {
-    const user = await getProfile()
-    if (user._id && formData) {
-      const data = {
-        ...formData,
-        user: user._id
+    const auth = window.localStorage.AUTH
+    if (auth) {
+      const user = await getProfile()
+      if (user._id && formData) {
+        const data = {
+          ...formData,
+          user: user._id
+        }
+        console.log(`Données: ${data}`)
+        const response = await api.post('/characters', data)
+        return response.data
       }
-      console.log(`Données: ${data}`)
-      const response = await api.post('/characters', data)
-      return response.data
     }
   } catch (e) {
     console.error(e)
@@ -133,6 +149,7 @@ export {
   login,
   getProfile,
   updateProfile,
+  getUser,
   // character api services
   createCharacter,
   getCharacters

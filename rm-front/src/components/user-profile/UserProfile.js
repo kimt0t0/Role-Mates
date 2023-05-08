@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import Icon from 'react-eva-icons'
 // API service
-import { updateProfile } from '../../services/api'
+// import { updateProfile } from '../../services/api'
 // Styles
 import './UserProfile.scss'
 
@@ -62,7 +62,14 @@ function UserProfile ({ profile }) {
       {/* FORM */}
       <form className='register-form' onSubmit={handleSubmit}>
         <div className='uf-headline'>
-          <button onClick={onToggleEditForm}>EditForm</button>
+          <button
+            onClick={onToggleEditForm}
+            className='secondary-btn edit-btn'
+            type='button'
+          >
+            EditForm
+            <Icon name='edit-2-outline' size='medium' />
+          </button>
         </div>
         {/* Avatar */}
         <div className='form-group'>
@@ -163,7 +170,11 @@ function UserProfile ({ profile }) {
           : <p>Vous n'avez créé aucun personnage pour l'instant</p>}
       </ul>
       <div className='cta-container'>
-        <Link className='btn-link' to='creation-utilisateurice/personnage'>+</Link>
+        <h3 className='cta-title'>Mes actions</h3>
+        <div className='cta-group'>
+          <Link className='cta classic-btn' to='creation-utilisateurice/personnage'>+ personnage</Link>
+          <Link className='cta classic-btn' to='creation-utilisateurice/game'>+ partie de jeu</Link>
+        </div>
       </div>
     </div>
   )

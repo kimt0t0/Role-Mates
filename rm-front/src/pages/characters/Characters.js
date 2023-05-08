@@ -1,84 +1,44 @@
 // IMPORTS
 // Context data
+import { useState, useEffect } from 'react'
 import { useAuth } from '../../contexts/AuthContext'
+import { Link } from 'react-router-dom'
+// API service
+import { getCharacters } from '../../services/api'
 // Components
-import CardLink from '../../components/card-link/CardLink'
+import CharactersList from '../../components/characters-list/CharactersList'
 import Hero from '../../components/hero-title/Hero'
 // Styles
 import './Characters.scss'
-import { Link, redirect } from 'react-router-dom'
 
 // LOGIC
 function Characters () {
+  // check if user is authenticated
   const { state: { user } } = useAuth()
-  // Fake testing data
-  const characters = [
-    {
-      id: '1',
-      user: 'Kim',
-      name: 'Kwain',
-      illus: 'https://i.pinimg.com/originals/f9/38/5e/f9385e895fd4012b7d36e82ffb40055e.png',
-      description: 'Pourquoi tant de lenteur ? Pourquoi tant de lenteur ? Dépêchez-vous enfin ! On sait jamais sur quoi on peut tomber !',
-      types: ['Lapin', 'Sorcier'],
-      stats: [],
-      abilities: [],
-      life: 15,
-      status: 'DRAFT',
-      games: [],
-      messages: []
-    },
-    {
-      id: '2',
-      user: 'Kim',
-      name: 'Anowon',
-      illus: 'https://crystal-cdn1.crystalcommerce.com/photos/6602875/Anowon__the_Ruin_Thief.jpg',
-      description: '',
-      types: [],
-      stats: [
-        {
-          name: 'Accélération', amount: 10
-        },
-        {
-          name: 'Surprise', amount: 10
-        },
-        {
-          name: 'Soin', amount: 5
-        },
-        {
-          name: 'Solidité', amount: 2
-        },
-        {
-          name: 'Habileté', amount: 8
-        }
-      ],
-      abilities: [
-        {
-          name: 'Actionis Supplementaris',
-          type: 'Accélération',
-          amount: 3,
-          description: 'Vous pouvez jouer une action supplémentaire en plus de votre action légale.'
-        }
-      ],
-      life: 15,
-      status: 'DRAFT',
-      games: [],
-      messages: []
-    },
-    {
-      id: '3',
-      user: 'Djibi',
-      title: 'Wilhelt',
-      illus: 'https://www.mtg-forum.de/db/picture.php?art=1&idprintings=346105',
-      description: '',
-      types: [],
-      stats: [],
-      abilities: [],
-      life: 15,
-      status: 'DRAFT',
-      games: [],
-      messages: []
+
+  // Handle loader
+  const [showLoader, setShowLoader] = useState(true)
+  // Handle alert message if issue loading data
+  const [errorMessage, setErrorMessage] = useState(false)
+
+  // Get data
+  const [characters, setCharacters] = useState(null)
+
+  const loadCharacters = async () => {
+    const loadedCharacters = await getCharacters()
+    setCharacters(loadedCharacters)
+    setShowLoader(false)
+  }
+
+  useEffect(() => {
+    loadCharacters()
+    if (!characters) {
+      setShowLoader(true)
     }
-  ]
+  }, [])
+  // (empty array as second parameter allows to start useEffect only on mount and dismount component)
+  // (hence it avoids infinite loops)
+
   // Rendering
   if (user) {
     return (
@@ -91,20 +51,18 @@ function Characters () {
         <div className='cta-container'>
           <Link className='tertiary-btn' to='/creation-utilisateurice/personnage' title='Ajouter un personnage'>+1</Link>
         </div>
-        <ul className='cards-list __characters'>
-          <li className='cl-item __ characters'>
-            {
-              characters.map((character, index) => {
-                return (<CardLink item={character} key={index} />)
-              })
-            }
-          </li>
-        </ul>
+        {showLoader && <h2>Chargement en cours...</h2>}
+        {characters && <CharactersList characters={characters} />}
       </section>
     )
   }
 
-  redirect('/')
+  return (
+    <>
+      <h2>Oooups ! Tu n'es pas autorisé à visiter cette page.</h2>
+      <p>Tu peux <Link className='classic-link' to='/auth' title="Aller vers la page d'authentification">te connecter ou t'inscrire</Link> si tu souhaites y accéder.</p>
+    </>
+  )
 }
 
 // EXPORTS

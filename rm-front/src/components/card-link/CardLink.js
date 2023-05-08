@@ -11,15 +11,15 @@ function CardLink ({ item }) {
     <Link className='card-link' to={'/personnages/' + item.id}>
       <div className='card __characters'>
         <div className='card-illus-ctn'>
-          <img className='card-illus' src={item.illus} alt={'Illustration de ' + item.name ? item.name : item.title} />
+          <img className='card-illus' src={item.illus ? item.illus : 'images/avatar_placeholder.webp'} alt={'Illustration de ' + item.name ? item.name : item.title} />
         </div>
         <div className='card-contents'>
           <div className='cc-bloc'>
             <h3 className='card-title'>{item.name ? item.name : item.title}</h3>
             <p className='card-detail'>
               {/* This content will be shown only if item has types */}
-              {item.types.length > 0 && <strong>Types:</strong>}
-              {item.types.length > 0 && item.types.map((type, index) => index === -1 ? ' ' + type : ' ' + type + ',')}
+              {/* {item.types.length > 0 && <strong>Types:</strong>} */}
+              {/* {item.types.length > 0 && item.types.map((type, index) => index === -1 ? ' ' + type : ' ' + type + ',')} */}
             </p>
             <p className='card-owner'>
               <strong>Auteurice:</strong>

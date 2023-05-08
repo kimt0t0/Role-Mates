@@ -16,21 +16,22 @@ function Me () {
   const loadProfile = async () => {
     const loadedProfile = await getProfile()
     setProfile(loadedProfile)
+    setShowLoader(false)
   }
 
   useEffect(() => {
     loadProfile()
-    if (profile) {
-      setShowLoader(false)
-    } else {
+    if (!profile) {
       setShowLoader(true)
     }
   }, [])
+  // (empty array as second parameter allows to start useEffect only on mount and dismount component)
+  // (hence it avoids infinite loops)
 
   if (showLoader) {
     return (
       <section className='section __me __loader'>
-        <p>LOADING...</p>
+        <p>Chargement en cours...</p>
       </section>
     )
   }

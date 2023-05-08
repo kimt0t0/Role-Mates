@@ -116,6 +116,15 @@ const createCharacter = async (formData) => {
   }
 }
 
+const getCharacters = async () => {
+  try {
+    const response = await api.get('/characters')
+    return response.data
+  } catch (e) {
+    console.error(e)
+  }
+}
+
 // EXPORTS
 
 export {
@@ -125,5 +134,6 @@ export {
   getProfile,
   updateProfile,
   // character api services
-  createCharacter
+  createCharacter,
+  getCharacters
 }

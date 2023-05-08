@@ -6,10 +6,17 @@ const jwt = require('jsonwebtoken')
 const withAuth = async (req, res, next) => {
   if (req.headers.authorization) {
     try {
-      const decoded = await jwt.verify(req.headers.authorization.split(' ')[1], process.env.TOKEN_SECRET)
-      if (decoded && decoded.id) {
-        req.userId = decoded.id
-        next()
+      const authHeader = req.headers.authorization
+      if (authHeader.startsWith('Bearer')) {
+        const token = authHeader.split(' ')[1]
+        const decoded = await jwt.verify(JSON.parse(token).token, process.env.TOKEN_SECRET)
+        console.log('decodé: ', decoded)
+        if (decoded && decoded.id) {
+          req.userId = decoded.id
+          next()
+        } else {
+          return res.status(401).send()
+        }
       } else {
         return res.status(401).send()
       }

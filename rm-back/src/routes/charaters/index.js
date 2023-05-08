@@ -7,11 +7,11 @@ const {
   updateCharacter,
   deleteCharacter
 } = require('../../controllers/characterController')
-// const { withAuth } = require('../../middlewares/auth')
+const { withAuth } = require('../../middlewares/auth')
 
 // ROUTE '/'
 router.route('/')
-  .post(async (req, res) => {
+  .post(withAuth, async (req, res) => {
     try {
       const { body } = req
       const message = await createCharacter(body)
@@ -21,7 +21,7 @@ router.route('/')
       return res.status(500).send(e.message)
     }
   })
-  .get(async (req, res) => {
+  .get(withAuth, async (req, res) => {
     try {
       const characters = await getCharacters()
       return res.send(characters)
@@ -33,7 +33,7 @@ router.route('/')
 
 // ROUTE '/:id'
 router.route('/:id')
-  .get(async (req, res) => {
+  .get(withAuth, async (req, res) => {
     try {
       const { id } = req.params
       const character = await getCharacterById(id)
@@ -43,7 +43,7 @@ router.route('/:id')
       return res.status(500).send(error.message)
     }
   })
-  .patch(async (req, res) => {
+  .patch(withAuth, async (req, res) => {
     try {
       const { body } = req
       const { id } = req.params
@@ -54,7 +54,7 @@ router.route('/:id')
       return res.status(500).send(e.message)
     }
   })
-  .delete(async (req, res) => {
+  .delete(withAuth, async (req, res) => {
     try {
       const { id } = req.params
       await deleteCharacter(id)

@@ -161,7 +161,7 @@ function CharacterCard ({ character }) {
         setSuccessEAlert(true)
       }
     } catch (e) {
-      console.log(e)
+      console.error(e)
     }
   }
 

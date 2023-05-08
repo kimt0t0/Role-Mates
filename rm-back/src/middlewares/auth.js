@@ -10,7 +10,6 @@ const withAuth = async (req, res, next) => {
       if (authHeader.startsWith('Bearer')) {
         const token = authHeader.split(' ')[1]
         const decoded = await jwt.verify(JSON.parse(token).token, process.env.TOKEN_SECRET)
-        console.log('decodé: ', decoded)
         if (decoded && decoded.id) {
           req.userId = decoded.id
           next()

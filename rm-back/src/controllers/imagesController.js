@@ -7,7 +7,6 @@ const createImage = async (image) => {
   if (!image) {
     throw new Error('Missing image file')
   }
-  console.log('image from controller: ', image)
 
   const newImage = new Image({
     fileName: image.filename,

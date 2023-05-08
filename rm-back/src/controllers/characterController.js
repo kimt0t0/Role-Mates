@@ -75,10 +75,8 @@ const deleteCharacter = async (id) => {
   if (!id) {
     throw new Error('missing data')
   }
-  console.log('Suppression du personnage...')
   // (Update other datas)
   const character = await getCharacterById(id)
-  console.log(character)
   // (( remove from user ))
   if (character.user) {
     await User.findByIdAndUpdate(character.user,

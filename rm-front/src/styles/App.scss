@@ -55,6 +55,7 @@ a {
 
 .classic-btn {
   @include button;
+  margin: auto;
 }
 
 .secondary-btn {

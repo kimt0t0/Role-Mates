@@ -50,7 +50,7 @@ function Characters () {
           color='secondary'
         />
         <div className='cta-container'>
-          <Link className='tertiary-btn' to='/creation-utilisateurice/personnage' title='Ajouter un personnage'>+1</Link>
+          <Link className='classic-btn' to='/creation-utilisateurice/personnage' title='Ajouter un personnage'>+1</Link>
         </div>
         {showLoader && <h2>Chargement en cours...</h2>}
         {characters && <CharactersList characters={characters} />}

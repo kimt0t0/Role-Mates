@@ -1,6 +1,8 @@
 // IMPORTS
 // Modules
 import { useState } from 'react'
+// Components
+import FormAlert from '../form-alert/FormAlert'
 // Styles
 import './createCharacter.scss'
 
@@ -34,7 +36,10 @@ function CreateCharacter () {
 
   const onChartypesChange = (e, type) => {
     chartypes[type] = e.target.checked
+    const fchartypes = getChartypes()
+    handleHandChange('types', fchartypes)
   }
+
   const getChartypes = () => {
     const fchartypes = []
     for (const c in chartypes) {
@@ -62,7 +67,11 @@ function CreateCharacter () {
 
   // state machine to be able to update life number with custom buttons
   // (it was not possible to do it with input binded to FormData directly)
-  const [lifeNum, setLifeNum] = useState(0)
+  const [lifeNum, setLifeNum] = useState(10)
+  const updateLife = (e) => {
+    setLifeNum(e.target.value)
+    handleHandChange('life', lifeNum)
+  }
   const decrementLife = () => {
     if (lifeNum >= 1) {
       setLifeNum(lifeNum - 1)
@@ -70,10 +79,11 @@ function CreateCharacter () {
     } else updateLifeAlert(true)
   }
   const incrementLife = () => {
-    if (lifeNum >= -1) {
-      setLifeNum(lifeNum + 1)
-      handleHandChange('life', lifeNum)
-    } else updateLifeAlert(true)
+    setLifeNum(lifeNum + 1)
+    handleHandChange('life', lifeNum)
+  }
+  const getLife = () => {
+    return lifeNum
   }
 
   // follow entire form data changes
@@ -81,7 +91,7 @@ function CreateCharacter () {
     charname: '',
     description: '',
     types: getChartypes(),
-    life: lifeNum,
+    life: getLife(),
     status: getStatuses(),
     file: null
   })
@@ -98,21 +108,29 @@ function CreateCharacter () {
       ...formData,
       [dataName]: val
     })
-    console.log(formData)
+    console.log(`formData updated: ${JSON.stringify(formData)}`)
   }
 
   // submit form
   const handleSubmit = async (e) => {
     e.preventDefault()
+    console.log(formData)
     try {
-      if (formData.name === '') {
+      // Check mandatory fields and set alert if empty / wrong datas
+      if (formData.charname === '' || formData.charname === undefined || formData.charname.length === 0) {
         updateNameAlert(true)
+      } else {
+        updateNameAlert(false)
       }
       if (formData.types.length <= 0) {
         updateTypesAlert(true)
+      } else {
+        updateTypesAlert(false)
       }
-      if (formData.life <= 0) {
+      if (formData.life <= 0 || !Number.isInteger(formData.life)) {
         updateLifeAlert(true)
+      } else {
+        updateLifeAlert(false)
       }
     } catch (e) {
       console.error(e)
@@ -132,6 +150,7 @@ function CreateCharacter () {
           onChange={handleChange}
           placeholder='Anowon le Voleur des Ruines'
         />
+        {nameAlert && <FormAlert text='Tu dois indiquer le nom de ton personnage.' />}
       </div>
       {/* description */}
       <div className='ccf-bloc'>
@@ -211,22 +230,23 @@ function CreateCharacter () {
             <label className='ccfb-label' htmlFor='types'>Musicien·ne</label>
           </li>
         </ul>
-        {typesAlert && <p className='alert'>Attention, tu dois indiquer au moins un type pour ton personnage !</p>}
+        {typesAlert && <FormAlert text='Attention, tu dois indiquer au moins un type pour ton personnage !' />}
       </div>
       {/* life */}
       <div className='ccf-bloc'>
         <h3 className='ccf-subtitle'>Points de vie</h3>
         <div className='ccfb-input-line'>
-          <button className='classic-btn number-input-btn __left' type='button' onClick={decrementLife}>-</button>
+          <button className='classic-btn number-input-btn __left' type='button' onClick={e => decrementLife(e)}>-</button>
           <input
             type='number'
             name='name'
             className={lifeAlert ? 'ccfb-input __number  __alert' : 'ccfb-input __number'}
             value={lifeNum}
-            onChange={handleChange}
+            onChange={e => updateLife(e)}
           />
-          <button className='classic-btn number-input-btn __left' type='button' onClick={incrementLife}>+</button>
+          <button className='classic-btn number-input-btn __left' type='button' onClick={e => incrementLife(e)}>+</button>
         </div>
+        {lifeAlert && <FormAlert text='Attention, ton personnage doit avoir des points de vie (1 ou +) ! (La valeur doit être un nombre entier > 0)' />}
       </div>
       {/* status */}
       <div className='ccf-bloc'>

@@ -59,19 +59,19 @@ function Header () {
             {
             isLoggedIn
             // if user is logged in display usernav
-              ? <button type='button' className='menuToggle __tertiary' onClick={toggleUserMenu}>
+              ? <button type='button' className='menuToggle __classic' onClick={toggleUserMenu}>
                 <Icon
                   name='person'
                   size='large'
                 />
-              </button>
+                </button>
             // else show button-link to auth page
               : <Link to='/auth' className='menuToggle __secondary' title='Page de connexion'>
                 <Icon
                   name='person'
                   size='large'
                 />
-              </Link>
+                </Link>
               }
           </div>
         </div>

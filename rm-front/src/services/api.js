@@ -149,6 +149,19 @@ const getCharacter = async (characterId) => {
     const auth = window.localStorage.AUTH
     if (auth) {
       const response = await api.get(`/characters/${characterId}`)
+      return response.data
+    }
+  } catch (e) {
+    console.error(e)
+  }
+}
+
+const removeCharacter = async (characterId) => {
+  try {
+    console.log(`removing ${characterId}`)
+    const auth = window.localStorage.AUTH
+    if (auth) {
+      const response = await api.delete(`/characters/${characterId}`)
       console.log(`api response: ${JSON.stringify(response.data)}`)
       return response.data
     }
@@ -169,5 +182,6 @@ export {
   // character api services
   createCharacter,
   getCharacters,
-  getCharacter
+  getCharacter,
+  removeCharacter
 }

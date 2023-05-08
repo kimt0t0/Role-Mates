@@ -10,7 +10,7 @@
         height: 180px;
         object-fit: contain;
         background-color: darken($dark, 20%);
-        border: 15px solid $tertiary;
+        border: 15px solid $primary;
         border-radius: $radius-circle;
     }
 }
@@ -28,12 +28,12 @@
 .cd-group {
     padding: $space-l 0;
     &.__more-details {
-        border-top: 4px dotted $tertiary;
+        border-top: 4px dotted $primary;
     }
     .cdg-contents {
         border-radius: $radius-xs;
         padding: $space-s $space-xs;
-        background-color: lighten($dark, 70%);
+        background-color: lighten($primary, 50%);
     }
 }
 

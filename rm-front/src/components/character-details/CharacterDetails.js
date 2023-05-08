@@ -35,7 +35,7 @@ function CharacterDetails ({ character }) {
           <div className='cdgc-group'>
             <h4 className='cdgcg-title'>Points de vie: {character.life}</h4>
           </div>
-          <div className='cdgc-group'>
+          {/* <div className='cdgc-group'>
             <h4 className='cdgcg-title'>Statistiques:</h4>
             {
                 character.stats.map((stat, index) => {
@@ -50,7 +50,7 @@ function CharacterDetails ({ character }) {
                   return (<p key={index}><strong>{ability.name}:</strong> {ability.amount}</p>)
                 })
               }
-          </div>
+          </div> */}
         </div>
       </div>
       {/* Info group 3 */}

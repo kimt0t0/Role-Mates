@@ -123,7 +123,6 @@ function CreateCharacter () {
   // submit form
   const handleSubmit = async (e) => {
     e.preventDefault()
-    console.log(formData)
     try {
       // Check mandatory fields and set alert if empty / wrong datas
       if (formData.charname === '' || formData.charname === undefined || formData.charname.length === 0) {

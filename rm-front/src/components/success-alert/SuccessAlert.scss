@@ -1,0 +1,29 @@
+@use '../../styles/App.scss' as *;
+
+.success-alert {
+    box-sizing: border-box;
+    background-color: lighten($primary, 20%);
+    color: darken($primary, 20%);
+    padding: $space-s $space-xs;
+    border-radius: $radius-xs;
+    margin: $space-m 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .sa-ctas {
+        margin-top: $space-m;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        .sa-link {
+            margin: $space-xs auto;
+            &.__link {
+                color: $secondary;
+                text-decoration: underline;
+                &:hover, &:focus {
+                    text-decoration: none;
+                }
+            }
+        }
+    }
+}

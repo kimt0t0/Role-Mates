@@ -10,12 +10,25 @@ const app = express()
 // Set port
 const port = process.env.port || 3000
 
+// Cross origin
+const corsOptions = {
+  origin: '*',
+  methods: ['GET', 'PUT', 'POST', 'PATCH', 'DELETE']
+}
+// or try origin: `http://localhost:${apiPort}`
+app.use(cors(corsOptions))
+// app.options('*', cors())
+
+// app.use((req, res, next) => {
+//   res.set('Access-Control-Allow-Origin', `http://localhost:${apiPort}`)
+//   res.set('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content, Accept, Content-Type, Authorization')
+//   res.set('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH, OPTIONS')
+//   next()
+// })
 // Morgan logger middleware
 app.use(morgan('dev'))
 // Helmet adds 9 security middlewares
   .use(helmet())
-// Cross origin
-  .use(cors())
 // Set Express params for body and JSON
   .use(express.urlencoded({ extended: true }))
   .use(express.json())

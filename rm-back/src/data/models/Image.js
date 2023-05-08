@@ -21,7 +21,7 @@ const imageSchema = new Schema({
   },
   size: {
     type: Number,
-    max: 5000 // limit size to avoid full server
+    max: 1000000 // limit size to avoid full server
   }
   // user: {
   //   type: Schema.Types.ObjectId,

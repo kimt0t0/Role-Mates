@@ -1,0 +1,45 @@
+@use '../../styles/App.scss' as *;
+
+.header {
+    box-sizing: border-box;
+    background-color: $primary;
+    box-shadow: 0 0px 5px $primary;
+    position: sticky;
+    .header-ctn {
+        .hc-logo {
+            width: 70px;
+            height:100px;
+        }
+        .hc-content {
+            padding: $space-m $space-s $space-m $space-xs;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: double 6px $dark;
+            .main-title {
+                font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+                font-size: $fsize-xl;
+            }
+            .hcc-actions {
+                display: flex;
+            }
+        }
+    }
+}
+
+.menuToggle {
+    position: relative;
+    height: fit-content;
+    &.__classic {
+        @include button($bg: $dark, $marg: 0 $space-s);
+    }
+    &.__warning {
+        @include button($bg: $warning, $marg: 0 $space-s);
+    }
+    &.__secondary {
+        @include button($bg: $secondary, $marg: 0 $space-s);
+    }
+    &.__tertiary {
+        @include button($bg: $tertiary, $marg: 0 $space-s);
+    }
+}

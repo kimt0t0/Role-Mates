@@ -1,0 +1,47 @@
+@use '../../styles/App.scss' as *;
+
+.card-link {
+    box-sizing: border-box;
+    width: fit-content;
+    height: fit-content;
+}
+
+.card {
+    transition: all 300ms ease-in;
+    &:hover, &:focus {
+        background-color: lighten($tertiary, 20%);
+        box-shadow: 0 0 5px $tertiary;
+        color: $dark;
+    }
+    .card-illus-ctn {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        .card-illus {
+            max-height: 120px;
+            width: auto;
+            object-fit: contain;
+            border-radius: $radius-xxs;
+        }
+    }
+    .card-contents {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: space-between;
+        .card-descr {
+            display: block;
+            width: 80%;
+            height: 35px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+    }
+}
+p {
+    margin: 0;
+    line-height: 1.5;
+}

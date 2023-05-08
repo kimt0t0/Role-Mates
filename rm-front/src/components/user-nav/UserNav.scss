@@ -1,0 +1,14 @@
+@use '../../styles/App.scss' as *;
+
+.disconnect-btn {
+    @include link($bg: $primary, $color: $light, $fsize: $fsize-m);
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    border: transparent;
+    font-size: 16px;
+    font-weight: 800;
+    cursor: pointer;
+}

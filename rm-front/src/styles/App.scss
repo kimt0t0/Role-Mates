@@ -1,0 +1,101 @@
+// IMPORTS
+@import './global/variables';
+@import './global/mixins';
+
+// GLOBAL STYLES
+body {
+  margin: 0;
+  padding: 0;
+  background-color: $light;
+  font-size: 16px;
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  color: $dark;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+.title-ter {
+  font-size: $fsize-m;
+  font-weight: 700;
+  line-height: 2;
+}
+
+ul, ol {
+  margin: 0;
+  padding: 0;
+}
+
+
+li {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+.classic-btn {
+  @include button;
+}
+
+.secondary-btn {
+  @include button($bg: $secondary);
+}
+
+.tertiary-btn {
+  @include button($bg: $tertiary);
+}
+
+.warning-btn {
+  @include button($bg: $warning);
+}
+
+.neutral-btn {
+  @include button($bg: darken($neutral, 15%), $color: lighten($neutral, 10%));
+}
+
+.card {
+  @include card;
+}
+
+.classic-ctn {
+  max-width: $classic-ctn;
+  margin: 0 auto;
+  padding: $space-m $space-s;
+}
+
+.cta-container {
+  display: flex;
+  justify-content: center;
+  margin: $space-l auto;
+}
+
+.article-title {
+  font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-size: $fsize-l;
+}
+
+.article-txt {
+  font-weight: 100;
+}
+
+.classic-btn-link {
+  @include button($hpos: center, $marg: $space-s 0);
+  .eva {
+    display: flex;
+    margin-right: $space-xs;
+  }
+}
+
+.secondary-btn-link {
+  @include button($bg: $secondary, $hpos: center, $marg: $space-s 0);
+  .eva {
+    display: flex;
+    margin-right: $space-xs;
+  }
+}

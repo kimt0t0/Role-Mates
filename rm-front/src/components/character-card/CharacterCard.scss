@@ -1,0 +1,27 @@
+@use '../../styles/App.scss' as *;
+
+.character-card{
+    box-sizing: border-box;
+    width: 100%;
+    padding: $space-s $space-xs;
+    background-color: lighten($primary, 40%);
+    border-radius: $radius-xs;
+}
+
+.btn-ctn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    @media (min-width: $mediabp-s) {
+        flex-direction: row;
+    }
+    button {
+        width: 100%;
+        justify-content: center;
+        margin: $space-s 0;
+        @media (min-width: $mediabp-s) {
+            margin: 0 $space-s;
+            width: auto;
+        }
+    }
+}

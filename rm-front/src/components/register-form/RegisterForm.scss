@@ -1,0 +1,53 @@
+@use '../../styles/App.scss' as *;
+
+.register-form {
+    @include card($h: fit-content, $margin: 0 auto, $padding: $space-m $space-l, $bg: lighten($primary, 30%));
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    .form-group {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        margin: $space-s 0;
+        .form-label {
+            font-size: 1.2rem;
+            line-height: 1.5;
+        }
+        .form-input {
+            background-color: lighten($tertiary, 40%);
+            color: dark;
+            font-size: 1rem;
+            border: 1px solid $primary;
+            border-radius: $radius-xs;
+            padding: $space-xs;
+            height: fit-content;
+            &.__password {
+                max-width: 55%;
+            }
+            &.__file {
+                background-color: transparent;
+                border: transparent;
+                cursor: pointer;
+            }
+        }
+        .form-input-group {
+            max-width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            &.__password {
+                max-width: 100%;
+            }
+            button {
+                margin-left: $space-s;
+                padding: 0 $space-s;
+            }
+        }
+    }
+    .btn-ctn {
+        width: 100%;
+        padding: $space-m 0 0;
+        display: flex;
+        justify-content: center;
+    }
+}

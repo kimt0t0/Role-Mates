@@ -1,0 +1,52 @@
+@use '../../styles/App.scss' as *;
+
+.hero-ctn {
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 800px;
+    display: flex;
+    position: relative;
+    margin: 0 0 $space-l 0;
+    .hero-deco {
+        max-width: 20px;
+        min-width: 20px;
+        width: 20px;
+        margin: 0 $space-m;
+        border: transparent;
+        border-radius: $radius-xs $radius-m $radius-xs $radius-m;
+        transform: rotate(10deg);
+        transform-origin: center;
+        &.__primary {
+            background-color: $primary;
+        }
+        &.__secondary {
+            background-color: $secondary;
+        }
+        &.__tertiary {
+            background-color: $tertiary;
+        }
+        &.__light {
+            background-color: $light;
+        }
+        &.__dark {
+            background-color: $dark;
+        }
+        &.__neutral {
+            background-color: $neutral;
+        }
+        &.__warning {
+            background-color: $warning;
+        }
+    }
+    .hero-title {
+        font-size: $fsize-xl;
+        font-weight: 600;
+        margin: 0;
+        line-height: 1.5;
+    }
+    .hero-subtitle {
+        margin: 0;
+        line-height: 1.2;
+        font-style: italic;
+    }
+}

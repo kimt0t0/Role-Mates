@@ -1,0 +1,14 @@
+@use '../../styles/App.scss' as *;
+
+.home-article {
+    padding: $space-l 0;
+    border-top: 2px dotted $primary;
+    .article-title, .article-txt {
+        margin: 0;
+        line-height: 1.5;
+    }  
+}
+
+.home-illus {
+    width: 100%;
+}

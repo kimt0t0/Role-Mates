@@ -1,9 +1,9 @@
 # Role Mates
 
-This is a school project aiming to develop a CRUD REST API with Node.js and frontend interface with React. It may be shifted to Vue.js later.
+This is a school project aiming to develop a CRUD REST API and mobile-first frontend interface with Node.js, Express and React.
 Feel free to help or use (non commercially) AFTER MAY 20th, 2023.
 
-Non authenticated users can only access index, about, rules, the games list (with games with a 'public' status only).
+Non authenticated users can only access index, about, rules, the games list.
 Authenticated users can access index, about, rules, the games list (with games with a 'public' status only), games details, create/update/delete games, characters, messages or images for their avatar/games/characters.
 Admin accounts can read, create, update and delete everything.
 
@@ -20,12 +20,16 @@ Admin accounts can read, create, update and delete everything.
 
 - yarn
 - node.js
+- mongoDB
 
-## Getting started
+## Getting Started
 
-Clone the [repository](https://github.com/kimt0t0/Role-Mates/)
+- Clone the [repository](https://github.com/kimt0t0/Role-Mates/).
+- Create your own MongoDB database.
+- Fill-in your own .env file in /rm-back - follow the instructions in the comments.
+- Fill-in your own .env file in /rm-front - each variable must start with REACT*APP* or won't be recognized by the app.
 
-Launch the web API
+1. Launch the web API
 
 ```
 pushd rm-back
@@ -34,36 +38,99 @@ yarn run dev
 popd
 ```
 
-<!-- Launch the front-end application
+2. Launch frontend application
 
-~~~
+```
 pushd rm-front
 yarn install
-yarn run dev
+yarn run start
 popd
-~~~ -->
+```
+
+_you may need to refresh page so user disconnection is taken into account in the front app otherwise page display doesn't always update correctly_
+
+## If you are willing to fork or contribute to this project
+
+1. Follow the [Getting started](#getting-started) steps.
+2. Create your own branch.
+3. You are not allowed to merge directly your code onto the master of frontdev branches. If you want to help please make a merge request and feel free to contact me.
+4. Must know:
+
+- You can find the necessary .env structures in /rm-back/.env.structure and /rm-front/.env.structure and add your own settings to them.
+- Frontend:
+  - Each component / page and their specific styles are stored in their own file. You can also add the site's global styling by using @use '<path_to_global_style>' as \*; at the start of your style sheet.
+  - If you want to use new eva-icons, you must use the specific syntax of react eva icons and not the usual icon tag.
 
 ## Work remaining
 
 ### Backend (web API)
 
-1. Fixes
+**temporarily deactivated auth middleware in all routes to make frontend work easier**
 
-- Images
-  fix multer issue
-  add images to user, character, message, game
+1. Do
 
-2. Improvements
+- Add remaining logic of me route (need to fetch the corresponding data from userprofile component form through api service to backend /me route)
 
+2. Fix
+
+- Test auth and adminOnly middlewares
+
+3. Improve
+
+- handle sessions
+- handle jwt token renewal
 - allow to update / delete data only if owner (to check in route or controller if not already done)
 - allow to display games details (participants, messages) only to specified game members if the game's status is private (same for characters and messages?)
+- add a logout functionality
 
 ### Frontend (client application)
 
-**not started yet**
-¤ Specify on signup form that to delete their account users must contact the site's admins to prevent mistakes. Or add additional security before account removal.
+3. Auth
+
+   > Add handmade warning alert when user credentials are wrong
+
+4. /Me
+
+   > Update / Delete account (& add image to user profile !)
+   > Update / Delete Games / Messages / Characters
+
+5. Characters
+
+   > fetch API to Read /Create / Update / Delete
+
+**add authContext**
+
+6. Games
+
+   > Game details: Owner, Characters
+   > Messages
+
+7. Messages
+
+8. Users
+
+   > users list
+   > see one user (and links to user profile from character / message / game)
+
+9. Social Login
+
+10. Contact form
+
+11. Improve style and add desktop version
+
+12. Fix
+
+- createCharacter component: life does not update correctly
+- refactor services
+- refactor createCharacter component
 
 ## Pending
+
+¤ Reorder components directories with categories: alerts, auth, user, char... so it is easier to find the components devs need if other people contribute.
+
+¤ Add a global modal in app that can be toggled with success message & link to next page VS alert message & link to home/signup and that covers the screen (so users can't do something else) - use a context to handle this.
+
+¤ On Characters page add a button "see my characters" (will hide others' characters) / in general setting hide non-public characters / add sorting tools (date / reverse date / alphabet / reverse alphabet).
 
 ¤ Add security before removal of games and characters (ask password again or ask to type a sentence).
 
@@ -79,6 +146,24 @@ popd
 
 ¤ Users and admins/mod can delete and update images and messages
 
+¤ fix desktop responsive
+
+¤ add search bar (users, games, themes)
+
+¤ add a voting system on characters / games (stars or thumb) - and add sorting them by grades / reversed grades
+
 ## References
 
-<!-- Une liste de liens utiles pour comprendre, utiliser, modifier le projet -->
+¤ About icons install and syntax: https://www.npmjs.com/package/react-eva-icons
+¤ Icons library: https://akveo.github.io/eva-icons/#/
+¤ Optimizing images tools for web projects: https://squoosh.app/
+¤ About CORS parameters: https://expressjs.com/en/resources/middleware/cors.html (in /rm-back/index.js)
+
+## License
+
+RoleMates is under the [GNU GPL 3 License](https://choosealicense.com/licenses/agpl-3.0/).
+
+Main informations about this licence are:
+¤ Permissions: Commercial use, distribution, modification, patent use, private use.
+¤ Conditions to use: Disclose source, License and copyright notice, Network use is distribution, Same license, State changes.
+¤ Limitations: Liability, Warranty.

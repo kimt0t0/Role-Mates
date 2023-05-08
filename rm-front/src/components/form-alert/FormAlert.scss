@@ -1,0 +1,21 @@
+@use '../../styles/App.scss' as *;
+
+.form-alert {
+    font-size: 1.2rem;
+    font-weight: 800;
+    margin: $space-s auto;
+    color: $warning;
+    // handle color changes
+    &.__primary {
+        color: $primary;
+    }
+    &.__secondary {
+        color: $secondary;
+    }
+    &.__tertiary {
+        color: $tertiary;
+    }
+    &.__yellow {
+        color: $yellow;
+    }
+}

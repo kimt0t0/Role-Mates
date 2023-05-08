@@ -10,7 +10,7 @@ const characterSchema = new Schema({
     required: true,
     ref: 'User'
   },
-  name: {
+  charname: {
     type: String,
     required: true,
     unique: true,
@@ -19,7 +19,7 @@ const characterSchema = new Schema({
   },
   description: {
     type: String,
-    required: true,
+    // required: true,
     max: 500
   },
   types: {
@@ -41,6 +41,7 @@ const characterSchema = new Schema({
   status: {
     type: [String],
     enum: ['DRAFT', 'IN PLAY', 'ALIVE', 'DEAD', 'ARCHIVED'],
+    required: true,
     default: 'DRAFT'
   },
   games: {

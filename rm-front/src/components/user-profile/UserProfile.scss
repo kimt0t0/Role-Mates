@@ -1,0 +1,48 @@
+@use '../../styles/App.scss' as *;
+
+.uf-headline {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    .edit-btn {
+        display: flex;
+        align-items: center;
+        i {
+            margin-left: $space-xs;
+        }
+    }
+}
+
+.avatar-ctn {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: $space-l auto;
+}
+.avatar {
+    box-sizing: border-box;
+    height: 180px;
+    width: auto;
+    border: 10px solid $primary;
+    object-fit: contain;
+    border-radius: $radius-circle;
+}
+
+.cta-container {
+    display: flex;
+    flex-direction: column;
+    .cta-group {
+        margin: $space-m 0 0;
+        display: flex;
+        flex-direction: column;
+        @media(min-width: $mediabp-xs) {
+            flex-direction: row;
+        }
+        .cta {
+            margin: $space-s 0;
+            @media(min-width: $mediabp-xs) {
+                margin: 0 $space-s;
+            }
+        }
+    }
+}

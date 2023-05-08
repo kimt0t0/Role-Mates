@@ -1,6 +1,7 @@
 // IMPORTS
 // Modules
 import { Link } from 'react-router-dom'
+import { redirect } from 'react-router'
 import Icon from 'react-eva-icons'
 // Auth Context
 import { useAuth, actionTypes } from '../../contexts/AuthContext'
@@ -16,6 +17,7 @@ function UserNav () {
     dispatch({
       type: actionTypes.LOGOUT
     })
+    redirect('/')
   }
   return (
     <nav className='navbar'>
@@ -24,7 +26,7 @@ function UserNav () {
           <Link className='navlink' to='/me'>Mes informations</Link>
         </li>
         <li className='navelt'>
-          <Link className='navlink' to='/me/characters'>Mes personnages</Link>
+          <Link className='navlink' to='/me/personnages'>Mes personnages</Link>
         </li>
         <li className='navelt'>
           <button type='button' className='disconnect-btn' onClick={logout}>

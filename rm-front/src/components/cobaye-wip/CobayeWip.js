@@ -9,7 +9,21 @@ function CobayeWip () {
   return (
   // Area
     <div className='area'>
-      <p className='content-line'>OooOOoouPS !</p>
+      {/* text and cta */}
+      <div className='content-line'>
+        <p>Cette page est encore en chantier !</p>
+        <a
+          href='https://codepen.io/Siaesior/pen/JjmpdLp?editors=1100'
+          target='_#'
+          className='easter-link'
+          alt="Voir la source de l'illustration"
+        >
+          <Icon
+            name='bulb'
+            size='large'
+          />
+        </a>
+      </div>
       {/* frame */}
       <div className='frame'>
         {/* body */}
@@ -37,21 +51,6 @@ function CobayeWip () {
           <div className='cb-paw __left' />
           <div className='cb-paw __right' />
         </div>
-      </div>
-      {/* text and cta */}
-      <div className='content-line'>
-        <p>Cette page est encore en chantier !</p>
-        <a
-          href='https://codepen.io/Siaesior/pen/JjmpdLp?editors=1100'
-          target='_#'
-          className='easter-link'
-          alt="Voir la source de l'illustration"
-        >
-          <Icon
-            name='bulb-outline'
-            size='large'
-          />
-        </a>
       </div>
     </div>
   )

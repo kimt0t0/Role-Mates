@@ -38,7 +38,6 @@ function UserProfile ({ profile }) {
   const handleSubmit = async (e) => {
     e.preventDefault()
     try {
-      console.log(`from component updating ${formData}`)
       // await updateProfile(formData)
     } catch (e) {
       console.error(e)

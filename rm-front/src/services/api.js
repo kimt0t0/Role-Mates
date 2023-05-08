@@ -83,7 +83,11 @@ const getUser = async (userId) => {
   try {
     const auth = window.localStorage.AUTH
     if (auth) {
-      const response = await api.get(`/users/${userId}`)
+      const response = await api.get(`/users/${userId}`, {
+        headers: {
+          Authorization: `Bearer ${auth}`
+        }
+      })
       return response.data
     }
   } catch (e) {
@@ -102,7 +106,6 @@ const updateProfile = async () => {
           Authorization: `Bearer ${auth}`
         }
       })
-      console.log(`service data: ${JSON.stringify(response.data)}`)
       return response.data
     }
     // (show error in console if there is a problem, for instance invalid token)
@@ -111,6 +114,24 @@ const updateProfile = async () => {
   }
 }
 
+// ----- Account private routes -----
+const getUserCharacters = async () => {
+  try {
+    const auth = window.localStorage.AUTH
+    if (auth) {
+      const owner = getProfile()
+      const ownerId = owner._id
+      const response = await api.get('/characters', {
+        headers: {
+          Authorization: `Bearer ${auth}`
+        }
+      }) // find a way to request specifically with owner id here
+      return response.data
+    }
+  } catch (e) {
+    console.error(e)
+  }
+}
 // ----- Character ------
 const createCharacter = async (formData) => {
   try {
@@ -122,8 +143,11 @@ const createCharacter = async (formData) => {
           ...formData,
           user: user._id
         }
-        console.log(`Données: ${data}`)
-        const response = await api.post('/characters', data)
+        const response = await api.post('/characters', data, {
+          headers: {
+            Authorization: `Bearer ${auth}`
+          }
+        })
         return response.data
       }
     }
@@ -136,7 +160,11 @@ const getCharacters = async () => {
   try {
     const auth = window.localStorage.AUTH
     if (auth) {
-      const response = await api.get('/characters')
+      const response = await api.get('/characters', {
+        headers: {
+          Authorization: `Bearer ${auth}`
+        }
+      })
       return response.data
     }
   } catch (e) {
@@ -148,7 +176,11 @@ const getCharacter = async (characterId) => {
   try {
     const auth = window.localStorage.AUTH
     if (auth) {
-      const response = await api.get(`/characters/${characterId}`)
+      const response = await api.get(`/characters/${characterId}`, {
+        headers: {
+          Authorization: `Bearer ${auth}`
+        }
+      })
       return response.data
     }
   } catch (e) {
@@ -160,8 +192,11 @@ const updateCharacter = async (characterId, formData) => {
   try {
     const auth = window.localStorage.AUTH
     if (auth) {
-      console.log(`Mise à jour du personnage ${characterId} avec ces données: ${JSON.stringify(formData)}`)
-      const response = await api.patch(`/characters/${characterId}`, formData)
+      const response = await api.patch(`/characters/${characterId}`, formData, {
+        headers: {
+          Authorization: `Bearer ${auth}`
+        }
+      })
       return response.data
     }
   } catch (e) {
@@ -171,11 +206,13 @@ const updateCharacter = async (characterId, formData) => {
 
 const removeCharacter = async (characterId) => {
   try {
-    console.log(`removing ${characterId}`)
     const auth = window.localStorage.AUTH
     if (auth) {
-      const response = await api.delete(`/characters/${characterId}`)
-      console.log(`api response: ${JSON.stringify(response.data)}`)
+      const response = await api.delete(`/characters/${characterId}`, {
+        headers: {
+          Authorization: `Bearer ${auth}`
+        }
+      })
       return response.data
     }
   } catch (e) {
@@ -192,6 +229,8 @@ export {
   getProfile,
   updateProfile,
   getUser,
+  // user specific collection data
+  getUserCharacters,
   // character api services
   createCharacter,
   getCharacters,

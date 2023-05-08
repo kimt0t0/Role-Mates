@@ -39,8 +39,23 @@ a {
   text-decoration: none;
 }
 
+.classic-link {
+  color: $primary;
+  &:hover, &:focus {
+    text-decoration: underline;
+  }
+}
+
+.secondary-link {
+  color: $secondary;
+  &:hover, &:focus {
+    text-decoration: underline;
+  }
+}
+
 .classic-btn {
   @include button;
+  margin: auto;
 }
 
 .secondary-btn {

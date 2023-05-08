@@ -117,7 +117,6 @@ function CreateCharacter () {
       ...formData,
       [dataName]: val
     })
-    console.log(`formData updated: ${JSON.stringify(formData)}`)
   }
 
   // submit form

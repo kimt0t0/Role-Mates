@@ -156,6 +156,19 @@ const getCharacter = async (characterId) => {
   }
 }
 
+const updateCharacter = async (characterId, formData) => {
+  try {
+    const auth = window.localStorage.AUTH
+    if (auth) {
+      console.log(`Mise à jour du personnage ${characterId} avec ces données: ${JSON.stringify(formData)}`)
+      const response = await api.patch(`/characters/${characterId}`, formData)
+      return response.data
+    }
+  } catch (e) {
+    console.error(e)
+  }
+}
+
 const removeCharacter = async (characterId) => {
   try {
     console.log(`removing ${characterId}`)
@@ -183,5 +196,6 @@ export {
   createCharacter,
   getCharacters,
   getCharacter,
+  updateCharacter,
   removeCharacter
 }

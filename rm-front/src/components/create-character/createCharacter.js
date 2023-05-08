@@ -5,6 +5,7 @@ import { useState } from 'react'
 import { createCharacter } from '../../services/api'
 // Components
 import FormAlert from '../form-alert/FormAlert'
+import SuccessAlert from '../success-alert/SuccessAlert'
 // Styles
 import './createCharacter.scss'
 
@@ -25,6 +26,9 @@ function CreateCharacter () {
   const updateLifeAlert = (value) => {
     setLifeAlert(value)
   }
+
+  // (form success alert handling)
+  const [successAlert, setSuccessAlert] = useState(false)
 
   // state machine to follow character's types checkboxes
   const [chartypes, setChartypes] = useState({
@@ -138,7 +142,9 @@ function CreateCharacter () {
         updateLifeAlert(false)
       }
       const createdCharacter = await createCharacter(formData)
-      console.log(`Personnage créé! ---> ${createdCharacter}`)
+      if (createdCharacter !== null && createdCharacter !== undefined) {
+        setSuccessAlert(true)
+      }
     } catch (e) {
       console.error(e)
     }
@@ -290,6 +296,10 @@ function CreateCharacter () {
       <div className='cta-container'>
         <button type='submit' className='secondary-btn'>AJOUTER LE PERSONNAGE</button>
       </div>
+      {successAlert && <SuccessAlert
+        title='Ayé, ton personnage est créé !'
+        ctas={['home', 'collection-char', 'create-again']}
+                       />}
     </form>
   )
 }

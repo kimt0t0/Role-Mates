@@ -1,6 +1,5 @@
 // IMPORTS
 // Modules
-import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import Icon from 'react-eva-icons'
 // Auth Context

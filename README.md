@@ -126,6 +126,8 @@ _you may need to refresh page so user disconnection is taken into account in the
 
 ## Pending
 
+¤ Reorder components directories with categories: alerts, auth, user, char... so it is easier to find the components devs need if other people contribute.
+
 ¤ Add a global modal in app that can be toggled with success message & link to next page VS alert message & link to home/signup and that covers the screen (so users can't do something else) - use a context to handle this.
 
 ¤ On Characters page add a button "see my characters" (will hide others' characters) / in general setting hide non-public characters / add sorting tools (date / reverse date / alphabet / reverse alphabet).

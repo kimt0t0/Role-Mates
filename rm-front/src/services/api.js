@@ -22,11 +22,10 @@ const api = axios.create({
 const register = async (registeredDatas) => {
   try {
     // (fetch api post route)
-    if (registeredDatas.file) {
-      // const file = { file: registeredDatas.avatar }
-      const savedImage = await api.post('/images', { file: registeredDatas.file })
-      registeredDatas.avatar = savedImage.data._id
-    }
+    // if (registeredDatas.avatar) {
+    //   const savedImage = await api.post('/images', registeredDatas.avatar)
+    //   registeredDatas.avatar = savedImage.data._id
+    // }
     const response = await api.post('/users', registeredDatas)
     // (if api returns user data and token, set token item in local storage)
     if (response.data && response.data.token) {
@@ -132,6 +131,25 @@ const getUserCharacters = async () => {
     console.error(e)
   }
 }
+
+// ----- Images -----
+const createImage = async (file) => {
+  console.log(`depuis le service: ${JSON.stringify(file)}`)
+  try {
+    const auth = window.localStorage.AUTH
+    if (auth) {
+      const response = await api.post('/images', file, {
+        headers: {
+          Authorization: `Bearer ${auth}`
+        }
+      }) // find a way to request specifically with owner id here
+      return response.data
+    }
+  } catch (e) {
+    console.error(e)
+  }
+}
+
 // ----- Character ------
 const createCharacter = async (formData) => {
   try {
@@ -231,6 +249,8 @@ export {
   getUser,
   // user specific collection data
   getUserCharacters,
+  // Images
+  createImage,
   // character api services
   createCharacter,
   getCharacters,

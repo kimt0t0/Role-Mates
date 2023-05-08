@@ -3,14 +3,17 @@
 import { useState } from 'react'
 import Icon from 'react-eva-icons'
 // Services
-import { register } from '../../services/api'
+import { createImage, register } from '../../services/api'
 // Components
 import Hero from '../hero-title/Hero'
+import SuccessAlert from '../success-alert/SuccessAlert'
 // Styles
 import './RegisterForm.scss'
 
 // LOGIC
 function RegisterForm () {
+  // Handle success alert
+  const [successAlert, setSuccessAlert] = useState(false)
   // Toggle password visibility
   const [showPassword, setShowPassword] = useState(true)
 
@@ -23,12 +26,18 @@ function RegisterForm () {
     email: '',
     password: '',
     role: 'CLASSIC',
-    file: null
+    avatar: null
   })
 
   // Function to take into account input fields changes
   const handleChange = (e) => {
-    if (e.target.name !== 'role') { // may prevent hackers to set their role to admin :-)
+    if (e.target.name === 'avatar') {
+      setFormData({
+        ...formData,
+        [e.target.name]: e.target.files[0]
+      })
+    }
+    if (e.target.name !== 'role' && e.target.name !== 'avatar') { // may prevent hackers to set their role to admin :-)
       setFormData({
         ...formData,
         [e.target.name]: e.target.value
@@ -39,8 +48,16 @@ function RegisterForm () {
   // Function to submit form
   const handleSubmit = async (e) => {
     e.preventDefault()
+    console.log('données du formulaire: ', formData)
     try {
-      await register(formData)
+      if (formData.avatar) {
+        const savedImage = await createImage({ file: formData.avatar })
+        console.log('image sauvée: ', savedImage)
+      }
+      const registeredUser = await register(formData)
+      if (registeredUser) {
+        setSuccessAlert(true)
+      }
     } catch (e) {
       console.error(e)
     }
@@ -104,13 +121,16 @@ function RegisterForm () {
             <input
               className='form-input __file'
               type='file'
-              name='file'
-              value={FormData.file}
+              name='avatar'
+              value={FormData.avatar}
               onChange={handleChange}
-              placeholder='kwain@lapinsorcier.mtg'
             />
           </div>
         </div>
+        {successAlert && <SuccessAlert
+          title='Ton compte a bien été créé !'
+          ctas={[]}
+                         />}
         <div className='btn-ctn'>
           <button type='submit' className='secondary-btn'>Je m'inscris !</button>
         </div>

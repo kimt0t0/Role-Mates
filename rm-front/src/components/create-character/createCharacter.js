@@ -1,6 +1,8 @@
 // IMPORTS
 // Modules
 import { useState } from 'react'
+// API services
+import { createCharacter } from '../../services/api'
 // Components
 import FormAlert from '../form-alert/FormAlert'
 // Styles
@@ -87,6 +89,7 @@ function CreateCharacter () {
   }
 
   // follow entire form data changes
+  // (initialize form data set)
   const [formData, setFormData] = useState({
     charname: '',
     description: '',
@@ -96,6 +99,7 @@ function CreateCharacter () {
     file: null
   })
 
+  // (handle classic form data changes)
   const handleChange = (e) => {
     setFormData({
       ...formData,
@@ -103,6 +107,7 @@ function CreateCharacter () {
     })
   }
 
+  // (handle handmade form data changes)
   const handleHandChange = (dataName, val) => {
     setFormData({
       ...formData,
@@ -132,6 +137,8 @@ function CreateCharacter () {
       } else {
         updateLifeAlert(false)
       }
+      const createdCharacter = await createCharacter(formData)
+      console.log(`Personnage créé! ---> ${createdCharacter}`)
     } catch (e) {
       console.error(e)
     }

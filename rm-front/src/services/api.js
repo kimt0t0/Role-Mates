@@ -17,6 +17,7 @@ const api = axios.create({
   timeout: 10000
 })
 
+// ----- User -----
 // Register/signup service
 const register = async (registeredDatas) => {
   try {
@@ -97,11 +98,32 @@ const updateProfile = async () => {
   }
 }
 
+// ----- Character ------
+const createCharacter = async (formData) => {
+  try {
+    const user = await getProfile()
+    if (user._id && formData) {
+      const data = {
+        ...formData,
+        user: user._id
+      }
+      console.log(`Données: ${data}`)
+      const response = await api.post('/characters', data)
+      return response.data
+    }
+  } catch (e) {
+    console.error(e)
+  }
+}
+
 // EXPORTS
 
 export {
+  // user api services
   register,
   login,
   getProfile,
-  updateProfile
+  updateProfile,
+  // character api services
+  createCharacter
 }

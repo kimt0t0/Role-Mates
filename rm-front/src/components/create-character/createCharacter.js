@@ -289,7 +289,7 @@ function CreateCharacter () {
       {/* avatar */}
       <div className='ccf-bloc'>
         <h3 className='ccf-subtitle'>Illustration</h3>
-        <input type='file' name='file' className='ccfb-input' />
+        <input type='file' name='file' className='ccfb-input  __file' />
       </div>
       <div className='cta-container'>
         <button type='submit' className='secondary-btn'>AJOUTER LE PERSONNAGE</button>

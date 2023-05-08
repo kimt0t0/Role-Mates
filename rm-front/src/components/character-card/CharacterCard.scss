@@ -25,3 +25,22 @@
         }
     }
 }
+
+.update-form {
+    @include card($h: fit-content, $bg: lighten($primary, 40%), $color: $dark);
+    .btn-back {
+        margin: 0 0 $space-l 0;
+    }
+    .uf-btn-ctn {
+        margin: $space-l 0 0;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+    .ccf-bloc {
+        margin: $space-m 0;
+    }
+    .stats-select-menu {
+        margin: $space-m 0;
+    }
+}

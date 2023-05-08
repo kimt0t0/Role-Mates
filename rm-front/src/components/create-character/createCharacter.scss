@@ -42,4 +42,11 @@
         background-color: lighten($warning, 30%);
         color: darken($warning, 20%);
     }
+    &.__file {
+        background-color: transparent;
+        border: transparent;
+        display: flex;
+        flex-wrap: wrap;
+        white-space: pre;
+    }
 }

@@ -209,10 +209,9 @@ function CharacterCard ({ character }) {
     return (
       <form className='update-form' onSubmit={e => onUpdateCharacter(e)}>
         {/* toggle form button */}
-        <button type='button' className='classic-btn' onClick={hideEditForm}>Cacher</button>
+        <button type='button' className='secondary-btn btn-back' onClick={hideEditForm}><Icon name='arrow-left' size='large' />Sortir du formulaire</button>
         {/* form contents */}
         <h2 className='form-title'>Modification du personnage</h2>
-        <p>{JSON.stringify(character)}</p>
         {/* name */}
         <div className='ccf-bloc'>
           <h3 className='ccf-subtitle'>Nom du personnage</h3>
@@ -352,19 +351,19 @@ function CharacterCard ({ character }) {
         {/* avatar */}
         <div className='ccf-bloc'>
           <h3 className='ccf-subtitle'>Illustration</h3>
-          <input type='file' name='file' className='ccfb-input' />
+          <input type='file' name='file' className='ccfb-input __file' />
         </div>
-        <div className='cta-container'>
-          <button type='submit' className='secondary-btn'>AJOUTER LE PERSONNAGE</button>
+        <div className='uf-btn-ctn'>
+          <button type='submit' className='classic-btn'>
+            <Icon name='save' size='medium' />
+            Enregistrer les changements
+          </button>
         </div>
         {successEAlert && <SuccessAlert
-          title='Ayé, ton personnage est créé !'
+          title='Tes mises à jour ont bien été prises en compte !'
           ctas={['home', 'collection-char', 'create-again']}
                           />}
         {/* submit button */}
-        <div className='uf-btn-ctn'>
-          <button type='submit' className='secondary-btn'>Enregistrer les changements</button>
-        </div>
       </form>
     )
   }

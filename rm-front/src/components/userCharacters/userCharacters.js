@@ -1,19 +1,20 @@
 // IMPORTS
-// Context data
+// Modules
 import { useState, useEffect } from 'react'
-import { useAuth } from '../../contexts/AuthContext'
 import { Link } from 'react-router-dom'
+// Context data
+import { useAuth } from '../../contexts/AuthContext'
 // API service
-import { getCharacters } from '../../services/api'
+import { getUserCharacters } from '../../services/api'
 // Components
-import CharactersList from '../../components/characters-list/CharactersList'
-import Hero from '../../components/hero-title/Hero'
-import PageDefender from '../../components/page-defender/PageDefender'
+import CharactersList from '../characters-list/CharactersList'
+import Hero from '../hero-title/Hero'
+import PageDefender from '../page-defender/PageDefender'
 // Styles
-import './Characters.scss'
+import './userCharacters.scss'
 
 // LOGIC
-function Characters () {
+function UserCharacters () {
   // check if user is authenticated
   const { state: { user } } = useAuth()
 
@@ -26,7 +27,7 @@ function Characters () {
   const [characters, setCharacters] = useState(null)
 
   const loadCharacters = async () => {
-    const loadedCharacters = await getCharacters()
+    const loadedCharacters = await getUserCharacters()
     setCharacters(loadedCharacters)
     setShowLoader(false)
   }
@@ -45,8 +46,8 @@ function Characters () {
     return (
       <section className='section __cards-list __characters'>
         <Hero
-          title='Personnages de jeu'
-          subtitle="Bienvenu·e sur la liste des personnages du site. N'hésite pas à t'en inspirer !"
+          title='Mes personnages'
+          subtitle='Bienvenu·e sur la liste de tes personnages. Tu peux les consulter, les modifier et mettre à jour leur état si tu veux.'
           color='secondary'
         />
         <div className='cta-container'>
@@ -64,4 +65,4 @@ function Characters () {
 }
 
 // EXPORTS
-export default Characters
+export default UserCharacters

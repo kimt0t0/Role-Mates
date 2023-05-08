@@ -26,7 +26,7 @@ function UserNav () {
           <Link className='navlink' to='/me'>Mes informations</Link>
         </li>
         <li className='navelt'>
-          <Link className='navlink' to='/me/characters'>Mes personnages</Link>
+          <Link className='navlink' to='/me/personnages'>Mes personnages</Link>
         </li>
         <li className='navelt'>
           <button type='button' className='disconnect-btn' onClick={logout}>

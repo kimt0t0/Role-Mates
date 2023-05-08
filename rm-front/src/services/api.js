@@ -111,6 +111,20 @@ const updateProfile = async () => {
   }
 }
 
+// ----- Account private routes -----
+const getUserCharacters = async () => {
+  try {
+    const auth = window.localStorage.AUTH
+    if (auth) {
+      const owner = getProfile()
+      const ownerId = owner._id
+      const response = await api.get('/characters') // find a way to request specifically with owner id here
+      return response.data
+    }
+  } catch (e) {
+    console.error(e)
+  }
+}
 // ----- Character ------
 const createCharacter = async (formData) => {
   try {
@@ -192,6 +206,8 @@ export {
   getProfile,
   updateProfile,
   getUser,
+  // user specific collection data
+  getUserCharacters,
   // character api services
   createCharacter,
   getCharacters,

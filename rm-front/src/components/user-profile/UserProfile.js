@@ -10,7 +10,6 @@ import './UserProfile.scss'
 
 // LOGIC
 function UserProfile ({ profile }) {
-  console.log(profile)
   // Form handling
   // (enable/disable form edition)
   const [editForm, setEditForm] = useState(false)

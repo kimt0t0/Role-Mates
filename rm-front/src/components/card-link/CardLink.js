@@ -29,10 +29,10 @@ function CardLink ({ item }) {
   }, [])
 
   return (
-    <Link className='card-link' to={'/personnages/' + item.id}>
+    <Link className='card-link' to={'/personnages/' + item._id}>
       <div className='card __characters'>
         <div className='card-illus-ctn'>
-          <img className='card-illus' src={item.illus ? item.illus : 'images/avatar_placeholder.webp'} alt={'Illustration de ' + item.name ? item.name : item.title} />
+          <img className='card-illus' src={item.illus ? item.illus : 'images/character_placeholder.webp'} alt={'Illustration de ' + item.name ? item.name : item.title} />
         </div>
         <div className='card-contents'>
           <div className='cc-bloc'>

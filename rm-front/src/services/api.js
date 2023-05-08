@@ -134,8 +134,24 @@ const createCharacter = async (formData) => {
 
 const getCharacters = async () => {
   try {
-    const response = await api.get('/characters')
-    return response.data
+    const auth = window.localStorage.AUTH
+    if (auth) {
+      const response = await api.get('/characters')
+      return response.data
+    }
+  } catch (e) {
+    console.error(e)
+  }
+}
+
+const getCharacter = async (characterId) => {
+  try {
+    const auth = window.localStorage.AUTH
+    if (auth) {
+      const response = await api.get(`/characters/${characterId}`)
+      console.log(`api response: ${JSON.stringify(response.data)}`)
+      return response.data
+    }
   } catch (e) {
     console.error(e)
   }
@@ -152,5 +168,6 @@ export {
   getUser,
   // character api services
   createCharacter,
-  getCharacters
+  getCharacters,
+  getCharacter
 }

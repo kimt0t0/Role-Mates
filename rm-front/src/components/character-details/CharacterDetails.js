@@ -1,9 +1,14 @@
 // IMPORTS
+// Modules
+import { useState, useEffect } from 'react'
+// Styles
+import './CharacterDetails.scss'
 
 // LOGIC
-function CharDetails ({ character }) {
+function CharacterDetails ({ character }) {
   // Set character status to human readable language
-  const setStatusText = () => {
+  const [statusText, setStatusText] = useState([])
+  const loadStatusText = () => {
     const statuses = []
     character.status.map((data) => {
       switch (data) {
@@ -15,10 +20,12 @@ function CharDetails ({ character }) {
         default: return null
       }
     })
-    return statuses
+    setStatusText(statuses)
   }
 
-  const charStatus = setStatusText()
+  useEffect(() => {
+    loadStatusText()
+  }, [])
   return (
     <>
       {/* Info group 2 */}
@@ -53,7 +60,7 @@ function CharDetails ({ character }) {
           <div className='cdgc-group'>
             <p className='char-txt'>
               <strong>Statut de jeu: </strong>
-              {charStatus.map((status, index) => {
+              {statusText.map((status, index) => {
                 return (index !== -1 ? status + ', ' : status)
               })}
             </p>
@@ -73,4 +80,4 @@ function CharDetails ({ character }) {
 }
 
 // EXPORTS
-export default CharDetails
+export default CharacterDetails

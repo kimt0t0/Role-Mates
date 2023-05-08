@@ -1,6 +1,7 @@
 // IMPORTS
 // Modules
 import { Link } from 'react-router-dom'
+import { redirect } from 'react-router'
 import Icon from 'react-eva-icons'
 // Auth Context
 import { useAuth, actionTypes } from '../../contexts/AuthContext'
@@ -16,6 +17,7 @@ function UserNav () {
     dispatch({
       type: actionTypes.LOGOUT
     })
+    redirect('/')
   }
   return (
     <nav className='navbar'>

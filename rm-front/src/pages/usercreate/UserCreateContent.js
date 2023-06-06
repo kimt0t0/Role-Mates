@@ -2,15 +2,21 @@
 // Modules
 import { useState, useEffect } from 'react'
 import { useParams, Link } from 'react-router-dom'
+// Contexts
+import { useAuth } from '../../contexts/AuthContext'
 // API service
 import { getProfile } from '../../services/api'
 // Components
 import Hero from '../../components/hero-title/Hero'
 import CreateCharacter from '../../components/create-character/createCharacter'
+import PageDefender from '../../components/page-defender/PageDefender'
 // Styles
 import './UserCreateContent.scss'
 
 function UserCreateContent () {
+  // check user authentication
+  const { state: { user } } = useAuth()
+
   // get user id from api service
   const [userId, setUserId] = useState(null)
   const getUserId = async () => {
@@ -39,30 +45,36 @@ function UserCreateContent () {
   //     </section>
   //   )
   // }
-  switch (contentType) {
-    case 'personnage':
-      return (
-        <section className='section __create-content'>
-          <Hero title='Bienvenue dans ton interface de création' subtitle='Ici, tu peux libérer ton esprit créatif et créer du contenu pour jouer :-)' color='secondary' />
-          <CreateCharacter userId={userId} />
-        </section>
-      )
-    case 'game':
-      return (
-        <section className='section __create-content'>
-          <Hero title='Bienvenue dans ton interface de création' subtitle='Ici, tu peux libérer ton esprit créatif et créer du contenu pour jouer :-)' color='secondary' />
-          <p>Oups, cette partie du site n'est pas encore construite !</p>
-          {/* <CreateGame /> */}
-        </section>
-      )
-    default:
-      return (
-        <section className='section __create-content'>
-          <Hero title='Bienvenue dans ton interface de création' subtitle='Ici, tu peux libérer ton esprit créatif et créer du contenu pour jouer :-)' color='secondary' />
-          <p>Oups, il semble que cette catégorie n'existe pas (encore) !</p>
-        </section>
-      )
+  if (user) {
+    switch (contentType) {
+      case 'personnage':
+        return (
+          <section className='section __create-content'>
+            <Hero title='Bienvenue dans ton interface de création' subtitle='Ici, tu peux libérer ton esprit créatif et créer du contenu pour jouer :-)' color='secondary' />
+            <CreateCharacter userId={userId} />
+          </section>
+        )
+      case 'game':
+        return (
+          <section className='section __create-content'>
+            <Hero title='Bienvenue dans ton interface de création' subtitle='Ici, tu peux libérer ton esprit créatif et créer du contenu pour jouer :-)' color='secondary' />
+            <p>Oups, cette partie du site n'est pas encore construite !</p>
+            {/* <CreateGame /> */}
+          </section>
+        )
+      default:
+        return (
+          <section className='section __create-content'>
+            <Hero title='Bienvenue dans ton interface de création' subtitle='Ici, tu peux libérer ton esprit créatif et créer du contenu pour jouer :-)' color='secondary' />
+            <p>Oups, il semble que cette catégorie n'existe pas (encore) !</p>
+          </section>
+        )
+    }
   }
+
+  return (
+    <PageDefender />
+  )
 }
 
 export default UserCreateContent

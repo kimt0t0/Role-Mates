@@ -4,9 +4,6 @@ const Game = require('../data/models/Game')
 const User = require('../data/models/User')
 const { deleteMessage } = require('./messageController.js')
 
-// (tools)
-// const { isObjectEmpty } = require('../tools/objects')
-
 // CONTROLS
 // Create character
 const createCharacter = async (data) => {

@@ -13,7 +13,6 @@ Admin accounts can read, create, update and delete everything.
   - [Work remaining](#work-remaining)
     - [Backend (web API)](#backend-web-api)
     - [Frontend (client application)](#frontend-client-application)
-  - [Questions] (#questions)
   - [References](#references)
 
 ## Requirements

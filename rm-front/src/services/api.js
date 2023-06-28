@@ -8,12 +8,6 @@ const backPort = process.env.REACT_APP_BACK_PORT
 // Create axios api
 const api = axios.create({
   baseURL: `http://localhost:${backPort}/`,
-  headers: {
-    'Access-Control-Allow-Origin': '*',
-    'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content, Accept, Content-Type, Authorization',
-    'Content-Type': 'application/json',
-    'Access-Control-Allow-Methods': 'GET, POST, DELETE, PATCH'
-  },
   timeout: 10000
 })
 

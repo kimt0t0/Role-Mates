@@ -3,7 +3,7 @@ const router = require('express').Router()
 const { dirname } = require('path')
 const multer = require('multer')
 const { sanatizeFilename } = require('../../tools/strings')
-
+const { withAuth } = require('../../middlewares/auth')
 const { createImage } = require('../../controllers/imagesController')
 // const { withAuth } = require('../../middlewares/auth')
 
